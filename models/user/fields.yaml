@@ -1,0 +1,100 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+
+    name:
+        label: acorn.user::lang.user.name
+        span: auto
+
+    surname:
+        label: acorn.user::lang.user.surname
+        span: auto
+
+tabs:
+    fields:
+
+        email:
+            label: acorn.user::lang.user.email
+            tab: acorn.user::lang.user.account
+            span: full
+
+        send_invite:
+            type: checkbox
+            label: acorn.user::lang.user.send_invite
+            comment: acorn.user::lang.user.send_invite_comment
+            tab: acorn.user::lang.user.account
+            setting: has_front_end
+            default: true
+            context: create
+
+        block_mail:
+            label: acorn.user::lang.user.block_mail
+            tab: acorn.user::lang.user.account
+            type: checkbox
+            span: full
+            cssClass: field-align-above
+            context: update
+
+        password@create:
+            label: acorn.user::lang.user.create_password
+            comment: acorn.user::lang.user.create_password_comment
+            tab: acorn.user::lang.user.account
+            type: password
+            setting: has_front_end
+            span: left
+
+        password@update:
+            label: acorn.user::lang.user.reset_password
+            comment: acorn.user::lang.user.reset_password_comment
+            tab: acorn.user::lang.user.account
+            type: password
+            setting: has_front_end
+            span: left
+
+        password_confirmation:
+            label: acorn.user::lang.user.confirm_password
+            comment: acorn.user::lang.user.confirm_password_comment
+            tab: acorn.user::lang.user.account
+            type: password
+            setting: has_front_end
+            span: right
+            context: [create, update]
+
+        username:
+            label: acorn.user::lang.user.username
+            tab: acorn.user::lang.user.account
+            hidden: true
+            setting: has_front_end
+            span: left
+
+        groups:
+            label: acorn.user::lang.user.groups
+            tab: acorn.user::lang.user.account
+            type: relation
+            emptyOption: acorn.user::lang.user.empty_groups
+
+        created_ip_address:
+            label: acorn.user::lang.user.created_ip_address
+            span: auto
+            disabled: true
+            tab: acorn.user::lang.user.account
+            context: preview
+
+        last_ip_address:
+            label: acorn.user::lang.user.last_ip_address
+            span: auto
+            disabled: true
+            tab: acorn.user::lang.user.account
+            context: preview
+
+secondaryTabs:
+    fields:
+
+        avatar:
+            label: acorn.user::lang.user.avatar
+            type: fileupload
+            mode: image
+            imageHeight: 260
+            imageWidth: 260

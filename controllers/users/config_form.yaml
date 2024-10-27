@@ -1,0 +1,25 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: acorn.user::lang.user.label
+
+# Model Form Field configuration
+form: $/acorn/user/models/user/fields.yaml
+
+# Model Class name
+modelClass: Acorn\User\Models\User
+
+# Default redirect location
+defaultRedirect: acorn/user/users
+
+# Create page
+create:
+    redirect: acorn/user/users/preview/:id
+    redirectClose: acorn/user/users
+
+# Update page
+update:
+    redirect: acorn/user/users/update/:id
+    redirectClose: acorn/user/users/preview/:id

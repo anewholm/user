@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: acorn.user::lang.group.label
+
+# Model Form Field configuration
+form: $/acorn/user/models/usergroup/fields.yaml
+
+# Model Class name
+modelClass: Acorn\User\Models\UserGroup
+
+# Default redirect location
+defaultRedirect: acorn/user/usergroups
+
+# Create page
+create:
+    title: acorn.user::lang.groups.create_title
+    redirect: acorn/user/usergroups/update/:id
+    redirectClose: acorn/user/usergroups
+
+# Update page
+update:
+    title: acorn.user::lang.groups.update_title
+    redirect: acorn/user/usergroups
+    redirectClose: acorn/user/usergroups
+
+# Preview page
+preview:
+    title: acorn.user::lang.groups.update_title
