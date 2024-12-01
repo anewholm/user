@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('reset_password_code')->nullable()->index();
             $table->text('permissions')->nullable();
             $table->boolean('is_activated')->default(0);
-            $table->boolean('system_user')->default(0);
+            $table->boolean('is_system_user')->default(0); // system_user is a Postgres reserved word
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->timestamps();

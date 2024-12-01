@@ -2,6 +2,8 @@
 
 use Winter\Storm\Auth\Models\Group as GroupBase;
 use ApplicationException;
+use Acorn\Collection;
+use Winter\Storm\Database\TreeCollection;
 
 /**
  * User Group Model
@@ -10,9 +12,16 @@ class UserGroup extends GroupBase
 {
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
     use \Acorn\Traits\PathsHelper;
+    use \Winter\Storm\Database\Traits\NestedTree;
+    use \Acorn\Backendlocalization\Class\TranslateBackend;
+
+    const PARENT_ID = 'parent_user_group_id';
 
     const GROUP_GUEST = 'guest';
     const GROUP_REGISTERED = 'registered';
+
+    public $implement = ['Winter.Translate.Behaviors.TranslatableModel'];
+    public $translatable = ['name', 'description'];
 
     /**
      * @var string The database table used by the model.
@@ -30,9 +39,16 @@ class UserGroup extends GroupBase
     /**
      * @var array Relations
      */
+    public $hasMany = [
+        'children' => [self::class, 'key' => 'parent_user_group_id'],
+    ];
     public $belongsToMany = [
         'users'       => [User::class, 'table' => 'acorn_user_user_group'],
         'users_count' => [User::class, 'table' => 'acorn_user_user_group', 'count' => true]
+    ];
+    public $belongsTo = [
+        'parent_user_group' => [UserGroup::class, 'key' => 'parent_user_group_id'],
+        'type' => UserGroupType::class,
     ];
 
     /**
@@ -62,9 +78,55 @@ class UserGroup extends GroupBase
     }
 
     // --------------------------------------------- New functions
+    // TODO: Place these in a Trait
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    public function getChildCount(): int
+    {
+        return $this->children->count();
+    }
+
+    public static function authUserGroups(): TreeCollection|NULL
+    {
+        $usergroups = NULL;
+        if ($user = User::authUser()) {
+            $user->load('groups');
+            $usergroups = $user->groups;
+        }
+        return $usergroups;
+    }
+
+    public static function authUserGroupsOptions(): array
+    {
+        return self::authUserGroups()->pluck('name','id')->toArray();
+    }
+
+    public function isAuthUserGroup(): bool
+    {
+        return (self::authUserGroups()->contains($this));
+    }
+
+    protected function getAuthIsMemberAttribute(): bool
+    {
+        return $this->isAuthUserGroup();
+    }
+
     public static function dropdownOptions($form, $field)
     {
         return \Acorn\Model::dropdownOptions($form, $field, self::class);
+    }
+
+    public function id(): string
+    {
+        return $this->id;
+    }
+
+    public function name(): string
+    {
+        return $this->name;
     }
 
     public function getFullyQualifiedNameAttribute()

@@ -5,13 +5,9 @@
 scopes:
 
     groups:
-        # Filter name
         label: acorn.user::lang.group.label
-        # Model Class name
         modelClass: Acorn\User\Models\UserGroup
-        # Model attribute to display for the name
         nameFrom: name
-        # Filter scope
         scope: filterByGroup
 
     created_date:
@@ -20,11 +16,16 @@ scopes:
         conditions: created_at >= ':after' AND created_at <= ':before'
 
     activated:
-        # Filter name
         label: acorn.user::lang.user.status_activated
-        # Filter type
         type: switch
-        # SQL conditions
         conditions:
             - is_activated = '0'
             - is_activated = '1'
+
+    deleted:
+        label: acorn.user::lang.user.status_deleted
+        type: switch
+        default: 0
+        conditions:
+            - deleted_at is null
+            - not deleted_at is null

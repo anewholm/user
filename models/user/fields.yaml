@@ -29,12 +29,13 @@ tabs:
             default: true
             context: create
 
-        block_mail:
+        _block_mail:
             label: acorn.user::lang.user.block_mail
             tab: acorn.user::lang.user.account
             type: checkbox
             span: full
             cssClass: field-align-above
+            setting: has_front_end
             context: update
 
         password@create:
@@ -88,6 +89,11 @@ tabs:
             disabled: true
             tab: acorn.user::lang.user.account
             context: preview
+
+        languages:
+            type: relation
+            nameFrom: name
+            tab: acorn.user::lang.models.language.label_plural
 
 secondaryTabs:
     fields:

@@ -38,7 +38,8 @@ class User extends UserBase
      * @var array Relations
      */
     public $belongsToMany = [
-        'groups' => [UserGroup::class, 'table' => 'acorn_user_user_group']
+        'groups' => [UserGroup::class, 'table' => 'acorn_user_user_group'],
+        'languages' => [Language::class, 'table' => 'acorn_user_language_user'],
     ];
 
     public $attachOne = [
@@ -82,17 +83,6 @@ class User extends UserBase
     ];
 
     public static $loginAttribute = null;
-
-    public static function authUser(): User|NULL
-    {
-        $user = NULL;
-        if ($auth = BackendAuth::user()) {
-            $auth->load('user');
-            if ($auth->user) $user = $auth->user;
-        }
-
-        return $user;
-    }
 
     /**
      * Sends the confirmation email to a user, after activating.
@@ -610,10 +600,10 @@ class User extends UserBase
 
     public function name(): string
     {
-        return $this->name;
+        return $this->attributes['name'];
     }
 
-    public function getFullyQualifiedNameAttribute()
+    protected function getFullyQualifiedNameAttribute()
     {
         return $this->name;
     }
@@ -627,5 +617,16 @@ class User extends UserBase
     {
         $nameParts = explode(' ', $this->name);
         return (isset($nameParts[1]) ? $nameParts[1] : NULL);
+    }
+
+    public static function authUser(): User|NULL
+    {
+        $user = NULL;
+        if ($auth = BackendAuth::user()) {
+            $auth->load('user');
+            if ($auth->user) $user = $auth->user;
+        }
+
+        return $user;
     }
 }

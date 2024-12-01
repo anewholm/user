@@ -2,6 +2,7 @@
 
 use Flash;
 use BackendMenu;
+use Acorn\Collection;
 use Acorn\Controller;
 use Acorn\User\Models\UserGroup;
 

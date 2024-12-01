@@ -5,7 +5,9 @@ use Auth;
 use Event;
 use Backend;
 use Backend\Models\User as BackendUser;
+use Backend\Controllers\Users as BackendUsers;
 use Acorn\User\Models\User;
+use Acorn\User\Models\UserGroup;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
@@ -34,8 +36,80 @@ class Plugin extends PluginBase
 
     public function boot()
     {
+        Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
+            $controller->addCss('~/plugins/acorn/user/assets/css/plugin.css');
+        });
+
+        Event::listen('backend.menu.extendItems', function ($navigationManager) {
+            if ($user = User::authUser()) {
+                $userGroups = $user->groups;
+                $menu       = array();
+                $userGroups->each(function($userGroup) use (&$menu, &$userGroups) {
+                    $userGroupName = (strlen($userGroup->name) < 20 ? $userGroup->name : substr($userGroup->name,0,20) . '...');
+                    if (!$menu) $menu = array(
+                        'current_auth_groups' => array(
+                            'label' => $userGroupName,
+                            'icon' => 'icon-group',
+                            // 'counter' => ($userGroups->count() > 1 ? $userGroups->count() : NULL),
+                            'url' => $userGroup->controllerUrl('update', $userGroup->id()),
+                            'sideMenu' => array(),
+                        ),
+                    );
+                    else {
+                        $menu['current_auth_groups']['sideMenu'][$userGroupName] = array(
+                            'label' => $userGroupName,
+                            'icon' => 'icon-group',
+                            'url' => $userGroup->controllerUrl('update', $userGroup->id()),
+                        );
+                    };
+                });
+                $navigationManager->addMainMenuItems('acorn_user', $menu);
+            }
+        });
+
         BackendUser::extend(function ($model){
             $model->belongsTo['user'] = [User::class, 'key' => 'acorn_user_user_id'];
+        });
+
+        BackendUsers::extendFormFields(function ($form, $model, $context) {
+            if ($model instanceof BackendUser) {
+                $model->load('user');
+                $userGroups = $model->user->groups->pluck('name')->toArray() ?? array();
+
+                // TODO: Permissions: can_change_own_user, can_change_others_user
+                $form->addTabFields([
+                    'acorn_user_section' => [
+                        'label'   => 'acorn.user::lang.backend.acorn_user_section',
+                        'type'    => 'section',
+                        'comment' => 'acorn.user::lang.backend.acorn_user_section_comment',
+                        'commentHtml' => TRUE,
+                        'tab'     => 'acorn.user::lang.plugin.name',
+                    ],
+                    'user' => [
+                        'label'   => 'acorn.user::lang.backend.acorn_user',
+                        'type'    => 'dropdown',
+                        'span'    => 'auto',
+                        'placeholder' => 'backend::lang.form.select',
+                        'options' => '\Acorn\User\Models\User::dropdownOptions',
+                        'comment' => 'acorn.user::lang.backend.acorn_user_comment',
+                        'commentHtml' => TRUE,
+                        'tab'     => 'acorn.user::lang.plugin.name',
+                    ],
+                    '_acorn_user_groups' => [
+                        'label'   => 'acorn.user::lang.backend.acorn_user_groups',
+                        'type'    => 'checkboxlist',
+                        'options' => $userGroups,
+                        'span'    => 'auto',
+                        // TODO: Remove checkboxes and disable control
+                        'cssClass' => 'nolabel',
+                        // TODO: Change the groups list when user changes
+                        // 'dependsOn' => 'user', 
+                        'comment' => 'acorn.user::lang.backend.acorn_user_groups_comment',
+                        'commentHtml' => TRUE,
+                        'tab'     => 'acorn.user::lang.plugin.name',
+                    ],
+                ]);
+            }
         });
 
         // Fill out created_by_user_id fields
@@ -43,6 +117,14 @@ class Plugin extends PluginBase
             ModelBeforeSave::class,
             [CompleteCreatedByUser::class, 'handle']
         );
+
+        Event::listen('backend.list.injectRowClass', function ($listWidget, $record, &$value) {
+            if ($record instanceof UserGroup) {
+                if ($record->isAuthUserGroup()) {
+                    $value .= 'usergroup-current-auth';
+                }
+            }
+        });
     }
 
     public function register()
@@ -139,6 +221,18 @@ class Plugin extends PluginBase
                         'icon'        => 'icon-users-viewfinder',
                         'url'         => Backend::url('acorn/user/usergroups'),
                         'permissions' => ['acorn.users.access_groups']
+                    ],
+                    'usergrouptypes' => [
+                        'label'       => 'acorn.user::lang.models.usergrouptype.label_plural',
+                        'icon'        => 'icon-stripe',
+                        'url'         => Backend::url('acorn/user/usergrouptypes'),
+                        'permissions' => ['acorn.users.access_groups']
+                    ],
+                    'languages' => [
+                        'label'       => 'acorn.user::lang.models.language.label_plural',
+                        'icon'        => 'icon-wechat',
+                        'url'         => Backend::url('acorn/user/languages'),
+                        'permissions' => ['acorn.users.access_languages']
                     ]
                 ]
             ]

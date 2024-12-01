@@ -5,13 +5,35 @@
 fields:
     name:
         label: acorn.user::lang.group.name
-        span: left
+        span: auto
 
     code:
         label: acorn.user::lang.group.code
         comment: acorn.user::lang.group.code_comment
-        span: right
+        span: auto
         preset: name
+
+    type:
+        label: acorn.user::lang.group.type
+        type: relation
+        placeholder: backend::lang.form.select
+        span: auto
+
+    colour:
+        label: backend::lang.branding.primary_color
+        type: colorpicker
+        span: auto
+
+    image:
+        label: backend::lang.editor.image
+        type: mediafinder
+        span: auto
+
+    parent_user_group:
+        label: acorn.user::lang.group.parent_user_group
+        span: auto
+        type: relation
+        placeholder: backend::lang.form.select
 
     description:
         label: acorn.user::lang.group.description_field

@@ -1,0 +1,26 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+
+    id:
+        label: acorn.user::lang.group.id
+        invisible: true
+
+    name:
+        label: acorn.user::lang.group.name
+        searchable: true
+
+    image:
+        label: backend::lang.editor.image
+        type: image
+
+    groups_count:
+        label: acorn.user::lang.models.usergrouptype.groups_count
+        default: 0
+        sortable: false
+
+    colour:
+        label: backend::lang.branding.primary_color
+        type: colorpicker

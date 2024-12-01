@@ -17,6 +17,17 @@ columns:
         label: acorn.user::lang.user.name
         searchable: true
 
+    groups:
+        label: acorn.user::lang.models.usergroup.label_plural
+        type: partial
+        path: multi
+
+    languages:
+        label: acorn.user::lang.models.language.label_plural
+        type: partial
+        relation: languages
+        path: multi
+
     surname:
         label: acorn.user::lang.user.surname
         searchable: true

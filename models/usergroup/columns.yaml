@@ -11,12 +11,55 @@ columns:
     name:
         label: acorn.user::lang.group.name
         searchable: true
+        sortable: true
+
+    type:
+        label: acorn.user::lang.group.type
+        relation: type
+        searchable: true
+        select: name
+        sortable: true
+
+    type_colour:
+        label: acorn.user::lang.models.usergroup.type_primary_color
+        type: colorpicker
+        relation: type
+        select: colour
+        sortable: false
+
+    type_image:
+        label: acorn.user::lang.models.usergroup.type_image
+        type: image
+        relation: type
+        select: image
+        sortable: false
+        width: 100
+        height: 100
+
+    colour:
+        label: backend::lang.branding.primary_color
+        type: colorpicker
+        invisible: true
+        sortable: false
+
+    image:
+        label: backend::lang.editor.image
+        type: image
+        sortable: false
+        width: 100
+        height: 100
+        invisible: true
+
+    parent_user_group:
+        type: text
+        relation: parent_user_group
+        select: name
+        invisible: true
+        sortable: true
 
     code:
         label: acorn.user::lang.group.code
-
-    created_at:
-        label: acorn.user::lang.group.created_at
+        sortable: true
 
     users_count:
         label: acorn.user::lang.group.users_count
@@ -24,3 +67,11 @@ columns:
         valueFrom: count
         default: 0
         sortable: false
+
+    auth_is_member:
+        label: acorn.user::lang.models.usergroup.auth_is_member
+        type: partial
+        path: tick
+
+    created_at:
+        label: acorn.user::lang.group.created_at

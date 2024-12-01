@@ -1,0 +1,18 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    name:
+        label: acorn.user::lang.group.name
+        span: auto
+
+    image:
+        label: backend::lang.editor.image
+        type: mediafinder
+        span: auto
+
+    colour:
+        label: backend::lang.branding.primary_color
+        type: colorpicker
+        span: auto

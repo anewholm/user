@@ -3,22 +3,28 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acorn/user/models/usergroup/columns.yaml
+list: $/acorn/user/models/usergrouptype/columns.yaml
 
 # Model Class name
-modelClass: Acorn\User\Models\UserGroup
+modelClass: Acorn\User\Models\UserGroupType
 
 # List Title
-title: acorn.user::lang.groups.list_title
+title: 'acorn.user::lang.models.usergrouptype.label_plural'
 
 # Link URL for each record
-recordUrl: acorn/user/usergroups/update/:id
+recordUrl: acorn/user/usergrouptypes/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records
 
 # Records to display per page
 recordsPerPage: 20
+
+# Options to provide the user when selecting how many records to display per page
+perPageOptions: [20, 40, 80, 100, 120]
+
+# Display page numbers with pagination, disable to improve performance
+showPageNumbers: true
 
 # Displays the list column set up button
 showSetup: true
@@ -34,8 +40,6 @@ showSorting: true
 # Display checkboxes next to each record
 showCheckboxes: true
 
-showTree: true
-
 # Toolbar widget configuration
 toolbar:
     # Partial for toolbar buttons
@@ -44,5 +48,3 @@ toolbar:
     # Search widget configuration
     search:
         prompt: backend::lang.list.search_prompt
-
-filter: config_filter.yaml

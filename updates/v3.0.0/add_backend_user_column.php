@@ -21,9 +21,13 @@ class AddBackendUserColumn extends Migration
 
         // Attach user to admin: admin must create stuff
         $adminUser        = User::create(['name' => 'admin', 'is_system_user' => TRUE]);
-        $adminBackendUser = BackendUser::where('login', 'admin')->andWhere('is_superuser', TRUE);
-        $adminBackendUser->acorn_user_user_id = $adminUser->id;
-        $adminBackendUser->save();
+        $adminBackendUser = BackendUser::where('login', 'admin')
+                                       ->where('is_superuser', true)
+                                       ->first();
+        if ($adminBackendUser) {
+            $adminBackendUser->acorn_user_user_id = $adminUser->id;
+            $adminBackendUser->save();
+        } else throw new \Exception('Superuser admin not found when trying to associated with Acorn\User');
     }
 
     public function down()
