@@ -1,4 +1,6 @@
-<?php return [
+<?php
+
+return [
     'plugin' => [
         'name' => 'People & Organisations',
         'description' => 'People management.',
@@ -8,7 +10,7 @@
         'access_groups' => 'Manage Organisations',
         'access_settings' => 'Manage Person Settings',
         'impersonate_user' => 'Impersonate People',
-        'menu_label' => 'People & Organisations'
+        'menu_label' => 'People & Organisations',
     ],
     'models' => [
         'general' => [
@@ -16,7 +18,7 @@
             'name' => 'Name',
             'description' => 'Description',
             'created_at' => 'Created At',
-            'updated_at' => 'Updated At'
+            'updated_at' => 'Updated At',
         ],
         'user' => [
             'label' => 'Person',
@@ -39,25 +41,29 @@
             'is_superuser' => 'Is_superuser',
             'created_ip_address' => 'Created_ip_address',
             'last_ip_address' => 'Last_ip_address',
-            'is_system_user' => 'Is system user'
+            'is_system_user' => 'Is system user',
         ],
         'usergroup' => [
             'label' => 'Organisation',
             'label_plural' => 'Organisations',
             'type_primary_color' => 'Type colour',
             'type_image' => 'Type image',
-            'auth_is_member' => 'Is member'
+            'auth_is_member' => 'Is member',
         ],
         'usergrouptype' => [
             'label' => 'Organisation Type',
             'label_short' => 'Type',
             'label_plural' => 'Organisation Types',
-            'groups_count' => 'Organisation count'
+            'groups_count' => 'Organisation count',
         ],
         'language' => [
             'label' => 'Language',
-            'label_plural' => 'Languages'
-        ]
+            'label_plural' => 'Languages',
+        ],
+        'role' => [
+            'label' => 'Role',
+            'label_plural' => 'Roles',
+        ],
     ],
     'backend' => [
         'acorn_user_section' => 'Data-entry person identification',
@@ -65,7 +71,7 @@
         'acorn_user' => 'Person',
         'acorn_user_comment' => 'All data changes will be registered against this Person',
         'acorn_user_groups' => 'Current Persons Organisations',
-        'acorn_user_groups_comment' => 'The current registered Person is a member of the above organisations'
+        'acorn_user_groups_comment' => 'The current registered Person is a member of the above organisations',
     ],
     'users' => [
         'menu_label' => 'People',
@@ -122,7 +128,7 @@
         'unban_selected_success' => 'Successfully unbanned the selected users.',
         'unsuspend' => 'Unsuspend',
         'unsuspend_success' => 'Person has been unsuspended.',
-        'unsuspend_confirm' => 'Unsuspend this user?'
+        'unsuspend_confirm' => 'Unsuspend this user?',
     ],
     'settings' => [
         'users' => 'People',
@@ -160,7 +166,7 @@
         'remember_login_comment' => 'Select if the user session should be persistent.',
         'remember_always' => 'Always',
         'remember_never' => 'Never',
-        'remember_ask' => 'Ask the user on login'
+        'remember_ask' => 'Ask the user on login',
     ],
     'user' => [
         'label' => 'Person',
@@ -195,7 +201,7 @@
         'status_deleted' => 'Deleted',
         'status_registered' => 'Registered',
         'created_ip_address' => 'Created IP Address',
-        'last_ip_address' => 'Last IP Address'
+        'last_ip_address' => 'Last IP Address',
     ],
     'group' => [
         'label' => 'Organisation',
@@ -207,7 +213,7 @@
         'parent_user_group' => 'Parent group',
         'code_comment' => 'Enter a unique code used to identify this group.',
         'created_at' => 'Created',
-        'users_count' => 'People'
+        'users_count' => 'People',
     ],
     'groups' => [
         'menu_label' => 'Organisations',
@@ -222,11 +228,11 @@
         'return_to_users' => 'Back to users list',
         'create_title' => 'Create Organisation',
         'update_title' => 'Edit Organisation',
-        'preview_title' => 'Preview Organisation'
+        'preview_title' => 'Preview Organisation',
     ],
     'login' => [
         'attribute_email' => 'Email',
-        'attribute_username' => 'Username'
+        'attribute_username' => 'Username',
     ],
     'account' => [
         'account' => 'Account',
@@ -263,13 +269,13 @@
         'update_requires_password' => 'Confirm password on update',
         'update_requires_password_comment' => 'Require the current password of the user when changing their profile.',
         'no_avatar' => 'Your account has no display picture to remove.',
-        'avatar_removed' => 'Your display picture has been successfully removed.'
+        'avatar_removed' => 'Your display picture has been successfully removed.',
     ],
     'reset_password' => [
         'reset_password' => 'Reset Password',
         'reset_password_desc' => 'Forgotten password form.',
         'code_param' => 'Reset Code Param',
-        'code_param_desc' => 'The page URL parameter used for the reset code'
+        'code_param_desc' => 'The page URL parameter used for the reset code',
     ],
     'session' => [
         'session' => 'Session',
@@ -284,6 +290,6 @@
         'redirect_title' => 'Redirect to',
         'redirect_desc' => 'Page name to redirect if access is denied.',
         'logout' => 'You have been successfully logged out!',
-        'stop_impersonate_success' => 'You are no longer impersonating a user.'
-    ]
+        'stop_impersonate_success' => 'You are no longer impersonating a user.',
+    ],
 ];

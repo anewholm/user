@@ -141,3 +141,6 @@
 3.0.1:
     - 'Create Languages Table'
     - v3.0.1/create_languages_table.php
+3.0.2:
+    - 'Create Roles Table'
+    - v3.0.2/create_roles_table.php
