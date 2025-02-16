@@ -144,3 +144,5 @@
 3.0.2:
     - 'Create Roles Table'
     - v3.0.2/create_roles_table.php
+    - 'Create Usage view'
+    - v3.0.2/create_usage_view.php
