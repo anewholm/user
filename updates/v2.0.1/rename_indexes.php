@@ -1,7 +1,7 @@
-<?php namespace AcornAssociated\User\Updates;
+<?php namespace Acorn\User\Updates;
 
 use Schema;
-use AcornAssociated\Migration;
+use Acorn\Migration;
 
 class RenameIndexes extends Migration
 {
@@ -13,7 +13,7 @@ class RenameIndexes extends Migration
     {
         foreach (self::TABLES as $table) {
             $from = 'rainlab_user_' . $table;
-            $to = 'acornassociated_user_' . $table;
+            $to = 'acorn_user_' . $table;
 
             $this->updateIndexNames($from, $to, $to);
         }
@@ -22,7 +22,7 @@ class RenameIndexes extends Migration
     public function down()
     {
         foreach (self::TABLES as $table) {
-            $from = 'acornassociated_user_' . $table;
+            $from = 'acorn_user_' . $table;
             $to = 'rainlab_user_' . $table;
 
             $this->updateIndexNames($from, $to, $from);

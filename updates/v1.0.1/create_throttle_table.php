@@ -1,15 +1,15 @@
-<?php namespace AcornAssociated\User\Updates;
+<?php namespace Acorn\User\Updates;
 
 use DB;
 use Schema;
-use AcornAssociated\Migration;
+use Acorn\Migration;
 
 class CreateThrottleTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('acornassociated_user_throttle', function($table)
+        Schema::create('acorn_user_throttle', function($table)
         {
             $table->engine = 'InnoDB';
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
@@ -26,7 +26,7 @@ class CreateThrottleTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('acornassociated_user_throttle');
+        Schema::dropIfExists('acorn_user_throttle');
     }
 
 }

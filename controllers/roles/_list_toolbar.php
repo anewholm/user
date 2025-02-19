@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('acornassociated/user/roles/create') ?>"
+        href="<?= Backend::url('acorn/user/roles/create') ?>"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acornassociated.user::lang.models.role.label')])); ?>
+        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.user::lang.models.role.label')])); ?>
     </a>
 
     <button

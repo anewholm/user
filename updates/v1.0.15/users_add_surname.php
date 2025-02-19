@@ -1,13 +1,13 @@
-<?php namespace AcornAssociated\User\Updates;
+<?php namespace Acorn\User\Updates;
 
 use Schema;
-use AcornAssociated\Migration;
+use Acorn\Migration;
 
 class UsersAddSurname extends Migration
 {
     public function up()
     {
-        Schema::table('acornassociated_user_users', function($table)
+        Schema::table('acorn_user_users', function($table)
         {
             $table->string('surname')->nullable();
         });
@@ -15,8 +15,8 @@ class UsersAddSurname extends Migration
 
     public function down()
     {
-        if (Schema::hasColumn('acornassociated_user_users', 'surname')) {
-            Schema::table('acornassociated_user_users', function($table)
+        if (Schema::hasColumn('acorn_user_users', 'surname')) {
+            Schema::table('acorn_user_users', function($table)
             {
                 $table->dropColumn('surname');
             });

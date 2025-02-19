@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/user/models/usergroup/columns.yaml
+list: $/acorn/user/models/usergroup/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\User\Models\UserGroup
+modelClass: Acorn\User\Models\UserGroup
 
 # List Title
-title: acornassociated.user::lang.groups.list_title
+title: acorn.user::lang.groups.list_title
 
 # Link URL for each record
-recordUrl: acornassociated/user/usergroups/update/:id
+recordUrl: acorn/user/usergroups/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

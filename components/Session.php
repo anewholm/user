@@ -1,4 +1,4 @@
-<?php namespace AcornAssociated\User\Components;
+<?php namespace Acorn\User\Components;
 
 use Lang;
 use Auth;
@@ -9,7 +9,7 @@ use Response;
 use Redirect;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use AcornAssociated\User\Models\UserGroup;
+use Acorn\User\Models\UserGroup;
 use ValidationException;
 
 /**
@@ -27,8 +27,8 @@ class Session extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => 'acornassociated.user::lang.session.session',
-            'description' => 'acornassociated.user::lang.session.session_desc'
+            'name'        => 'acorn.user::lang.session.session',
+            'description' => 'acorn.user::lang.session.session_desc'
         ];
     }
 
@@ -36,26 +36,26 @@ class Session extends ComponentBase
     {
         return [
             'security' => [
-                'title'       => 'acornassociated.user::lang.session.security_title',
-                'description' => 'acornassociated.user::lang.session.security_desc',
+                'title'       => 'acorn.user::lang.session.security_title',
+                'description' => 'acorn.user::lang.session.security_desc',
                 'type'        => 'dropdown',
                 'default'     => 'all',
                 'options'     => [
-                    'all'   => 'acornassociated.user::lang.session.all',
-                    'user'  => 'acornassociated.user::lang.session.users',
-                    'guest' => 'acornassociated.user::lang.session.guests'
+                    'all'   => 'acorn.user::lang.session.all',
+                    'user'  => 'acorn.user::lang.session.users',
+                    'guest' => 'acorn.user::lang.session.guests'
                 ]
             ],
             'allowedUserGroups' => [
-                'title'       => 'acornassociated.user::lang.session.allowed_groups_title',
-                'description' => 'acornassociated.user::lang.session.allowed_groups_description',
+                'title'       => 'acorn.user::lang.session.allowed_groups_title',
+                'description' => 'acorn.user::lang.session.allowed_groups_description',
                 'placeholder' => '*',
                 'type'        => 'set',
                 'default'     => []
             ],
             'redirect' => [
-                'title'       => 'acornassociated.user::lang.session.redirect_title',
-                'description' => 'acornassociated.user::lang.session.redirect_desc',
+                'title'       => 'acorn.user::lang.session.redirect_title',
+                'description' => 'acorn.user::lang.session.redirect_desc',
                 'type'        => 'dropdown',
                 'default'     => ''
             ]
@@ -102,7 +102,7 @@ class Session extends ComponentBase
     /**
      * Returns the logged in user, if available, and touches
      * the last seen timestamp.
-     * @return AcornAssociated\User\Models\User
+     * @return Acorn\User\Models\User
      */
     public function user()
     {
@@ -142,12 +142,12 @@ class Session extends ComponentBase
         Auth::logout();
 
         if ($user) {
-            Event::fire('acornassociated.user.logout', [$user]);
+            Event::fire('acorn.user.logout', [$user]);
         }
 
         $url = post('redirect', Request::fullUrl());
 
-        Flash::success(Lang::get('acornassociated.user::lang.session.logout'));
+        Flash::success(Lang::get('acorn.user::lang.session.logout'));
 
         return Redirect::to($url);
     }
@@ -166,7 +166,7 @@ class Session extends ComponentBase
 
         $url = post('redirect', Request::fullUrl());
 
-        Flash::success(Lang::get('acornassociated.user::lang.session.stop_impersonate_success'));
+        Flash::success(Lang::get('acorn.user::lang.session.stop_impersonate_success'));
 
         return Redirect::to($url);
     }

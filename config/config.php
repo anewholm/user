@@ -1,6 +1,6 @@
 <?php
 
-use AcornAssociated\User\Models\Settings;
+use Acorn\User\Models\Settings;
 
 return [
 

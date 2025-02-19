@@ -1,7 +1,7 @@
 <?php
 
 use Winter\Storm\Database\Schema\Blueprint;
-use AcornAssociated\Migration;
+use Acorn\Migration;
 use Winter\Storm\Support\Facades\Schema;
 
 class CreateUsageView extends Migration

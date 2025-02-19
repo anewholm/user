@@ -1,8 +1,8 @@
 <?php
 
-namespace AcornAssociated\User\Models;
+namespace Acorn\User\Models;
 
-use AcornAssociated\Model;
+use Acorn\Model;
 
 /**
  * Role Model
@@ -14,7 +14,7 @@ class Role extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acornassociated_user_roles';
+    public $table = 'acorn_user_roles';
 
     /**
      * @var array Guarded fields

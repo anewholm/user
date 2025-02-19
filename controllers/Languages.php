@@ -1,4 +1,4 @@
-<?php namespace AcornAssociated\User\Controllers;
+<?php namespace Acorn\User\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
@@ -20,6 +20,6 @@ class Languages extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('AcornAssociated.User', 'user', 'languages');
+        BackendMenu::setContext('Acorn.User', 'user', 'languages');
     }
 }

@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('acornassociated/user/languages/create') ?>"
+        href="<?= Backend::url('acorn/user/languages/create') ?>"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acornassociated.user::lang.models.language.label')])); ?>
+        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.user::lang.models.language.label')])); ?>
     </a>
 
     <button

@@ -1,4 +1,4 @@
-<?php namespace AcornAssociated\User\Classes;
+<?php namespace Acorn\User\Classes;
 
 use App;
 use Illuminate\Routing\Redirector;

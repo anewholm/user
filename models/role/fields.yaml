@@ -4,5 +4,5 @@
 
 fields:
     id:
-        label: 'acornassociated.user::lang.models.general.id'
+        label: 'acorn.user::lang.models.general.id'
         disabled: true

@@ -1,14 +1,14 @@
 <?php
 
-namespace AcornAssociated\User\Updates;
+namespace Acorn\User\Updates;
 
 use DB;
 use Schema;
-use AcornAssociated\Migration;
+use Acorn\Migration;
 
 class CreateUserGroupsTable extends Migration
 {
-    static protected $table = 'acornassociated_user_user_groups';
+    static protected $table = 'acorn_user_user_groups';
 
     public function up()
     {   if(!Schema::hasTable(self::$table)){
@@ -36,7 +36,7 @@ class CreateUserGroupsTable extends Migration
         });
     }
 
-        Schema::create('acornassociated_user_user_group', function ($table) {
+        Schema::create('acorn_user_user_group', function ($table) {
             $table->engine = 'InnoDB';
             $table->uuid('user_id');
             $table->uuid('user_group_id');
@@ -46,8 +46,8 @@ class CreateUserGroupsTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('acornassociated_user_user_groups');
-        Schema::dropIfExists('acornassociated_user_user_group');
+        Schema::dropIfExists('acorn_user_user_groups');
+        Schema::dropIfExists('acorn_user_user_group');
     }
 
 }

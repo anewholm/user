@@ -1,8 +1,8 @@
-<?php namespace AcornAssociated\User\Classes;
+<?php namespace Acorn\User\Classes;
 
 use Winter\Storm\Auth\Manager as StormAuthManager;
-use AcornAssociated\User\Models\Settings as UserSettings;
-use AcornAssociated\User\Models\UserGroup as UserGroupModel;
+use Acorn\User\Models\Settings as UserSettings;
+use Acorn\User\Models\UserGroup as UserGroupModel;
 
 class AuthManager extends StormAuthManager
 {
@@ -10,11 +10,11 @@ class AuthManager extends StormAuthManager
 
     protected $sessionKey = 'user_auth';
 
-    protected $userModel = 'AcornAssociated\User\Models\User';
+    protected $userModel = 'Acorn\User\Models\User';
 
-    protected $groupModel = 'AcornAssociated\User\Models\UserGroup';
+    protected $groupModel = 'Acorn\User\Models\UserGroup';
 
-    protected $throttleModel = 'AcornAssociated\User\Models\Throttle';
+    protected $throttleModel = 'Acorn\User\Models\Throttle';
 
     public function init()
     {

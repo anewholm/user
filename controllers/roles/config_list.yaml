@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/user/models/role/columns.yaml
+list: $/acorn/user/models/role/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\User\Models\Role
+modelClass: Acorn\User\Models\Role
 
 # List Title
-title: 'acornassociated.user::lang.models.role.label_plural'
+title: 'acorn.user::lang.models.role.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/user/roles/update/:id
+recordUrl: acorn/user/roles/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records
