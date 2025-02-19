@@ -1,4 +1,4 @@
-<?php namespace Acorn\User\Classes;
+<?php namespace AcornAssociated\User\Classes;
 
 use Auth;
 use Closure;

@@ -1,6 +1,6 @@
 <?php Block::put('breadcrumb') ?>
     <ul>
-        <li><a href="<?= Backend::url('acorn/user/languages') ?>"><?= e(trans('acorn.user::lang.models.language.label_plural')); ?></a></li>
+        <li><a href="<?= Backend::url('acornassociated/user/languages') ?>"><?= e(trans('acornassociated.user::lang.models.language.label_plural')); ?></a></li>
         <li><?= e($this->pageTitle) ?></li>
     </ul>
 <?php Block::endPut() ?>
@@ -20,7 +20,7 @@
                     data-request="onSave"
                     data-request-data="redirect:0"
                     data-hotkey="ctrl+s, cmd+s"
-                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name' => trans('acorn.user::lang.models.language.label')])); ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name' => trans('acornassociated.user::lang.models.language.label')])); ?>"
                     class="btn btn-primary">
                     <?= e(trans('backend::lang.form.save')); ?>
                 </button>
@@ -29,7 +29,7 @@
                     data-request="onSave"
                     data-request-data="close:1"
                     data-hotkey="ctrl+enter, cmd+enter"
-                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name' => trans('acorn.user::lang.models.language.label')])); ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.saving_name', ['name' => trans('acornassociated.user::lang.models.language.label')])); ?>"
                     class="btn btn-default">
                     <?= e(trans('backend::lang.form.save_and_close')); ?>
                 </button>
@@ -37,11 +37,11 @@
                     type="button"
                     class="wn-icon-trash-o btn-icon danger pull-right"
                     data-request="onDelete"
-                    data-load-indicator="<?= e(trans('backend::lang.form.deleting_name', ['name' => trans('acorn.user::lang.models.language.label')])); ?>"
+                    data-load-indicator="<?= e(trans('backend::lang.form.deleting_name', ['name' => trans('acornassociated.user::lang.models.language.label')])); ?>"
                     data-request-confirm="<?= e(trans('backend::lang.form.confirm_delete')); ?>">
                 </button>
                 <span class="btn-text">
-                    or <a href="<?= Backend::url('acorn/user/languages') ?>"><?= e(trans('backend::lang.form.cancel')); ?></a>
+                    or <a href="<?= Backend::url('acornassociated/user/languages') ?>"><?= e(trans('backend::lang.form.cancel')); ?></a>
                 </span>
             </div>
         </div>
@@ -51,6 +51,6 @@
 <?php else: ?>
 
     <p class="flash-message static error"><?= e($this->fatalError) ?></p>
-    <p><a href="<?= Backend::url('acorn/user/languages') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')); ?></a></p>
+    <p><a href="<?= Backend::url('acornassociated/user/languages') ?>" class="btn btn-default"><?= e(trans('backend::lang.form.return_to_list')); ?></a></p>
 
 <?php endif ?>

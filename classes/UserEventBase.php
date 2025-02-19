@@ -1,4 +1,4 @@
-<?php namespace Acorn\User\Classes;
+<?php namespace AcornAssociated\User\Classes;
 
 use Winter\Notify\Classes\EventBase;
 
@@ -8,7 +8,7 @@ class UserEventBase extends EventBase
      * @var array Local conditions supported by this event.
      */
     public $conditions = [
-        \Acorn\User\NotifyRules\UserAttributeCondition::class
+        \AcornAssociated\User\NotifyRules\UserAttributeCondition::class
     ];
 
     /**

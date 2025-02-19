@@ -1,4 +1,4 @@
-<?php namespace Acorn\User\Models;
+<?php namespace AcornAssociated\User\Models;
 
 use Winter\Storm\Auth\Models\Throttle as ThrottleBase;
 
@@ -9,7 +9,7 @@ class Throttle extends ThrottleBase
     /**
      * @var string The database table used by the model.
      */
-    protected $table = 'acorn_user_throttle';
+    protected $table = 'acornassociated_user_throttle';
 
     /**
      * @var array Relations

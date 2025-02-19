@@ -1,8 +1,8 @@
 <div data-control="toolbar">
     <a
-        href="<?= Backend::url('acorn/user/usergrouptypes/create') ?>"
+        href="<?= Backend::url('acornassociated/user/usergrouptypes/create') ?>"
         class="btn btn-primary wn-icon-plus">
-        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acorn.user::lang.models.usergrouptype.label')])); ?>
+        <?= e(trans('backend::lang.form.create_title', ['name' => trans('acornassociated.user::lang.models.usergrouptype.label')])); ?>
     </a>
 
     <button

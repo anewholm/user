@@ -1,9 +1,9 @@
-<?php namespace Acorn\User\Updates;
+<?php namespace AcornAssociated\User\Updates;
 
 use DB;
 use Schema;
-use Acorn\Migration;
-use Acorn\User\Models\User;
+use AcornAssociated\Migration;
+use AcornAssociated\User\Models\User;
 use Backend\Models\User as BackendUser;
 
 class AddBackendUserColumn extends Migration
@@ -12,8 +12,8 @@ class AddBackendUserColumn extends Migration
     {
         // Add extra namespaced fields in to the users table
         Schema::table('backend_users', function(\Winter\Storm\Database\Schema\Blueprint $table) {
-            if (!Schema::hasColumn($table->getTable(), 'acorn_user_user_id')) $table->uuid('acorn_user_user_id')->nullable();
-            $table->foreign('acorn_user_user_id')->references('id')->on('acorn_user_users')->onDelete('set null');
+            if (!Schema::hasColumn($table->getTable(), 'acornassociated_user_user_id')) $table->uuid('acornassociated_user_user_id')->nullable();
+            $table->foreign('acornassociated_user_user_id')->references('id')->on('acornassociated_user_users')->onDelete('set null');
         });
 
         // Seed user
@@ -25,15 +25,15 @@ class AddBackendUserColumn extends Migration
                                        ->where('is_superuser', true)
                                        ->first();
         if ($adminBackendUser) {
-            $adminBackendUser->acorn_user_user_id = $adminUser->id;
+            $adminBackendUser->acornassociated_user_user_id = $adminUser->id;
             $adminBackendUser->save();
-        } else throw new \Exception('Superuser admin not found when trying to associated with Acorn\User');
+        } else throw new \Exception('Superuser admin not found when trying to associated with AcornAssociated\User');
     }
 
     public function down()
     {
         Schema::table('backend_users', function(\Winter\Storm\Database\Schema\Blueprint $table) {
-            if (Schema::hasColumn($table->getTable(), 'acorn_user_user_id')) $table->dropColumn('acorn_user_user_id');
+            if (Schema::hasColumn($table->getTable(), 'acornassociated_user_user_id')) $table->dropColumn('acornassociated_user_user_id');
         });
     }
 }

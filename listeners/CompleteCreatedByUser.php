@@ -1,8 +1,8 @@
-<?php namespace Acorn\User\Listeners;
+<?php namespace AcornAssociated\User\Listeners;
 
 use BackendAuth;
-use \Acorn\Events\ModelBeforeSave;
-use \Acorn\User\Models\User;
+use \AcornAssociated\Events\ModelBeforeSave;
+use \AcornAssociated\User\Models\User;
 
 class CompleteCreatedByUser
 {

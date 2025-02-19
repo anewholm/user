@@ -4,10 +4,10 @@
 
 columns:
     id:
-        label: 'acorn.user::lang.models.general.id'
+        label: 'acornassociated.user::lang.models.general.id'
         searchable: true
         invisible: true
     name:
-        label: 'acorn.user::lang.models.general.name'
+        label: 'acornassociated.user::lang.models.general.name'
         searchable: true
         sortable: true

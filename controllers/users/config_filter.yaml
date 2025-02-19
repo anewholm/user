@@ -5,25 +5,25 @@
 scopes:
 
     groups:
-        label: acorn.user::lang.group.label
-        modelClass: Acorn\User\Models\UserGroup
+        label: acornassociated.user::lang.group.label
+        modelClass: AcornAssociated\User\Models\UserGroup
         nameFrom: name
         scope: filterByGroup
 
     created_date:
-        label: acorn.user::lang.user.created_at
+        label: acornassociated.user::lang.user.created_at
         type: daterange
         conditions: created_at >= ':after' AND created_at <= ':before'
 
     activated:
-        label: acorn.user::lang.user.status_activated
+        label: acornassociated.user::lang.user.status_activated
         type: switch
         conditions:
             - is_activated = '0'
             - is_activated = '1'
 
     deleted:
-        label: acorn.user::lang.user.status_deleted
+        label: acornassociated.user::lang.user.status_deleted
         type: switch
         default: 0
         conditions:

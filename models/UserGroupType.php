@@ -1,4 +1,4 @@
-<?php namespace Acorn\User\Models;
+<?php namespace AcornAssociated\User\Models;
 
 use Winter\Storm\Auth\Models\Group as GroupBase;
 use ApplicationException;
@@ -6,8 +6,8 @@ use ApplicationException;
 class UserGroupType extends GroupBase
 {
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
-    use \Acorn\Traits\PathsHelper;
-    use \Acorn\Backendlocalization\Class\TranslateBackend;
+    use \AcornAssociated\Traits\PathsHelper;
+    use \AcornAssociated\Backendlocalization\Class\TranslateBackend;
 
     public $implement = ['Winter.Translate.Behaviors.TranslatableModel'];
     public $translatable = ['name', 'description'];
@@ -15,7 +15,7 @@ class UserGroupType extends GroupBase
     /**
      * @var string The database table used by the model.
      */
-    protected $table = 'acorn_user_user_group_types';
+    protected $table = 'acornassociated_user_user_group_types';
 
     /**
      * Validation rules
@@ -50,7 +50,7 @@ class UserGroupType extends GroupBase
 
     public static function dropdownOptions($form, $field)
     {
-        return \Acorn\Model::dropdownOptions($form, $field, self::class);
+        return \AcornAssociated\Model::dropdownOptions($form, $field, self::class);
     }
 
     public function getFullyQualifiedNameAttribute()

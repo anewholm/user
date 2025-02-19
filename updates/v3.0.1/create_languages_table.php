@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('acorn_user_languages', function (Blueprint $table) {
+        Schema::create('acornassociated_user_languages', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
         });
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('acorn_user_languages');
+        Schema::dropIfExists('acornassociated_user_languages');
     }
 };

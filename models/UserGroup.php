@@ -1,8 +1,8 @@
-<?php namespace Acorn\User\Models;
+<?php namespace AcornAssociated\User\Models;
 
 use Winter\Storm\Auth\Models\Group as GroupBase;
 use ApplicationException;
-use Acorn\Collection;
+use AcornAssociated\Collection;
 use Winter\Storm\Database\TreeCollection;
 
 /**
@@ -11,9 +11,9 @@ use Winter\Storm\Database\TreeCollection;
 class UserGroup extends GroupBase
 {
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
-    use \Acorn\Traits\PathsHelper;
+    use \AcornAssociated\Traits\PathsHelper;
     use \Winter\Storm\Database\Traits\NestedTree;
-    use \Acorn\Backendlocalization\Class\TranslateBackend;
+    use \AcornAssociated\Backendlocalization\Class\TranslateBackend;
 
     const PARENT_ID = 'parent_user_group_id';
 
@@ -26,14 +26,14 @@ class UserGroup extends GroupBase
     /**
      * @var string The database table used by the model.
      */
-    protected $table = 'acorn_user_user_groups';
+    protected $table = 'acornassociated_user_user_groups';
 
     /**
      * Validation rules
      */
     public $rules = [
         'name' => 'required|between:3,64',
-        'code' => 'required|regex:/^[a-zA-Z0-9_\-]+$/|unique:acorn_user_user_groups',
+        'code' => 'required|regex:/^[a-zA-Z0-9_\-]+$/|unique:acornassociated_user_user_groups',
     ];
 
     /**
@@ -43,8 +43,8 @@ class UserGroup extends GroupBase
         'children' => [self::class, 'key' => 'parent_user_group_id'],
     ];
     public $belongsToMany = [
-        'users'       => [User::class, 'table' => 'acorn_user_user_group'],
-        'users_count' => [User::class, 'table' => 'acorn_user_user_group', 'count' => true]
+        'users'       => [User::class, 'table' => 'acornassociated_user_user_group'],
+        'users_count' => [User::class, 'table' => 'acornassociated_user_user_group', 'count' => true]
     ];
     public $belongsTo = [
         'parent_user_group' => [UserGroup::class, 'key' => 'parent_user_group_id'],
@@ -64,7 +64,7 @@ class UserGroup extends GroupBase
 
     /**
      * Returns the guest user group.
-     * @return Acorn\User\Models\UserGroup
+     * @return AcornAssociated\User\Models\UserGroup
      */
     public static function getGuestGroup()
     {
@@ -116,7 +116,7 @@ class UserGroup extends GroupBase
 
     public static function dropdownOptions($form, $field)
     {
-        return \Acorn\Model::dropdownOptions($form, $field, self::class);
+        return \AcornAssociated\Model::dropdownOptions($form, $field, self::class);
     }
 
     public function id(): string

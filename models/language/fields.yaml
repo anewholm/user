@@ -4,4 +4,4 @@
 
 fields:
     name:
-        label: 'acorn.user::lang.models.general.name'
+        label: 'acornassociated.user::lang.models.general.name'

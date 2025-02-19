@@ -1,8 +1,8 @@
-<?php namespace Acorn\User\Updates;
+<?php namespace AcornAssociated\User\Updates;
 
 use DB;
 use Schema;
-use Acorn\Migration;
+use AcornAssociated\Migration;
 
 class CreateMailBlockersTable extends Migration
 {

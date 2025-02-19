@@ -5,9 +5,9 @@
 scopes:
     type:
         # Filter name
-        label: acorn.user::lang.models.usergrouptype.label_short
+        label: acornassociated.user::lang.models.usergrouptype.label_short
         # Model Class name
-        modelClass: Acorn\User\Models\UserGroupType
+        modelClass: AcornAssociated\User\Models\UserGroupType
         # Model attribute to display for the name
         nameFrom: name
         conditions: type_id in(:filtered)
