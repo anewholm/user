@@ -73,8 +73,10 @@ class Plugin extends PluginBase
 
         BackendUsers::extendFormFields(function ($form, $model, $context) {
             if ($model instanceof BackendUser) {
+                $userGroups = array();
                 $model->load('user');
-                $userGroups = $model->user->groups->pluck('name')->toArray() ?? array();
+                if ($model->user && $model->user->groups)
+                    $userGroups = $model->user->groups->pluck('name')->toArray();
 
                 // TODO: Permissions: can_change_own_user, can_change_others_user
                 $form->addTabFields([
@@ -100,8 +102,8 @@ class Plugin extends PluginBase
                         'type'    => 'checkboxlist',
                         'options' => $userGroups,
                         'span'    => 'auto',
-                        // TODO: Remove checkboxes and disable control
                         'cssClass' => 'nolabel',
+                        // TODO: Remove checkboxes and disable control
                         // TODO: Change the groups list when user changes
                         // 'dependsOn' => 'user', 
                         'comment' => 'acorn.user::lang.backend.acorn_user_groups_comment',

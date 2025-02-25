@@ -26,7 +26,7 @@ tabs:
             comment: acorn.user::lang.user.send_invite_comment
             tab: acorn.user::lang.user.account
             setting: has_front_end
-            default: true
+            default: false
             context: create
 
         _block_mail:
