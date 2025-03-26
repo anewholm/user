@@ -13,6 +13,8 @@ use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
 use Acorn\User\Classes\UserRedirector;
 use Acorn\User\Models\MailBlocker;
+use Acorn\User\Console\SetDefaults;
+use Acorn\User\Console\CreateUser;
 use \Acorn\Events\ModelBeforeSave;
 use \Acorn\User\Listeners\CompleteCreatedByUser;
 use Winter\Notify\Classes\Notifier;
@@ -23,6 +25,8 @@ class Plugin extends PluginBase
      * @var boolean Determine if this plugin should have elevated privileges.
      */
     public $elevated = true;
+
+    public $require = ['Acorn.Location'];
 
     public function pluginDetails()
     {
@@ -133,6 +137,9 @@ class Plugin extends PluginBase
     {
         $alias = AliasLoader::getInstance();
         $alias->alias('Auth', 'Acorn\User\Facades\Auth');
+
+        $this->registerConsoleCommand('user.set-defaults', SetDefaults::class);
+        $this->registerConsoleCommand('user.create-user', CreateUser::class);
 
         App::singleton('user.auth', function () {
             return \Acorn\User\Classes\AuthManager::instance();

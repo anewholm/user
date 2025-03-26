@@ -33,7 +33,7 @@ columns:
         relation: type
         select: image
         sortable: false
-        width: 100
+        width: 100px
         height: 100
 
     colour:
@@ -46,7 +46,7 @@ columns:
         label: backend::lang.editor.image
         type: image
         sortable: false
-        width: 100
+        width: 100px
         height: 100
         invisible: true
 
@@ -55,6 +55,12 @@ columns:
         relation: parent_user_group
         select: name
         invisible: true
+        sortable: true
+
+    location:
+        type: text
+        relation: location
+        select: name
         sortable: true
 
     code:

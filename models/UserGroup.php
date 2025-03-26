@@ -3,6 +3,7 @@
 use Winter\Storm\Auth\Models\Group as GroupBase;
 use ApplicationException;
 use Acorn\Collection;
+use Acorn\Location\Models\Location;
 use Winter\Storm\Database\TreeCollection;
 
 /**
@@ -49,6 +50,7 @@ class UserGroup extends GroupBase
     public $belongsTo = [
         'parent_user_group' => [UserGroup::class, 'key' => 'parent_user_group_id'],
         'type' => UserGroupType::class,
+        'location' => Location::class,
     ];
 
     /**
