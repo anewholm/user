@@ -134,15 +134,8 @@
     - v3.0.0/create_user_roles_table.php
     - 'Add Backend User column'
     - v3.0.0/add_backend_user_column.php
-    - 'Create Functions'
-    - v3.0.0/create_functions.php
     - 'Create user languages XtoX'
     - v3.0.0/create_user_languages.php
-3.0.1:
-    - 'Create Languages Table'
-    - v3.0.1/create_languages_table.php
 3.0.2:
-    - 'Create Roles Table'
-    - v3.0.2/create_roles_table.php
     - 'Create Usage view'
     - v3.0.2/create_usage_view.php

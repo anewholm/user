@@ -14,17 +14,25 @@ class CreateUsageView extends Migration
      */
     public function up()
     {
-        // TODO: Create fn_acorn_user_get_seed_user
-        $this->createFunction('fn_acorn_user_get_seed_user', [], 'uuid', [], 
+        $this->createFunction('fn_acorn_user_get_seed_user', 
+            [], 
+            'uuid', 
+            [
+                'user_id uuid',
+            ], 
         <<<BODY
-            -- We select the first user in the system
-            -- Intentional EXCEPTION if there is not one
-            return (select uu.id 
-                --from public.backend_users bu
-                --inner join public.acorn_user_users uu on bu.acorn_user_user_id = uu.id
-                --where bu.is_superuser
+            -- Lazy create the seeder user
+            select into user_id uu.id 
                 from public.acorn_user_users uu
-                limit 1);
+                where name = 'seeder' and is_system_user limit 1;
+            if user_id is null then
+                insert into public.acorn_user_users(name, is_system_user)
+                    values('seeder', true) 
+                    returning id into user_id;
+            end if;
+            
+            
+            return user_id;
 BODY
         );
     }
@@ -36,5 +44,6 @@ BODY
      */
     public function down()
     {
+        Schema::dropIfExists('fn_acorn_user_get_seed_user');
     }
 };

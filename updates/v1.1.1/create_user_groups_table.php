@@ -26,11 +26,6 @@ class CreateUserGroupsTable extends Migration
             // Colour and Images
             $table->string('image',  1024)->nullable();
             $table->string('colour', 1024)->nullable();
-            // Facility
-            $table->uuid('location_id')->nullable();
-            $table->foreign('location_id')
-                ->references('id')->on('acorn_location_locations')
-                ->onDelete('set null');
         });
 
         Schema::table(self::$table, function (\Winter\Storm\Database\Schema\Blueprint $table) {

@@ -35,12 +35,6 @@ fields:
         type: relation
         placeholder: backend::lang.form.select
 
-    location:
-        label: acorn.location::lang.models.location.label
-        span: auto
-        type: relation
-        placeholder: backend::lang.form.select
-
     description:
         label: acorn.user::lang.group.description_field
         type: textarea

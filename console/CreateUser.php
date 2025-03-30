@@ -22,10 +22,10 @@ class CreateUser extends Command
         {username : For a specific backend username or all backend users}
         {password=password : The backend / front-end login password}
         {email? : The backend & front-end email}
-        {--s|system-user=1 : Set the user as a system user.}
-        {--d|set-defaults=1 : Set the default user preferences with user:set-defaults.}
-        {--f|force=0 : Force the operation to run and ignore production warnings and confirmation questions.}
-        {--c|create-backend=0 : Create the backend user if not found.}';
+        {--s|system-user : Set the user as a system user.}
+        {--d|set-defaults : Set the default user preferences with user:set-defaults.}
+        {--f|force : Force the operation to run and ignore production warnings and confirmation questions.}
+        {--c|create-backend : Create the backend user if not found.}';
 
     /**
      * @var string The console command description.
@@ -42,12 +42,15 @@ class CreateUser extends Command
         $password      = $this->argument('password');
         $email         = $this->argument('email');
 
-        $systemUser    = ($this->option( 'system-user')    == '1');
-        $setDefaults   = ($this->option( 'set-defaults')   == '1');
-        $force         = ($this->option( 'force')          != '0');
-        $createBackend = ($this->option( 'create-backend') != '0');
+        $systemUser    = $this->option( 'system-user');
+        $setDefaults   = $this->option( 'set-defaults');
+        $force         = $this->option( 'force');
+        $createBackend = $this->option( 'create-backend');
 
-        if (!$email) $email = "$username@nowhere.org";
+        if (!$email) {
+            $email = "$username@nowhere.org";
+            $this->info( "Email defaulted to $email");
+        }
 
         $backendUser = BackendUser::where('login', $username)->first();
         if (!$backendUser && $createBackend) {
@@ -55,6 +58,7 @@ class CreateUser extends Command
             $backendUser = BackendUser::create([
                 'login'    => $username,
                 'password' => $password,
+                'password_confirmation' => $password,
                 'email'    => $email
             ]);
         }

@@ -26,7 +26,10 @@ class Plugin extends PluginBase
      */
     public $elevated = true;
 
-    public $require = ['Acorn.Location'];
+    // Acorn.User CANNOT depend on anything
+    // because everything depends on it
+    // through replicateable created_by_user_id
+    public $require = [];
 
     public function pluginDetails()
     {

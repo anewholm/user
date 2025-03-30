@@ -57,12 +57,6 @@ columns:
         invisible: true
         sortable: true
 
-    location:
-        type: text
-        relation: location
-        select: name
-        sortable: true
-
     code:
         label: acorn.user::lang.group.code
         sortable: true
