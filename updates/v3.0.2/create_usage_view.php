@@ -13,7 +13,13 @@ class CreateUsageView extends Migration
      */
     public function up()
     {
-        // TODO: Create the usage view from the whole db
+        $this->createView('acorn_user_user_group_version_usages',
+            <<<SQL
+                SELECT NULL::uuid AS user_group_version_id,
+                    NULL::character varying(1024) AS "table",
+                    NULL::uuid AS id;
+SQL
+        );
     }
 
     /**
@@ -23,5 +29,6 @@ class CreateUsageView extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('acorn_user_user_group_version_usages');
     }
 };
