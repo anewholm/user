@@ -5,7 +5,7 @@ use Winter\Storm\Database\Schema\Blueprint;
 use Acorn\Migration;
 use Winter\Storm\Support\Facades\Schema;
 
-class CreateUsageView extends Migration
+class CreateFunctions extends Migration
 {
     /**
      * Run the migrations.

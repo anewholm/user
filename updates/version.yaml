@@ -137,7 +137,7 @@
     - 'Create user languages XtoX'
     - v3.0.0/create_user_languages.php
     - 'Create User Group Types'
-    - v3.0.2/create_user_group_types_table.php
+    - v3.0.0/create_user_group_types_table.php
 3.0.2:
     - 'Create Usage view'
     - v3.0.2/create_usage_view.php

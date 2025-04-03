@@ -17,7 +17,7 @@ class CreateUsageView extends Migration
             <<<SQL
                 SELECT NULL::uuid AS user_group_version_id,
                     NULL::character varying(1024) AS "table",
-                    NULL::uuid AS id;
+                    NULL::uuid AS id
 SQL
         );
     }
