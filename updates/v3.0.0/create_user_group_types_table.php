@@ -13,7 +13,7 @@ class CreateUserGroupTypesTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->string('description')->nullable();
             $table->string('colour', 1024)->nullable();
             $table->string('image',  1024)->nullable();
