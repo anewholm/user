@@ -1,9 +1,9 @@
-<?php namespace Acorn\User\Facades;
+<?php namespace AcornAssociated\User\Facades;
 
 use Winter\Storm\Support\Facade;
 
 /**
- * @see \Acorn\User\Classes\AuthManager
+ * @see \AcornAssociated\User\Classes\AuthManager
  */
 class Auth extends Facade
 {

@@ -1,4 +1,4 @@
-<?php namespace Acorn\User\Models;
+<?php namespace AcornAssociated\User\Models;
 
 use Model;
 
@@ -28,30 +28,30 @@ class Settings extends Model
 
     public function initSettingsData()
     {
-        $this->require_activation = config('acorn.user::requireActivation', true);
-        $this->activate_mode = config('acorn.user::activateMode', self::ACTIVATE_AUTO);
-        $this->use_throttle = config('acorn.user::useThrottle', true);
-        $this->block_persistence = config('acorn.user::blockPersistence', false);
-        $this->allow_registration = config('acorn.user::allowRegistration', true);
-        $this->login_attribute = config('acorn.user::loginAttribute', self::LOGIN_EMAIL);
-        $this->remember_login = config('acorn.user::rememberLogin', self::REMEMBER_ALWAYS);
-        $this->use_register_throttle = config('acorn.user::useRegisterThrottle', true);
+        $this->require_activation = config('acornassociated.user::requireActivation', true);
+        $this->activate_mode = config('acornassociated.user::activateMode', self::ACTIVATE_AUTO);
+        $this->use_throttle = config('acornassociated.user::useThrottle', true);
+        $this->block_persistence = config('acornassociated.user::blockPersistence', false);
+        $this->allow_registration = config('acornassociated.user::allowRegistration', true);
+        $this->login_attribute = config('acornassociated.user::loginAttribute', self::LOGIN_EMAIL);
+        $this->remember_login = config('acornassociated.user::rememberLogin', self::REMEMBER_ALWAYS);
+        $this->use_register_throttle = config('acornassociated.user::useRegisterThrottle', true);
     }
 
     public function getActivateModeOptions()
     {
         return [
             self::ACTIVATE_AUTO => [
-                'acorn.user::lang.settings.activate_mode_auto',
-                'acorn.user::lang.settings.activate_mode_auto_comment'
+                'acornassociated.user::lang.settings.activate_mode_auto',
+                'acornassociated.user::lang.settings.activate_mode_auto_comment'
             ],
             self::ACTIVATE_USER => [
-                'acorn.user::lang.settings.activate_mode_user',
-                'acorn.user::lang.settings.activate_mode_user_comment'
+                'acornassociated.user::lang.settings.activate_mode_user',
+                'acornassociated.user::lang.settings.activate_mode_user_comment'
             ],
             self::ACTIVATE_ADMIN => [
-                'acorn.user::lang.settings.activate_mode_admin',
-                'acorn.user::lang.settings.activate_mode_admin_comment'
+                'acornassociated.user::lang.settings.activate_mode_admin',
+                'acornassociated.user::lang.settings.activate_mode_admin_comment'
             ]
         ];
     }
@@ -68,8 +68,8 @@ class Settings extends Model
     public function getLoginAttributeOptions()
     {
         return [
-            self::LOGIN_EMAIL => ['acorn.user::lang.login.attribute_email'],
-            self::LOGIN_USERNAME => ['acorn.user::lang.login.attribute_username']
+            self::LOGIN_EMAIL => ['acornassociated.user::lang.login.attribute_email'],
+            self::LOGIN_USERNAME => ['acornassociated.user::lang.login.attribute_username']
         ];
     }
 
@@ -77,13 +77,13 @@ class Settings extends Model
     {
         return [
             self::REMEMBER_ALWAYS => [
-                'acorn.user::lang.settings.remember_always',
+                'acornassociated.user::lang.settings.remember_always',
             ],
             self::REMEMBER_NEVER => [
-                'acorn.user::lang.settings.remember_never',
+                'acornassociated.user::lang.settings.remember_never',
             ],
             self::REMEMBER_ASK => [
-                'acorn.user::lang.settings.remember_ask',
+                'acornassociated.user::lang.settings.remember_ask',
             ]
         ];
     }

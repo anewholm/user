@@ -1,6 +1,6 @@
-<?php namespace Acorn\User\NotifyRules;
+<?php namespace AcornAssociated\User\NotifyRules;
 
-use Acorn\User\Classes\UserEventBase;
+use AcornAssociated\User\Classes\UserEventBase;
 
 class UserActivatedEvent extends UserEventBase
 {

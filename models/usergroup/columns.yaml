@@ -5,30 +5,30 @@
 columns:
 
     id:
-        label: acorn.user::lang.group.id
+        label: acornassociated.user::lang.group.id
         invisible: true
 
     name:
-        label: acorn.user::lang.group.name
+        label: acornassociated.user::lang.group.name
         searchable: true
         sortable: true
 
     type:
-        label: acorn.user::lang.group.type
+        label: acornassociated.user::lang.group.type
         relation: type
         searchable: true
         select: name
         sortable: true
 
     type_colour:
-        label: acorn.user::lang.models.usergroup.type_primary_color
+        label: acornassociated.user::lang.models.usergroup.type_primary_color
         type: colorpicker
         relation: type
         select: colour
         sortable: false
 
     type_image:
-        label: acorn.user::lang.models.usergroup.type_image
+        label: acornassociated.user::lang.models.usergroup.type_image
         type: image
         relation: type
         select: image
@@ -58,20 +58,20 @@ columns:
         sortable: true
 
     code:
-        label: acorn.user::lang.group.code
+        label: acornassociated.user::lang.group.code
         sortable: true
 
     users_count:
-        label: acorn.user::lang.group.users_count
+        label: acornassociated.user::lang.group.users_count
         relation: users_count
         valueFrom: count
         default: 0
         sortable: false
 
     auth_is_member:
-        label: acorn.user::lang.models.usergroup.auth_is_member
+        label: acornassociated.user::lang.models.usergroup.auth_is_member
         type: partial
         path: tick
 
     created_at:
-        label: acorn.user::lang.group.created_at
+        label: acornassociated.user::lang.group.created_at

@@ -1,17 +1,17 @@
-<?php namespace Acorn\User\Controllers;
+<?php namespace AcornAssociated\User\Controllers;
 
 use Flash;
 use BackendMenu;
-use Acorn\Collection;
-use Acorn\Controller;
-use Acorn\User\Models\UserGroup;
+use AcornAssociated\Collection;
+use AcornAssociated\Controller;
+use AcornAssociated\User\Models\UserGroup;
 
 /**
  * User Groups Back-end Controller
  */
 class UserGroups extends Controller
 {
-    use \Acorn\Traits\PathsHelper;
+    use \AcornAssociated\Traits\PathsHelper;
 
     /**
      * @var array Extensions implemented by this controller.
@@ -39,7 +39,7 @@ class UserGroups extends Controller
     /**
      * @var array Permissions required to view this page.
      */
-    public $requiredPermissions = ['acorn.users.access_groups'];
+    public $requiredPermissions = ['acornassociated.users.access_groups'];
 
     /**
      * Constructor.
@@ -48,6 +48,6 @@ class UserGroups extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Acorn.User', 'user', 'usergroups');
+        BackendMenu::setContext('AcornAssociated.User', 'user', 'usergroups');
     }
 }

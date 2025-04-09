@@ -1,15 +1,15 @@
-<?php namespace Acorn\User\Updates;
+<?php namespace AcornAssociated\User\Updates;
 
 use DB;
 use Schema;
-use Acorn\Migration;
+use AcornAssociated\Migration;
 
 class CreateUserRolesTable extends Migration
 {
 
     public function up()
     {
-        Schema::create('acorn_user_roles', function($table)
+        Schema::create('acornassociated_user_roles', function($table)
         {
             $table->engine = 'InnoDB';
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
@@ -21,7 +21,7 @@ class CreateUserRolesTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('acorn_user_roles');
+        Schema::dropIfExists('acornassociated_user_roles');
     }
 
 }

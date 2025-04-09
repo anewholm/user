@@ -1,11 +1,11 @@
-<?php namespace Acorn\User\NotifyRules;
+<?php namespace AcornAssociated\User\NotifyRules;
 
 use Winter\Notify\Classes\ModelAttributesConditionBase;
 use ApplicationException;
 
 class UserAttributeCondition extends ModelAttributesConditionBase
 {
-    protected $modelClass = \Acorn\User\Models\User::class;
+    protected $modelClass = \AcornAssociated\User\Models\User::class;
 
     public function getGroupingTitle()
     {

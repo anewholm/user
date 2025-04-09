@@ -1,6 +1,6 @@
-<?php namespace Acorn\User\Updates;
+<?php namespace AcornAssociated\User\Updates;
 
-use Acorn\User\Models\Language;
+use AcornAssociated\User\Models\Language;
 use Winter\Storm\Database\Updates\Seeder;
 
 class SeedUserLanguages extends Seeder

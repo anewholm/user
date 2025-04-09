@@ -1,6 +1,6 @@
-<?php namespace Acorn\User\Updates;
+<?php namespace AcornAssociated\User\Updates;
 
-use Acorn\Migration;
+use AcornAssociated\Migration;
 use DbDongle;
 
 class UpdateTimestampsNullable extends Migration
@@ -9,8 +9,8 @@ class UpdateTimestampsNullable extends Migration
     {
         DbDongle::disableStrictMode();
 
-        DbDongle::convertTimestamps('acorn_user_users');
-        DbDongle::convertTimestamps('acorn_user_groups');
+        DbDongle::convertTimestamps('acornassociated_user_users');
+        DbDongle::convertTimestamps('acornassociated_user_groups');
         DbDongle::convertTimestamps('rainlab_user_mail_blockers');
     }
 

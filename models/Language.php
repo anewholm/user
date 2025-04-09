@@ -1,6 +1,6 @@
 <?php
 
-namespace Acorn\User\Models;
+namespace AcornAssociated\User\Models;
 
 use Model;
 
@@ -11,12 +11,12 @@ class Language extends Model
 {
     use \Winter\Storm\Database\Traits\Validation;
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
-    use \Acorn\Traits\PathsHelper;
+    use \AcornAssociated\Traits\PathsHelper;
 
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'acorn_user_languages';
+    public $table = 'acornassociated_user_languages';
 
     /**
      * @var array Guarded fields
@@ -68,7 +68,7 @@ class Language extends Model
     public $hasManyThrough = [];
     public $belongsTo = [];
     public $belongsToMany = [
-        'users' => [User::class, 'table' => 'acorn_user_language_user']
+        'users' => [User::class, 'table' => 'acornassociated_user_language_user']
     ];
     public $morphTo = [];
     public $morphOne = [];

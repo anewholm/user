@@ -1,4 +1,4 @@
-<?php namespace Acorn\User\Controllers;
+<?php namespace AcornAssociated\User\Controllers;
 
 use Auth;
 use Lang;
@@ -7,22 +7,22 @@ use Response;
 use Redirect;
 use BackendMenu;
 use BackendAuth;
-use Acorn\Controller;
+use AcornAssociated\Controller;
 use System\Classes\SettingsManager;
-use Acorn\User\Models\User;
-use Acorn\User\Models\UserGroup;
-use Acorn\User\Models\MailBlocker;
-use Acorn\User\Models\Settings as UserSettings;
+use AcornAssociated\User\Models\User;
+use AcornAssociated\User\Models\UserGroup;
+use AcornAssociated\User\Models\MailBlocker;
+use AcornAssociated\User\Models\Settings as UserSettings;
 
 class Users extends Controller
 {
-    use \Acorn\Traits\PathsHelper;
+    use \AcornAssociated\Traits\PathsHelper;
 
     /**
      * @var array Extensions implemented by this controller.
      */
     public $implement = [
-        \Acorn\Behaviors\FormController::class,
+        \AcornAssociated\Behaviors\FormController::class,
         \Backend\Behaviors\ListController::class
     ];
 
@@ -44,7 +44,7 @@ class Users extends Controller
     /**
      * @var array Permissions required to view this page.
      */
-    public $requiredPermissions = ['acorn.users.access_users'];
+    public $requiredPermissions = ['acornassociated.users.access_users'];
 
     /**
      * @var string HTML body tag class
@@ -58,13 +58,13 @@ class Users extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('Acorn.User', 'user', 'users');
-        SettingsManager::setContext('Acorn.User', 'settings');
+        BackendMenu::setContext('AcornAssociated.User', 'user', 'users');
+        SettingsManager::setContext('AcornAssociated.User', 'settings');
     }
 
     public function index()
     {
-        $this->addJs('/plugins/acorn/user/assets/js/bulk-actions.js');
+        $this->addJs('/plugins/acornassociated/user/assets/js/bulk-actions.js');
 
         $this->asExtension('ListController')->index();
     }
@@ -145,7 +145,7 @@ class Users extends Controller
 
         $model->attemptActivation($model->activation_code);
 
-        Flash::success(Lang::get('acorn.user::lang.users.activated_success'));
+        Flash::success(Lang::get('acornassociated.user::lang.users.activated_success'));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -161,7 +161,7 @@ class Users extends Controller
 
         $model->unban();
 
-        Flash::success(Lang::get('acorn.user::lang.users.unbanned_success'));
+        Flash::success(Lang::get('acornassociated.user::lang.users.unbanned_success'));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -201,7 +201,7 @@ class Users extends Controller
             $model->groups()->add($group);
         }
 
-        Flash::success(Lang::get('acorn.user::lang.users.convert_guest_success'));
+        Flash::success(Lang::get('acornassociated.user::lang.users.convert_guest_success'));
 
         if ($redirect = $this->makeRedirect('update-close', $model)) {
             return $redirect;
@@ -213,7 +213,7 @@ class Users extends Controller
      */
     public function preview_onImpersonateUser($recordId)
     {
-        if (!$this->user->hasAccess('acorn.users.impersonate_user')) {
+        if (!$this->user->hasAccess('acornassociated.users.impersonate_user')) {
             return Response::make(Lang::get('backend::lang.page.access_denied.label'), 403);
         }
 
@@ -221,7 +221,7 @@ class Users extends Controller
 
         Auth::impersonate($model);
 
-        Flash::success(Lang::get('acorn.user::lang.users.impersonate_success'));
+        Flash::success(Lang::get('acornassociated.user::lang.users.impersonate_success'));
     }
 
     /**
@@ -233,7 +233,7 @@ class Users extends Controller
 
         $model->unsuspend();
 
-        Flash::success(Lang::get('acorn.user::lang.users.unsuspend_success'));
+        Flash::success(Lang::get('acornassociated.user::lang.users.unsuspend_success'));
 
         return Redirect::refresh();
     }
@@ -298,10 +298,10 @@ class Users extends Controller
                 }
             }
 
-            Flash::success(Lang::get('acorn.user::lang.users.'.$bulkAction.'_selected_success'));
+            Flash::success(Lang::get('acornassociated.user::lang.users.'.$bulkAction.'_selected_success'));
         }
         else {
-            Flash::error(Lang::get('acorn.user::lang.users.'.$bulkAction.'_selected_empty'));
+            Flash::error(Lang::get('acornassociated.user::lang.users.'.$bulkAction.'_selected_empty'));
         }
 
         return $this->listRefresh();

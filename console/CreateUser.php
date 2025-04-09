@@ -1,9 +1,9 @@
 <?php
 
-namespace Acorn\User\Console;
+namespace AcornAssociated\User\Console;
 
 use Winter\Storm\Console\Command;
-use Acorn\User\Models\User;
+use AcornAssociated\User\Models\User;
 use \Backend\Models\User as BackendUser;
 use \Symfony\Component\Console\Output\ConsoleOutput;
 use \Symfony\Component\Console\Input\ArgvInput;
@@ -65,8 +65,8 @@ class CreateUser extends Command
 
         if ($backendUser) {
             $user = NULL;
-            if ($backendUser->acorn_user_user_id) {
-                $user = User::find($backendUser->acorn_user_user_id);
+            if ($backendUser->acornassociated_user_user_id) {
+                $user = User::find($backendUser->acornassociated_user_user_id);
                 if ($force) $this->info( "$username backend user already attached to $user->name, forcing change...");
                 else        $this->error("$username backend user already attached to $user->name");
             }
@@ -84,7 +84,7 @@ class CreateUser extends Command
                 } else {
                     $this->output->writeln("$username user already exists. Attaching...");
                 }
-                $backendUser->acorn_user_user_id = $user->id;
+                $backendUser->acornassociated_user_user_id = $user->id;
                 $backendUser->save();
                 $this->info("$username attached");
 

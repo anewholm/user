@@ -4,7 +4,7 @@
 
 fields:
     name:
-        label: acorn.user::lang.group.name
+        label: acornassociated.user::lang.group.name
         span: auto
 
     image:

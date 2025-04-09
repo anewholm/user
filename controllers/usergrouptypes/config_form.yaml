@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acorn.user::lang.models.usergrouptype.label'
+name: 'acornassociated.user::lang.models.usergrouptype.label'
 
 # Model Form Field configuration
-form: $/acorn/user/models/usergrouptype/fields.yaml
+form: $/acornassociated/user/models/usergrouptype/fields.yaml
 
 # Model Class name
-modelClass: Acorn\User\Models\UserGroupType
+modelClass: AcornAssociated\User\Models\UserGroupType
 
 # Default redirect location
-defaultRedirect: acorn/user/usergrouptypes
+defaultRedirect: acornassociated/user/usergrouptypes
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acorn/user/usergrouptypes/update/:id
-    redirectClose: acorn/user/usergrouptypes
+    redirect: acornassociated/user/usergrouptypes/update/:id
+    redirectClose: acornassociated/user/usergrouptypes
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acorn/user/usergrouptypes
-    redirectClose: acorn/user/usergrouptypes
+    redirect: acornassociated/user/usergrouptypes
+    redirectClose: acornassociated/user/usergrouptypes
 
 # Preview page
 preview:

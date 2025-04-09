@@ -1,14 +1,14 @@
-<?php namespace Acorn\User\Updates;
+<?php namespace AcornAssociated\User\Updates;
 
 use Carbon\Carbon;
 use Schema;
-use Acorn\Migration;
+use AcornAssociated\Migration;
 
 class UsersAddIpAddress extends Migration
 {
     public function up()
     {
-        Schema::table('acorn_user_users', function($table)
+        Schema::table('acornassociated_user_users', function($table)
         {
             $table->string('created_ip_address')->nullable();
             $table->string('last_ip_address')->nullable();
@@ -17,8 +17,8 @@ class UsersAddIpAddress extends Migration
 
     public function down()
     {
-        if (Schema::hasColumn('acorn_user_users', 'created_ip_address')) {
-            Schema::table('acorn_user_users', function($table)
+        if (Schema::hasColumn('acornassociated_user_users', 'created_ip_address')) {
+            Schema::table('acornassociated_user_users', function($table)
             {
                 $table->dropColumn('created_ip_address');
                 $table->dropColumn('last_ip_address');

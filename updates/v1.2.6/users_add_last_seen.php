@@ -1,14 +1,14 @@
-<?php namespace Acorn\User\Updates;
+<?php namespace AcornAssociated\User\Updates;
 
 use Schema;
-use Acorn\Migration;
-use Acorn\User\Models\User;
+use AcornAssociated\Migration;
+use AcornAssociated\User\Models\User;
 
 class UsersAddLastSeen extends Migration
 {
     public function up()
     {
-        Schema::table('acorn_user_users', function($table)
+        Schema::table('acornassociated_user_users', function($table)
         {
             $table->timestamp('last_seen')->nullable();
         });
@@ -16,8 +16,8 @@ class UsersAddLastSeen extends Migration
 
     public function down()
     {
-        if (Schema::hasColumn('acorn_user_users', 'last_seen')) {
-            Schema::table('acorn_user_users', function($table)
+        if (Schema::hasColumn('acornassociated_user_users', 'last_seen')) {
+            Schema::table('acornassociated_user_users', function($table)
             {
                 $table->dropColumn('last_seen');
             });

@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acorn.user::lang.models.role.label'
+name: 'acornassociated.user::lang.models.role.label'
 
 # Model Form Field configuration
-form: $/acorn/user/models/role/fields.yaml
+form: $/acornassociated/user/models/role/fields.yaml
 
 # Model Class name
-modelClass: Acorn\User\Models\Role
+modelClass: AcornAssociated\User\Models\Role
 
 # Default redirect location
-defaultRedirect: acorn/user/roles
+defaultRedirect: acornassociated/user/roles
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acorn/user/roles/update/:id
-    redirectClose: acorn/user/roles
+    redirect: acornassociated/user/roles/update/:id
+    redirectClose: acornassociated/user/roles
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acorn/user/roles
-    redirectClose: acorn/user/roles
+    redirect: acornassociated/user/roles
+    redirectClose: acornassociated/user/roles
 
 # Preview page
 preview:
