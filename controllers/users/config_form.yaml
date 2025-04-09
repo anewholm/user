@@ -3,23 +3,23 @@
 # ===================================
 
 # Record name
-name: acornassociated.user::lang.user.label
+name: acorn.user::lang.user.label
 
 # Model Form Field configuration
-form: $/acornassociated/user/models/user/fields.yaml
+form: $/acorn/user/models/user/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\User\Models\User
+modelClass: Acorn\User\Models\User
 
 # Default redirect location
-defaultRedirect: acornassociated/user/users
+defaultRedirect: acorn/user/users
 
 # Create page
 create:
-    redirect: acornassociated/user/users/preview/:id
-    redirectClose: acornassociated/user/users
+    redirect: acorn/user/users/preview/:id
+    redirectClose: acorn/user/users
 
 # Update page
 update:
-    redirect: acornassociated/user/users/update/:id
-    redirectClose: acornassociated/user/users/preview/:id
+    redirect: acorn/user/users/update/:id
+    redirectClose: acorn/user/users/preview/:id

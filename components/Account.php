@@ -1,4 +1,4 @@
-<?php namespace AcornAssociated\User\Components;
+<?php namespace Acorn\User\Components;
 
 use Lang;
 use Auth;
@@ -14,8 +14,8 @@ use ApplicationException;
 use Winter\Storm\Auth\AuthException;
 use Cms\Classes\Page;
 use Cms\Classes\ComponentBase;
-use AcornAssociated\User\Models\User as UserModel;
-use AcornAssociated\User\Models\Settings as UserSettings;
+use Acorn\User\Models\User as UserModel;
+use Acorn\User\Models\Settings as UserSettings;
 use Exception;
 
 /**
@@ -29,8 +29,8 @@ class Account extends ComponentBase
     public function componentDetails()
     {
         return [
-            'name'        => /*Account*/'acornassociated.user::lang.account.account',
-            'description' => /*User management form.*/'acornassociated.user::lang.account.account_desc'
+            'name'        => /*Account*/'acorn.user::lang.account.account',
+            'description' => /*User management form.*/'acorn.user::lang.account.account_desc'
         ];
     }
 
@@ -38,26 +38,26 @@ class Account extends ComponentBase
     {
         return [
             'redirect' => [
-                'title'       => /*Redirect to*/'acornassociated.user::lang.account.redirect_to',
-                'description' => /*Page name to redirect to after update, sign in or registration.*/'acornassociated.user::lang.account.redirect_to_desc',
+                'title'       => /*Redirect to*/'acorn.user::lang.account.redirect_to',
+                'description' => /*Page name to redirect to after update, sign in or registration.*/'acorn.user::lang.account.redirect_to_desc',
                 'type'        => 'dropdown',
                 'default'     => ''
             ],
             'paramCode' => [
-                'title'       => /*Activation Code Param*/'acornassociated.user::lang.account.code_param',
-                'description' => /*The page URL parameter used for the registration activation code*/ 'acornassociated.user::lang.account.code_param_desc',
+                'title'       => /*Activation Code Param*/'acorn.user::lang.account.code_param',
+                'description' => /*The page URL parameter used for the registration activation code*/ 'acorn.user::lang.account.code_param_desc',
                 'type'        => 'string',
                 'default'     => 'code'
             ],
             'forceSecure' => [
-                'title'       => /*Force secure protocol*/'acornassociated.user::lang.account.force_secure',
-                'description' => /*Always redirect the URL with the HTTPS schema.*/'acornassociated.user::lang.account.force_secure_desc',
+                'title'       => /*Force secure protocol*/'acorn.user::lang.account.force_secure',
+                'description' => /*Always redirect the URL with the HTTPS schema.*/'acorn.user::lang.account.force_secure_desc',
                 'type'        => 'checkbox',
                 'default'     => 0
             ],
             'requirePassword' => [
-                'title'       => /*Confirm password on update*/'acornassociated.user::lang.account.update_requires_password',
-                'description' => /*Require the current password of the user when changing their profile.*/'acornassociated.user::lang.account.update_requires_password_comment',
+                'title'       => /*Confirm password on update*/'acorn.user::lang.account.update_requires_password',
+                'description' => /*Require the current password of the user when changing their profile.*/'acorn.user::lang.account.update_requires_password_comment',
                 'type'        => 'checkbox',
                 'default'     => 0
             ],
@@ -142,8 +142,8 @@ class Account extends ComponentBase
     public function loginAttributeLabel()
     {
         return Lang::get($this->loginAttribute() == UserSettings::LOGIN_EMAIL
-            ? /*Email*/'acornassociated.user::lang.login.attribute_email'
-            : /*Username*/'acornassociated.user::lang.login.attribute_username'
+            ? /*Email*/'acorn.user::lang.login.attribute_email'
+            : /*Username*/'acorn.user::lang.login.attribute_username'
         );
     }
 
@@ -203,8 +203,8 @@ class Account extends ComponentBase
             $rules['password'] = 'required|between:' . UserModel::getMinPasswordLength() . ',255';
 
             $messages['login'] = $this->loginAttribute() == UserSettings::LOGIN_USERNAME
-                ? trans('acornassociated.user::lang.account.invalid_username')
-                : trans('acornassociated.user::lang.account.invalid_email');
+                ? trans('acorn.user::lang.account.invalid_username')
+                : trans('acorn.user::lang.account.invalid_email');
 
             if (!array_key_exists('login', $data)) {
                 $data['login'] = post('username', post('email'));
@@ -240,12 +240,12 @@ class Account extends ComponentBase
                     break;
             }
 
-            Event::fire('acornassociated.user.beforeAuthenticate', [$this, $credentials]);
+            Event::fire('acorn.user.beforeAuthenticate', [$this, $credentials]);
 
             $user = Auth::authenticate($credentials, $remember);
             if ($user->isBanned()) {
                 Auth::logout();
-                throw new AuthException(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'acornassociated.user::lang.account.banned');
+                throw new AuthException(/*Sorry, this user is currently not activated. Please contact us for further assistance.*/'acorn.user::lang.account.banned');
             }
 
             /*
@@ -275,11 +275,11 @@ class Account extends ComponentBase
     {
         try {
             if (!$this->canRegister()) {
-                throw new ApplicationException(Lang::get(/*Registrations are currently disabled.*/'acornassociated.user::lang.account.registration_disabled'));
+                throw new ApplicationException(Lang::get(/*Registrations are currently disabled.*/'acorn.user::lang.account.registration_disabled'));
             }
 
             if ($this->isRegisterThrottled()) {
-                throw new ApplicationException(Lang::get(/*Registration is throttled. Please try again later.*/'acornassociated.user::lang.account.registration_throttled'));
+                throw new ApplicationException(Lang::get(/*Registration is throttled. Please try again later.*/'acorn.user::lang.account.registration_throttled'));
             }
 
             /*
@@ -312,7 +312,7 @@ class Account extends ComponentBase
             /*
              * Register user
              */
-            Event::fire('acornassociated.user.beforeRegister', [&$data]);
+            Event::fire('acorn.user.beforeRegister', [&$data]);
 
             $requireActivation = UserSettings::get('require_activation', true);
             $automaticActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_AUTO;
@@ -320,7 +320,7 @@ class Account extends ComponentBase
             $adminActivation = UserSettings::get('activate_mode') == UserSettings::ACTIVATE_ADMIN;
             $user = Auth::register($data, $automaticActivation);
 
-            Event::fire('acornassociated.user.register', [$user, $data]);
+            Event::fire('acorn.user.register', [$user, $data]);
 
             /*
              * Activation is by the user, send the email
@@ -328,7 +328,7 @@ class Account extends ComponentBase
             if ($userActivation) {
                 $this->sendActivationEmail($user);
 
-                Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'acornassociated.user::lang.account.activation_email_sent'));
+                Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'acorn.user::lang.account.activation_email_sent'));
             }
 
             /*
@@ -336,7 +336,7 @@ class Account extends ComponentBase
              * For automatic email on account activation Winter.Notify plugin is needed
              */
             if ($adminActivation) {
-                Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'acornassociated.user::lang.account.activation_by_admin'));
+                Flash::success(Lang::get(/*You have successfully registered. Your account is not yet active and must be approved by an administrator.*/'acorn.user::lang.account.activation_by_admin'));
             }
 
             /*
@@ -368,7 +368,7 @@ class Account extends ComponentBase
         try {
             $code = post('code', $code);
 
-            $errorFields = ['code' => Lang::get(/*Invalid activation code supplied.*/'acornassociated.user::lang.account.invalid_activation_code')];
+            $errorFields = ['code' => Lang::get(/*Invalid activation code supplied.*/'acorn.user::lang.account.invalid_activation_code')];
 
             /*
              * Break up the code parts
@@ -392,7 +392,7 @@ class Account extends ComponentBase
                 throw new ValidationException($errorFields);
             }
 
-            Flash::success(Lang::get(/*Successfully activated your account.*/'acornassociated.user::lang.account.success_activation'));
+            Flash::success(Lang::get(/*Successfully activated your account.*/'acorn.user::lang.account.success_activation'));
 
             /*
              * Sign in the user
@@ -419,7 +419,7 @@ class Account extends ComponentBase
 
         if ($this->updateRequiresPassword()) {
             if (!$user->checkHashValue('password', $data['password_current'])) {
-                throw new ValidationException(['password_current' => Lang::get('acornassociated.user::lang.account.invalid_current_pass')]);
+                throw new ValidationException(['password_current' => Lang::get('acorn.user::lang.account.invalid_current_pass')]);
             }
         }
 
@@ -437,7 +437,7 @@ class Account extends ComponentBase
             Auth::login($user->reload(), true);
         }
 
-        Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'acornassociated.user::lang.account.success_saved')));
+        Flash::success(post('flash', Lang::get(/*Settings successfully saved!*/'acorn.user::lang.account.success_saved')));
 
         /*
          * Redirect
@@ -464,13 +464,13 @@ class Account extends ComponentBase
         }
 
         if (!$user->avatar) {
-            Flash::info(Lang::get(/*Settings successfully saved!*/'acornassociated.user::lang.account.no_avatar'));
+            Flash::info(Lang::get(/*Settings successfully saved!*/'acorn.user::lang.account.no_avatar'));
             return;
         }
 
         $user->avatar()->remove($user->avatar);
 
-        Flash::success(Lang::get(/*Settings successfully saved!*/'acornassociated.user::lang.account.avatar_removed'));
+        Flash::success(Lang::get(/*Settings successfully saved!*/'acorn.user::lang.account.avatar_removed'));
 
         $this->prepareVars();
 
@@ -489,13 +489,13 @@ class Account extends ComponentBase
         }
 
         if (!$user->checkHashValue('password', post('password'))) {
-            throw new ValidationException(['password' => Lang::get('acornassociated.user::lang.account.invalid_deactivation_pass')]);
+            throw new ValidationException(['password' => Lang::get('acorn.user::lang.account.invalid_deactivation_pass')]);
         }
 
         Auth::logout();
         $user->delete();
 
-        Flash::success(post('flash', Lang::get(/*Successfully deactivated your account. Sorry to see you go!*/'acornassociated.user::lang.account.success_deactivation')));
+        Flash::success(post('flash', Lang::get(/*Successfully deactivated your account. Sorry to see you go!*/'acorn.user::lang.account.success_deactivation')));
 
         /*
          * Redirect
@@ -512,14 +512,14 @@ class Account extends ComponentBase
     {
         try {
             if (!$user = $this->user()) {
-                throw new ApplicationException(Lang::get(/*You must be logged in first!*/'acornassociated.user::lang.account.login_first'));
+                throw new ApplicationException(Lang::get(/*You must be logged in first!*/'acorn.user::lang.account.login_first'));
             }
 
             if ($user->is_activated) {
-                throw new ApplicationException(Lang::get(/*Your account is already activated!*/'acornassociated.user::lang.account.already_active'));
+                throw new ApplicationException(Lang::get(/*Your account is already activated!*/'acorn.user::lang.account.already_active'));
             }
 
-            Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'acornassociated.user::lang.account.activation_email_sent'));
+            Flash::success(Lang::get(/*An activation email has been sent to your email address.*/'acorn.user::lang.account.activation_email_sent'));
 
             $this->sendActivationEmail($user);
 
@@ -582,7 +582,7 @@ class Account extends ComponentBase
             'code' => $code
         ];
 
-        Mail::send('acornassociated.user::mail.activate', $data, function($message) use ($user) {
+        Mail::send('acorn.user::mail.activate', $data, function($message) use ($user) {
             $message->to($user->email, $user->name);
         });
     }

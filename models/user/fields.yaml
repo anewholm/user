@@ -5,33 +5,33 @@
 fields:
 
     name:
-        label: acornassociated.user::lang.user.name
+        label: acorn.user::lang.user.name
         span: auto
 
     surname:
-        label: acornassociated.user::lang.user.surname
+        label: acorn.user::lang.user.surname
         span: auto
 
 tabs:
     fields:
 
         email:
-            label: acornassociated.user::lang.user.email
-            tab: acornassociated.user::lang.user.account
+            label: acorn.user::lang.user.email
+            tab: acorn.user::lang.user.account
             span: full
 
         send_invite:
             type: checkbox
-            label: acornassociated.user::lang.user.send_invite
-            comment: acornassociated.user::lang.user.send_invite_comment
-            tab: acornassociated.user::lang.user.account
+            label: acorn.user::lang.user.send_invite
+            comment: acorn.user::lang.user.send_invite_comment
+            tab: acorn.user::lang.user.account
             setting: has_front_end
             default: false
             context: create
 
         _block_mail:
-            label: acornassociated.user::lang.user.block_mail
-            tab: acornassociated.user::lang.user.account
+            label: acorn.user::lang.user.block_mail
+            tab: acorn.user::lang.user.account
             type: checkbox
             span: full
             cssClass: field-align-above
@@ -39,67 +39,67 @@ tabs:
             context: update
 
         password@create:
-            label: acornassociated.user::lang.user.create_password
-            comment: acornassociated.user::lang.user.create_password_comment
-            tab: acornassociated.user::lang.user.account
+            label: acorn.user::lang.user.create_password
+            comment: acorn.user::lang.user.create_password_comment
+            tab: acorn.user::lang.user.account
             type: password
             setting: has_front_end
             span: left
 
         password@update:
-            label: acornassociated.user::lang.user.reset_password
-            comment: acornassociated.user::lang.user.reset_password_comment
-            tab: acornassociated.user::lang.user.account
+            label: acorn.user::lang.user.reset_password
+            comment: acorn.user::lang.user.reset_password_comment
+            tab: acorn.user::lang.user.account
             type: password
             setting: has_front_end
             span: left
 
         password_confirmation:
-            label: acornassociated.user::lang.user.confirm_password
-            comment: acornassociated.user::lang.user.confirm_password_comment
-            tab: acornassociated.user::lang.user.account
+            label: acorn.user::lang.user.confirm_password
+            comment: acorn.user::lang.user.confirm_password_comment
+            tab: acorn.user::lang.user.account
             type: password
             setting: has_front_end
             span: right
             context: [create, update]
 
         username:
-            label: acornassociated.user::lang.user.username
-            tab: acornassociated.user::lang.user.account
+            label: acorn.user::lang.user.username
+            tab: acorn.user::lang.user.account
             hidden: true
             setting: has_front_end
             span: left
 
         groups:
-            label: acornassociated.user::lang.user.groups
-            tab: acornassociated.user::lang.user.account
+            label: acorn.user::lang.user.groups
+            tab: acorn.user::lang.user.account
             type: relation
-            emptyOption: acornassociated.user::lang.user.empty_groups
+            emptyOption: acorn.user::lang.user.empty_groups
 
         created_ip_address:
-            label: acornassociated.user::lang.user.created_ip_address
+            label: acorn.user::lang.user.created_ip_address
             span: auto
             disabled: true
-            tab: acornassociated.user::lang.user.account
+            tab: acorn.user::lang.user.account
             context: preview
 
         last_ip_address:
-            label: acornassociated.user::lang.user.last_ip_address
+            label: acorn.user::lang.user.last_ip_address
             span: auto
             disabled: true
-            tab: acornassociated.user::lang.user.account
+            tab: acorn.user::lang.user.account
             context: preview
 
         languages:
             type: relation
             nameFrom: name
-            tab: acornassociated.user::lang.models.language.label_plural
+            tab: acorn.user::lang.models.language.label_plural
 
 secondaryTabs:
     fields:
 
         avatar:
-            label: acornassociated.user::lang.user.avatar
+            label: acorn.user::lang.user.avatar
             type: fileupload
             mode: image
             imageHeight: 260

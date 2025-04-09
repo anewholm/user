@@ -12,14 +12,14 @@ table.table.data > tbody > tr.usergroup-current-auth > td:last-child {
 }
 
 /* 1st User group display item */
-#layout-sidenav-1 div.headless-menu:has(a[href*='/acornassociated/user/usergroups/update/']):has(i[class*='icon-group']) {
+#layout-sidenav-1 div.headless-menu:has(a[href*='/acorn/user/usergroups/update/']):has(i[class*='icon-group']) {
     border:2px solid #000;
     border-radius: 10px;
     background-color: #f7f7f7;
 }
-#layout-sidenav-1 div.headless-menu:has(a[href*='/acornassociated/user/usergroups/update/']):has(i[class*='icon-group']) a {
+#layout-sidenav-1 div.headless-menu:has(a[href*='/acorn/user/usergroups/update/']):has(i[class*='icon-group']) a {
     color: #444;
 }
-#layout-sidenav-1 div.headless-menu:has(a[href*='/acornassociated/user/usergroups/update/']):has(i[class*='icon-group']) a:hover {
+#layout-sidenav-1 div.headless-menu:has(a[href*='/acorn/user/usergroups/update/']):has(i[class*='icon-group']) a:hover {
     color: #fff;
 }

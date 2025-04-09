@@ -1,4 +1,4 @@
-<?php namespace AcornAssociated\User\Models;
+<?php namespace Acorn\User\Models;
 
 use Str;
 use Auth;
@@ -8,27 +8,27 @@ use Config;
 use BackendAuth;
 use Carbon\Carbon;
 use Winter\Storm\Auth\Models\User as UserBase;
-use AcornAssociated\User\Models\Settings as UserSettings;
+use Acorn\User\Models\Settings as UserSettings;
 use Winter\Storm\Auth\AuthException;
 
 class User extends UserBase
 {
     use \Winter\Storm\Database\Traits\SoftDelete;
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
-    use \AcornAssociated\Traits\PathsHelper;
+    use \Acorn\Traits\PathsHelper;
 
     /**
      * @var string The database table used by the model.
      */
-    protected $table = 'acornassociated_user_users';
+    protected $table = 'acorn_user_users';
 
     /**
      * Validation rules
      */
     public $rules = [
         // TODO: These should be required if Setting::has_front_end is on
-        //'email'    => 'required|between:6,255|email|unique:acornassociated_user_users',
-        //'username' => 'required|between:2,255|unique:acornassociated_user_users',
+        //'email'    => 'required|between:6,255|email|unique:acorn_user_users',
+        //'username' => 'required|between:2,255|unique:acorn_user_users',
         //'password' => 'required:create|between:8,255|confirmed',
         //'password_confirmation' => 'required_with:password|between:8,255',
         'avatar'   => 'nullable|image|max:4000',
@@ -38,8 +38,8 @@ class User extends UserBase
      * @var array Relations
      */
     public $belongsToMany = [
-        'groups' => [UserGroup::class, 'table' => 'acornassociated_user_user_group'],
-        'languages' => [Language::class, 'table' => 'acornassociated_user_language_user'],
+        'groups' => [UserGroup::class, 'table' => 'acorn_user_user_group'],
+        'languages' => [Language::class, 'table' => 'acorn_user_language_user'],
     ];
 
     public $attachOne = [
@@ -105,7 +105,7 @@ class User extends UserBase
             }
         }
 
-        Event::fire('acornassociated.user.activate', [$this]);
+        Event::fire('acorn.user.activate', [$this]);
 
         return true;
     }
@@ -239,7 +239,7 @@ class User extends UserBase
      */
     public static function getMinPasswordLength()
     {
-        return Config::get('acornassociated.user::minPasswordLength', 8);
+        return Config::get('acorn.user::minPasswordLength', 8);
     }
 
     //
@@ -335,17 +335,17 @@ class User extends UserBase
         if ($this->trashed()) {
             $this->restore();
 
-            Mail::sendTo($this, 'acornassociated.user::mail.reactivate', [
+            Mail::sendTo($this, 'acorn.user::mail.reactivate', [
                 'name' => $this->name
             ]);
 
-            Event::fire('acornassociated.user.reactivate', [$this]);
+            Event::fire('acorn.user.reactivate', [$this]);
         }
         else {
             parent::afterLogin();
         }
 
-        Event::fire('acornassociated.user.login', [$this]);
+        Event::fire('acorn.user.login', [$this]);
     }
 
     /**
@@ -355,7 +355,7 @@ class User extends UserBase
     public function afterDelete()
     {
         if ($this->isSoftDelete()) {
-            Event::fire('acornassociated.user.deactivate', [$this]);
+            Event::fire('acorn.user.deactivate', [$this]);
             return;
         }
 
@@ -525,7 +525,7 @@ class User extends UserBase
         /*
          * Extensibility
          */
-        $results = Event::fire('acornassociated.user.getNotificationVars', [$this]);
+        $results = Event::fire('acorn.user.getNotificationVars', [$this]);
         if ($results && is_array($results)) {
             $tempResults = [];
             foreach ($results as $result) {
@@ -540,12 +540,12 @@ class User extends UserBase
     }
 
     /**
-     * Sends an invitation to the user using template "acornassociated.user::mail.invite".
+     * Sends an invitation to the user using template "acorn.user::mail.invite".
      * @return void
      */
     protected function sendInvitation()
     {
-        Mail::sendTo($this, 'acornassociated.user::mail.invite', $this->getNotificationVars());
+        Mail::sendTo($this, 'acorn.user::mail.invite', $this->getNotificationVars());
     }
 
     /**
@@ -563,7 +563,7 @@ class User extends UserBase
 
     /**
      * Check if this user can be impersonated by the provided impersonator
-     * Only backend users with the `acornassociated.users.impersonate_user` permission are allowed to impersonate
+     * Only backend users with the `acorn.users.impersonate_user` permission are allowed to impersonate
      * users.
      *
      * @param \Winter\Storm\Auth\Models\User|false $impersonator The user attempting to impersonate this user, false when not available
@@ -572,7 +572,7 @@ class User extends UserBase
     public function canBeImpersonated($impersonator = false)
     {
         $user = BackendAuth::getUser();
-        if (!$user || !$user->hasAccess('acornassociated.users.impersonate_user')) {
+        if (!$user || !$user->hasAccess('acorn.users.impersonate_user')) {
             return false;
         }
 
@@ -590,7 +590,7 @@ class User extends UserBase
     // --------------------------------------------- New functions
     public static function dropdownOptions($form, $field)
     {
-        return \AcornAssociated\Model::dropdownOptions($form, $field, self::class);
+        return \Acorn\Model::dropdownOptions($form, $field, self::class);
     }
 
     public function id(): string

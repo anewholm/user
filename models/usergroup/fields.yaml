@@ -4,17 +4,17 @@
 
 fields:
     name:
-        label: acornassociated.user::lang.group.name
+        label: acorn.user::lang.group.name
         span: auto
 
     code:
-        label: acornassociated.user::lang.group.code
-        comment: acornassociated.user::lang.group.code_comment
+        label: acorn.user::lang.group.code
+        comment: acorn.user::lang.group.code_comment
         span: auto
         preset: name
 
     type:
-        label: acornassociated.user::lang.group.type
+        label: acorn.user::lang.group.type
         type: relation
         placeholder: backend::lang.form.select
         span: auto
@@ -30,12 +30,12 @@ fields:
         span: auto
 
     parent_user_group:
-        label: acornassociated.user::lang.group.parent_user_group
+        label: acorn.user::lang.group.parent_user_group
         span: auto
         type: relation
         placeholder: backend::lang.form.select
 
     description:
-        label: acornassociated.user::lang.group.description_field
+        label: acorn.user::lang.group.description_field
         type: textarea
         size: tiny

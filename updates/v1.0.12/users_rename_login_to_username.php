@@ -1,14 +1,14 @@
-<?php namespace AcornAssociated\User\Updates;
+<?php namespace Acorn\User\Updates;
 
 use Schema;
-use AcornAssociated\Migration;
+use Acorn\Migration;
 
 class UsersRenameLoginToUsername extends Migration
 {
 
     public function up()
     {
-        Schema::table('acornassociated_user_users', function($table)
+        Schema::table('acorn_user_users', function($table)
         {
             $table->renameColumn('login', 'username');
         });
@@ -16,8 +16,8 @@ class UsersRenameLoginToUsername extends Migration
 
     public function down()
     {
-        if (Schema::hasColumn('acornassociated_user_users', 'login')) {
-            Schema::table('acornassociated_user_users', function($table)
+        if (Schema::hasColumn('acorn_user_users', 'login')) {
+            Schema::table('acorn_user_users', function($table)
             {
                 $table->renameColumn('username', 'login');
             });

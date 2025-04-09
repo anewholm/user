@@ -1,4 +1,4 @@
-<?php namespace AcornAssociated\User\Controllers;
+<?php namespace Acorn\User\Controllers;
 
 use BackendMenu;
 use Backend\Classes\Controller;
@@ -20,6 +20,6 @@ class UserGroupTypes extends Controller
     {
         parent::__construct();
 
-        BackendMenu::setContext('AcornAssociated.User', 'user', 'usergrouptypes');
+        BackendMenu::setContext('Acorn.User', 'user', 'usergrouptypes');
     }
 }

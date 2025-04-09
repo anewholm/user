@@ -6,111 +6,111 @@ tabs:
     fields:
         has_front_end:
             span: full
-            label: acornassociated.user::lang.settings.has_front_end
+            label: acorn.user::lang.settings.has_front_end
             type: switch
             permissions:
                 - manage_front_end
-            tab: acornassociated.user::lang.settings.signin_tab
+            tab: acorn.user::lang.settings.signin_tab
 
         _has_front_end_section:
             span: full
-            label: acornassociated.user::lang.settings.has_front_end_section
-            comment: acornassociated.user::lang.settings.has_front_end_section_comment
+            label: acorn.user::lang.settings.has_front_end_section
+            comment: acorn.user::lang.settings.has_front_end_section_comment
             type: section
-            tab: acornassociated.user::lang.settings.signin_tab
+            tab: acorn.user::lang.settings.signin_tab
 
         # Throttle Sign In
         use_throttle:
             span: left
-            label: acornassociated.user::lang.settings.use_throttle
-            comment: acornassociated.user::lang.settings.use_throttle_comment
+            label: acorn.user::lang.settings.use_throttle
+            comment: acorn.user::lang.settings.use_throttle_comment
             type: switch
             trigger:
                 field: has_front_end
                 action: enable
                 condition: checked
-            tab: acornassociated.user::lang.settings.signin_tab
+            tab: acorn.user::lang.settings.signin_tab
 
         # Prevent concurrent sessions
         block_persistence:
             span: right
-            label: acornassociated.user::lang.settings.block_persistence
-            comment: acornassociated.user::lang.settings.block_persistence_comment
+            label: acorn.user::lang.settings.block_persistence
+            comment: acorn.user::lang.settings.block_persistence_comment
             type: switch
             trigger:
                 field: has_front_end
                 action: enable
                 condition: checked
-            tab: acornassociated.user::lang.settings.signin_tab
+            tab: acorn.user::lang.settings.signin_tab
 
         # Login Attribute
         login_attribute:
             span: left
-            label: acornassociated.user::lang.settings.login_attribute
-            commentAbove: acornassociated.user::lang.settings.login_attribute_comment
+            label: acorn.user::lang.settings.login_attribute
+            commentAbove: acorn.user::lang.settings.login_attribute_comment
             type: radio
             trigger:
                 field: has_front_end
                 action: enable
                 condition: checked
-            tab: acornassociated.user::lang.settings.signin_tab
+            tab: acorn.user::lang.settings.signin_tab
 
         # Remeber Login Mode
         remember_login:
             span: right
-            label: acornassociated.user::lang.settings.remember_login
-            commentAbove: acornassociated.user::lang.settings.remember_login_comment
+            label: acorn.user::lang.settings.remember_login
+            commentAbove: acorn.user::lang.settings.remember_login_comment
             type: radio
             trigger:
                 field: has_front_end
                 action: enable
                 condition: checked
-            tab: acornassociated.user::lang.settings.signin_tab
+            tab: acorn.user::lang.settings.signin_tab
 
         # Require Activation
         allow_registration:
             span: left
-            label: acornassociated.user::lang.settings.allow_registration
-            comment: acornassociated.user::lang.settings.allow_registration_comment
+            label: acorn.user::lang.settings.allow_registration
+            comment: acorn.user::lang.settings.allow_registration_comment
             type: switch
             trigger:
                 field: has_front_end
                 action: enable
                 condition: checked
-            tab: acornassociated.user::lang.settings.registration_tab
+            tab: acorn.user::lang.settings.registration_tab
 
         # Enable registration throttling
         use_register_throttle:
             span: right
-            label: acornassociated.user::lang.settings.use_register_throttle
-            comment: acornassociated.user::lang.settings.use_register_throttle_comment
+            label: acorn.user::lang.settings.use_register_throttle
+            comment: acorn.user::lang.settings.use_register_throttle_comment
             type: switch
             trigger:
                 field: has_front_end
                 action: enable
                 condition: checked
-            tab: acornassociated.user::lang.settings.registration_tab
+            tab: acorn.user::lang.settings.registration_tab
 
         # Require Activation
         require_activation:
             span: left
-            label: acornassociated.user::lang.settings.require_activation
-            comment: acornassociated.user::lang.settings.require_activation_comment
+            label: acorn.user::lang.settings.require_activation
+            comment: acorn.user::lang.settings.require_activation_comment
             type: switch
             trigger:
                 field: has_front_end
                 action: enable
                 condition: checked
-            tab: acornassociated.user::lang.settings.activation_tab
+            tab: acorn.user::lang.settings.activation_tab
 
         # Activation Mode
         activate_mode:
             span: left
-            commentAbove: acornassociated.user::lang.settings.activate_mode_comment
-            label: acornassociated.user::lang.settings.activate_mode
+            commentAbove: acorn.user::lang.settings.activate_mode_comment
+            label: acorn.user::lang.settings.activate_mode
             type: radio
             trigger:
                 field: has_front_end
                 action: enable
                 condition: checked
-            tab: acornassociated.user::lang.settings.activation_tab
+            tab: acorn.user::lang.settings.activation_tab

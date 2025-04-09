@@ -1,11 +1,11 @@
 <?php
 
-namespace AcornAssociated\User\Console;
+namespace Acorn\User\Console;
 
 use Config;
 use App;
 use Winter\Storm\Console\Command;
-use AcornAssociated\User\Models\User;
+use Acorn\User\Models\User;
 use \Backend\Models\User as BackendUser;
 use \Backend\Models\UserPreference;
 use \Backend\Models\Preference as PreferenceModel;
@@ -26,7 +26,7 @@ class SetDefaults extends Command
      * @var string The name and signature of this command.
      */
     protected $signature = 'user:set-defaults
-        {username : For a specific AcornAssociated user or all users}
+        {username : For a specific Acorn user or all users}
         {locale=ku : Backend display locale}';
 
     /**

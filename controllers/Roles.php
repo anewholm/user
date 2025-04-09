@@ -1,7 +1,7 @@
-<?php namespace AcornAssociated\User\Controllers;
+<?php namespace Acorn\User\Controllers;
 
 use BackendMenu;
-use AcornAssociated\Controller;
+use Acorn\Controller;
 
 /**
  * Roles Backend Controller
@@ -12,14 +12,14 @@ class Roles extends Controller
      * @var array Behaviors that are implemented by this controller.
      */
     public $implement = [
-        \AcornAssociated\Behaviors\FormController::class,
-        \AcornAssociated\Behaviors\ListController::class,
+        \Acorn\Behaviors\FormController::class,
+        \Acorn\Behaviors\ListController::class,
     ];
 
     public function __construct()
     {
         parent::__construct();
 
-        BackendMenu::setContext('AcornAssociated.User', 'user', 'roles');
+        BackendMenu::setContext('Acorn.User', 'user', 'roles');
     }
 }

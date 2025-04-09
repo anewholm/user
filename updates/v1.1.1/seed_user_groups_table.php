@@ -1,6 +1,6 @@
-<?php namespace AcornAssociated\User\Updates;
+<?php namespace Acorn\User\Updates;
 
-use AcornAssociated\User\Models\UserGroup;
+use Acorn\User\Models\UserGroup;
 use Winter\Storm\Database\Updates\Seeder;
 
 class SeedUserGroupsTable extends Seeder

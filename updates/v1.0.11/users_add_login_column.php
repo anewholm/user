@@ -1,14 +1,14 @@
-<?php namespace AcornAssociated\User\Updates;
+<?php namespace Acorn\User\Updates;
 
 use Schema;
-use AcornAssociated\Migration;
-use AcornAssociated\User\Models\User;
+use Acorn\Migration;
+use Acorn\User\Models\User;
 
 class UsersAddLoginColumn extends Migration
 {
     public function up()
     {
-        Schema::table('acornassociated_user_users', function($table)
+        Schema::table('acorn_user_users', function($table)
         {
             $table->string('login')->nullable()->index();
         });
@@ -22,7 +22,7 @@ class UsersAddLoginColumn extends Migration
             $user->save();
         }
 
-        Schema::table('acornassociated_user_users', function($table)
+        Schema::table('acorn_user_users', function($table)
         {
             $table->unique('login');
         });
@@ -30,8 +30,8 @@ class UsersAddLoginColumn extends Migration
 
     public function down()
     {
-        if (Schema::hasColumn('acornassociated_user_users', 'login')) {
-            Schema::table('acornassociated_user_users', function($table)
+        if (Schema::hasColumn('acorn_user_users', 'login')) {
+            Schema::table('acorn_user_users', function($table)
             {
                 $table->dropColumn('login');
             });

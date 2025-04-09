@@ -5,11 +5,11 @@
 columns:
 
     id:
-        label: acornassociated.user::lang.group.id
+        label: acorn.user::lang.group.id
         invisible: true
 
     name:
-        label: acornassociated.user::lang.group.name
+        label: acorn.user::lang.group.name
         searchable: true
 
     image:
@@ -17,7 +17,7 @@ columns:
         type: image
 
     groups_count:
-        label: acornassociated.user::lang.models.usergrouptype.groups_count
+        label: acorn.user::lang.models.usergrouptype.groups_count
         default: 0
         sortable: false
 

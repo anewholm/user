@@ -3,28 +3,28 @@
 # ===================================
 
 # Record name
-name: 'acornassociated.user::lang.models.language.label'
+name: 'acorn.user::lang.models.language.label'
 
 # Model Form Field configuration
-form: $/acornassociated/user/models/language/fields.yaml
+form: $/acorn/user/models/language/fields.yaml
 
 # Model Class name
-modelClass: AcornAssociated\User\Models\Language
+modelClass: Acorn\User\Models\Language
 
 # Default redirect location
-defaultRedirect: acornassociated/user/languages
+defaultRedirect: acorn/user/languages
 
 # Create page
 create:
     title: backend::lang.form.create_title
-    redirect: acornassociated/user/languages/update/:id
-    redirectClose: acornassociated/user/languages
+    redirect: acorn/user/languages/update/:id
+    redirectClose: acorn/user/languages
 
 # Update page
 update:
     title: backend::lang.form.update_title
-    redirect: acornassociated/user/languages
-    redirectClose: acornassociated/user/languages
+    redirect: acorn/user/languages
+    redirectClose: acorn/user/languages
 
 # Preview page
 preview:

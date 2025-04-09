@@ -3,16 +3,16 @@
 # ===================================
 
 # Model List Column configuration
-list: $/acornassociated/user/models/language/columns.yaml
+list: $/acorn/user/models/language/columns.yaml
 
 # Model Class name
-modelClass: AcornAssociated\User\Models\Language
+modelClass: Acorn\User\Models\Language
 
 # List Title
-title: 'acornassociated.user::lang.models.language.label_plural'
+title: 'acorn.user::lang.models.language.label_plural'
 
 # Link URL for each record
-recordUrl: acornassociated/user/languages/update/:id
+recordUrl: acorn/user/languages/update/:id
 
 # Message to display if the list is empty
 noRecordsMessage: backend::lang.list.no_records

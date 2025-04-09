@@ -1,4 +1,4 @@
-<?php namespace AcornAssociated\User;
+<?php namespace Acorn\User;
 
 use App;
 use Auth;
@@ -6,17 +6,17 @@ use Event;
 use Backend;
 use Backend\Models\User as BackendUser;
 use Backend\Controllers\Users as BackendUsers;
-use AcornAssociated\User\Models\User;
-use AcornAssociated\User\Models\UserGroup;
+use Acorn\User\Models\User;
+use Acorn\User\Models\UserGroup;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
-use AcornAssociated\User\Classes\UserRedirector;
-use AcornAssociated\User\Models\MailBlocker;
-use AcornAssociated\User\Console\SetDefaults;
-use AcornAssociated\User\Console\CreateUser;
-use \AcornAssociated\Events\ModelBeforeSave;
-use \AcornAssociated\User\Listeners\CompleteCreatedByUser;
+use Acorn\User\Classes\UserRedirector;
+use Acorn\User\Models\MailBlocker;
+use Acorn\User\Console\SetDefaults;
+use Acorn\User\Console\CreateUser;
+use \Acorn\Events\ModelBeforeSave;
+use \Acorn\User\Listeners\CompleteCreatedByUser;
 use Winter\Notify\Classes\Notifier;
 
 class Plugin extends PluginBase
@@ -26,7 +26,7 @@ class Plugin extends PluginBase
      */
     public $elevated = true;
 
-    // AcornAssociated.User CANNOT depend on anything
+    // Acorn.User CANNOT depend on anything
     // because everything depends on it
     // through replicateable created_by_user_id
     public $require = [];
@@ -34,9 +34,9 @@ class Plugin extends PluginBase
     public function pluginDetails()
     {
         return [
-            'name'        => 'acornassociated.user::lang.plugin.name',
-            'description' => 'acornassociated.user::lang.plugin.description',
-            'author'      => 'Acorn Associated',
+            'name'        => 'acorn.user::lang.plugin.name',
+            'description' => 'acorn.user::lang.plugin.description',
+            'author'      => 'Acorn',
             'icon'        => 'icon-address-book',
         ];
     }
@@ -44,7 +44,7 @@ class Plugin extends PluginBase
     public function boot()
     {
         Event::listen('backend.page.beforeDisplay', function ($controller, $action, $params) {
-            $controller->addCss('~/plugins/acornassociated/user/assets/css/plugin.css');
+            $controller->addCss('~/plugins/acorn/user/assets/css/plugin.css');
         });
 
         Event::listen('backend.menu.extendItems', function ($navigationManager) {
@@ -70,12 +70,12 @@ class Plugin extends PluginBase
                         );
                     };
                 });
-                $navigationManager->addMainMenuItems('acornassociated_user', $menu);
+                $navigationManager->addMainMenuItems('acorn_user', $menu);
             }
         });
 
         BackendUser::extend(function ($model){
-            $model->belongsTo['user'] = [User::class, 'key' => 'acornassociated_user_user_id'];
+            $model->belongsTo['user'] = [User::class, 'key' => 'acorn_user_user_id'];
         });
 
         BackendUsers::extendFormFields(function ($form, $model, $context) {
@@ -87,25 +87,25 @@ class Plugin extends PluginBase
 
                 // TODO: Permissions: can_change_own_user, can_change_others_user
                 $form->addTabFields([
-                    'acornassociated_user_section' => [
-                        'label'   => 'acornassociated.user::lang.backend.acornassociated_user_section',
+                    'acorn_user_section' => [
+                        'label'   => 'acorn.user::lang.backend.acorn_user_section',
                         'type'    => 'section',
-                        'comment' => 'acornassociated.user::lang.backend.acornassociated_user_section_comment',
+                        'comment' => 'acorn.user::lang.backend.acorn_user_section_comment',
                         'commentHtml' => TRUE,
-                        'tab'     => 'acornassociated.user::lang.plugin.name',
+                        'tab'     => 'acorn.user::lang.plugin.name',
                     ],
                     'user' => [
-                        'label'   => 'acornassociated.user::lang.backend.acornassociated_user',
+                        'label'   => 'acorn.user::lang.backend.acorn_user',
                         'type'    => 'dropdown',
                         'span'    => 'auto',
                         'placeholder' => 'backend::lang.form.select',
-                        'options' => '\AcornAssociated\User\Models\User::dropdownOptions',
-                        'comment' => 'acornassociated.user::lang.backend.acornassociated_user_comment',
+                        'options' => '\Acorn\User\Models\User::dropdownOptions',
+                        'comment' => 'acorn.user::lang.backend.acorn_user_comment',
                         'commentHtml' => TRUE,
-                        'tab'     => 'acornassociated.user::lang.plugin.name',
+                        'tab'     => 'acorn.user::lang.plugin.name',
                     ],
-                    '_acornassociated_user_groups' => [
-                        'label'   => 'acornassociated.user::lang.backend.acornassociated_user_groups',
+                    '_acorn_user_groups' => [
+                        'label'   => 'acorn.user::lang.backend.acorn_user_groups',
                         'type'    => 'checkboxlist',
                         'options' => $userGroups,
                         'span'    => 'auto',
@@ -113,9 +113,9 @@ class Plugin extends PluginBase
                         // TODO: Remove checkboxes and disable control
                         // TODO: Change the groups list when user changes
                         // 'dependsOn' => 'user', 
-                        'comment' => 'acornassociated.user::lang.backend.acornassociated_user_groups_comment',
+                        'comment' => 'acorn.user::lang.backend.acorn_user_groups_comment',
                         'commentHtml' => TRUE,
-                        'tab'     => 'acornassociated.user::lang.plugin.name',
+                        'tab'     => 'acorn.user::lang.plugin.name',
                     ],
                 ]);
             }
@@ -139,13 +139,13 @@ class Plugin extends PluginBase
     public function register()
     {
         $alias = AliasLoader::getInstance();
-        $alias->alias('Auth', 'AcornAssociated\User\Facades\Auth');
+        $alias->alias('Auth', 'Acorn\User\Facades\Auth');
 
         $this->registerConsoleCommand('user.set-defaults', SetDefaults::class);
         $this->registerConsoleCommand('user.create-user', CreateUser::class);
 
         App::singleton('user.auth', function () {
-            return \AcornAssociated\User\Classes\AuthManager::instance();
+            return \Acorn\User\Classes\AuthManager::instance();
         });
 
         App::singleton('redirect', function ($app) {
@@ -179,34 +179,34 @@ class Plugin extends PluginBase
     public function registerComponents()
     {
         return [
-            \AcornAssociated\User\Components\Session::class       => 'session',
-            \AcornAssociated\User\Components\Account::class       => 'account',
-            \AcornAssociated\User\Components\ResetPassword::class => 'resetPassword'
+            \Acorn\User\Components\Session::class       => 'session',
+            \Acorn\User\Components\Account::class       => 'account',
+            \Acorn\User\Components\ResetPassword::class => 'resetPassword'
         ];
     }
 
     public function registerPermissions()
     {
         return [
-            'acornassociated.users.manage_front_end' => [
-                'tab'   => 'acornassociated.user::lang.plugin.tab',
-                'label' => 'acornassociated.user::lang.plugin.manage_front_end'
+            'acorn.users.manage_front_end' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.plugin.manage_front_end'
             ],
-            'acornassociated.users.access_users' => [
-                'tab'   => 'acornassociated.user::lang.plugin.tab',
-                'label' => 'acornassociated.user::lang.plugin.access_users'
+            'acorn.users.access_users' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.plugin.access_users'
             ],
-            'acornassociated.users.access_groups' => [
-                'tab'   => 'acornassociated.user::lang.plugin.tab',
-                'label' => 'acornassociated.user::lang.plugin.access_groups'
+            'acorn.users.access_groups' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.plugin.access_groups'
             ],
-            'acornassociated.users.access_settings' => [
-                'tab'   => 'acornassociated.user::lang.plugin.tab',
-                'label' => 'acornassociated.user::lang.plugin.access_settings'
+            'acorn.users.access_settings' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.plugin.access_settings'
             ],
-            'acornassociated.users.impersonate_user' => [
-                'tab'   => 'acornassociated.user::lang.plugin.tab',
-                'label' => 'acornassociated.user::lang.plugin.impersonate_user'
+            'acorn.users.impersonate_user' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.plugin.impersonate_user'
             ],
         ];
     }
@@ -215,36 +215,36 @@ class Plugin extends PluginBase
     {
         return [
             'user' => [
-                'label'       => 'acornassociated.user::lang.plugin.menu_label',
-                'url'         => Backend::url('acornassociated/user/users'),
+                'label'       => 'acorn.user::lang.plugin.menu_label',
+                'url'         => Backend::url('acorn/user/users'),
                 'icon'        => 'icon-address-book',
-                'permissions' => ['acornassociated.users.*'],
+                'permissions' => ['acorn.users.*'],
                 'order'       => 500,
 
                 'sideMenu' => [
                     'users' => [
-                        'label' => 'acornassociated.user::lang.users.menu_label',
+                        'label' => 'acorn.user::lang.users.menu_label',
                         'icon'        => 'icon-user',
-                        'url'         => Backend::url('acornassociated/user/users'),
-                        'permissions' => ['acornassociated.users.access_users']
+                        'url'         => Backend::url('acorn/user/users'),
+                        'permissions' => ['acorn.users.access_users']
                     ],
                     'usergroups' => [
-                        'label'       => 'acornassociated.user::lang.groups.menu_label',
+                        'label'       => 'acorn.user::lang.groups.menu_label',
                         'icon'        => 'icon-users-viewfinder',
-                        'url'         => Backend::url('acornassociated/user/usergroups'),
-                        'permissions' => ['acornassociated.users.access_groups']
+                        'url'         => Backend::url('acorn/user/usergroups'),
+                        'permissions' => ['acorn.users.access_groups']
                     ],
                     'usergrouptypes' => [
-                        'label'       => 'acornassociated.user::lang.models.usergrouptype.label_plural',
+                        'label'       => 'acorn.user::lang.models.usergrouptype.label_plural',
                         'icon'        => 'icon-stripe',
-                        'url'         => Backend::url('acornassociated/user/usergrouptypes'),
-                        'permissions' => ['acornassociated.users.access_groups']
+                        'url'         => Backend::url('acorn/user/usergrouptypes'),
+                        'permissions' => ['acorn.users.access_groups']
                     ],
                     'languages' => [
-                        'label'       => 'acornassociated.user::lang.models.language.label_plural',
+                        'label'       => 'acorn.user::lang.models.language.label_plural',
                         'icon'        => 'icon-wechat',
-                        'url'         => Backend::url('acornassociated/user/languages'),
-                        'permissions' => ['acornassociated.users.access_languages']
+                        'url'         => Backend::url('acorn/user/languages'),
+                        'permissions' => ['acorn.users.access_languages']
                     ]
                 ]
             ]
@@ -255,13 +255,13 @@ class Plugin extends PluginBase
     {
         return [
             'settings' => [
-                'label'       => 'acornassociated.user::lang.settings.menu_label',
-                'description' => 'acornassociated.user::lang.settings.menu_description',
-                'category'    => 'AcornAssociated',
+                'label'       => 'acorn.user::lang.settings.menu_label',
+                'description' => 'acorn.user::lang.settings.menu_description',
+                'category'    => 'Acorn',
                 'icon'        => 'icon-user-gear',
-                'class'       => 'AcornAssociated\User\Models\Settings',
+                'class'       => 'Acorn\User\Models\Settings',
                 'order'       => 500,
-                'permissions' => ['acornassociated.users.access_settings']
+                'permissions' => ['acorn.users.access_settings']
             ]
         ];
     }
@@ -269,12 +269,12 @@ class Plugin extends PluginBase
     public function registerMailTemplates()
     {
         return [
-            'acornassociated.user::mail.activate',
-            'acornassociated.user::mail.welcome',
-            'acornassociated.user::mail.restore',
-            'acornassociated.user::mail.new_user',
-            'acornassociated.user::mail.reactivate',
-            'acornassociated.user::mail.invite',
+            'acorn.user::mail.activate',
+            'acorn.user::mail.welcome',
+            'acorn.user::mail.restore',
+            'acorn.user::mail.new_user',
+            'acorn.user::mail.reactivate',
+            'acorn.user::mail.invite',
         ];
     }
 
@@ -292,12 +292,12 @@ class Plugin extends PluginBase
                 ],
             ],
             'events' => [
-               \AcornAssociated\User\NotifyRules\UserActivatedEvent::class,
-               \AcornAssociated\User\NotifyRules\UserRegisteredEvent::class,
+               \Acorn\User\NotifyRules\UserActivatedEvent::class,
+               \Acorn\User\NotifyRules\UserRegisteredEvent::class,
             ],
             'actions' => [],
             'conditions' => [
-                \AcornAssociated\User\NotifyRules\UserAttributeCondition::class,
+                \Acorn\User\NotifyRules\UserAttributeCondition::class,
             ],
         ];
     }
@@ -309,8 +309,8 @@ class Plugin extends PluginBase
         }
 
         Notifier::bindEvents([
-            'acornassociated.user.activate' => \AcornAssociated\User\NotifyRules\UserActivatedEvent::class,
-            'acornassociated.user.register' => \AcornAssociated\User\NotifyRules\UserRegisteredEvent::class,
+            'acorn.user.activate' => \Acorn\User\NotifyRules\UserActivatedEvent::class,
+            'acorn.user.register' => \Acorn\User\NotifyRules\UserRegisteredEvent::class,
         ]);
 
         Notifier::instance()->registerCallback(function ($manager) {

@@ -2,7 +2,7 @@
 
 use Twig\Node\BodyNode;
 use Winter\Storm\Database\Schema\Blueprint;
-use AcornAssociated\Migration;
+use Acorn\Migration;
 use Winter\Storm\Support\Facades\Schema;
 
 class CreateFunctions extends Migration
@@ -14,7 +14,7 @@ class CreateFunctions extends Migration
      */
     public function up()
     {
-        $this->createFunction('fn_acornassociated_user_get_seed_user', 
+        $this->createFunction('fn_acorn_user_get_seed_user', 
             [], 
             'uuid', 
             [
@@ -23,10 +23,10 @@ class CreateFunctions extends Migration
         <<<BODY
             -- Lazy create the seeder user
             select into user_id uu.id 
-                from public.acornassociated_user_users uu
+                from public.acorn_user_users uu
                 where name = 'seeder' and is_system_user limit 1;
             if user_id is null then
-                insert into public.acornassociated_user_users(name, is_system_user)
+                insert into public.acorn_user_users(name, is_system_user)
                     values('seeder', true) 
                     returning id into user_id;
             end if;
@@ -44,6 +44,6 @@ BODY
      */
     public function down()
     {
-        Schema::dropIfExists('fn_acornassociated_user_get_seed_user');
+        Schema::dropIfExists('fn_acorn_user_get_seed_user');
     }
 };
