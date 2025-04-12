@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->boolean('is_activated')->default(0);
             $table->boolean('is_system_user')->default(0); // system_user is a Postgres reserved word
             $table->timestamp('activated_at')->nullable();
+            $table->timestamp('birth_date')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->timestamps();
         });
