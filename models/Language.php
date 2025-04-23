@@ -75,14 +75,4 @@ class Language extends Model
     public $morphMany = [];
     public $attachOne = [];
     public $attachMany = [];
-
-    public function id(): string
-    {
-        return $this->id;
-    }
-
-    public function name(): string
-    {
-        return $this->attributes['name'];
-    }
 }

@@ -58,7 +58,7 @@ class Plugin extends PluginBase
                             'label' => $userGroupName,
                             'icon' => 'icon-group',
                             // 'counter' => ($userGroups->count() > 1 ? $userGroups->count() : NULL),
-                            'url' => $userGroup->controllerUrl('update', $userGroup->id()),
+                            'url' => $userGroup->controllerUrl('update', $userGroup->id),
                             'sideMenu' => array(),
                         ),
                     );
@@ -66,7 +66,7 @@ class Plugin extends PluginBase
                         $menu['current_auth_groups']['sideMenu'][$userGroupName] = array(
                             'label' => $userGroupName,
                             'icon' => 'icon-group',
-                            'url' => $userGroup->controllerUrl('update', $userGroup->id()),
+                            'url' => $userGroup->controllerUrl('update', $userGroup->id),
                         );
                     };
                 });

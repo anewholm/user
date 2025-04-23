@@ -593,21 +593,6 @@ class User extends UserBase
         return \Acorn\Model::dropdownOptions($form, $field, self::class);
     }
 
-    public function id(): string
-    {
-        return $this->id;
-    }
-
-    public function name(): string
-    {
-        return $this->attributes['name'];
-    }
-
-    protected function getFullyQualifiedNameAttribute()
-    {
-        return $this->name;
-    }
-
     public function getFirstNameAttribute()
     {
         return explode(' ', $this->name)[0];

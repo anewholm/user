@@ -118,19 +118,4 @@ class UserGroup extends GroupBase
     {
         return \Acorn\Model::dropdownOptions($form, $field, self::class);
     }
-
-    public function id(): string
-    {
-        return $this->id;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    public function getFullyQualifiedNameAttribute()
-    {
-        return $this->name;
-    }
 }
