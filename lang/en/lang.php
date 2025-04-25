@@ -12,7 +12,7 @@ return [
         'impersonate_user' => 'Impersonate People',
         'menu_label' => 'People & Organisations',
     ],
-    'models' => [
+    'models' => [ # For create-system references
         'general' => [
             'id' => 'ID',
             'name' => 'Name',
@@ -25,7 +25,10 @@ return [
             'label_plural' => 'People',
             'email' => 'Email',
             'password' => 'Password',
+            'send_invite' => 'Send invitation by email',
+            'send_invite_comment' => 'Sends a welcome message containing login and password information.',
             'activation_code' => 'Activation_code',
+            '_block_mail' => 'Block all outgoing mail sent to this user.',
             'persist_code' => 'Persist_code',
             'reset_password_code' => 'Reset_password_code',
             'permissions' => 'Permissions',
@@ -44,10 +47,16 @@ return [
             'is_system_user' => 'Is system user',
         ],
         'usergroup' => [
-            'label' => 'Organisation',
+            'label'  => 'Organisation',
             'label_plural' => 'Organisations',
+            'code'   => 'Code',
+            'type'   => 'Type',
+            'colour' => 'Colour',
+            'image'  => 'Image',
+            'parent_user_group'  => 'Parent Organisation',
+            'children'           => 'Sub-Organisations',
             'type_primary_color' => 'Type colour',
-            'type_image' => 'Type image',
+            'type_image'     => 'Type image',
             'auth_is_member' => 'Is member',
         ],
         'usergrouptype' => [

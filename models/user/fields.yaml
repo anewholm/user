@@ -91,6 +91,7 @@ tabs:
             context: preview
 
         languages:
+            label: acorn.user::lang.models.language.label_plural
             type: relation
             nameFrom: name
             tab: acorn.user::lang.models.language.label_plural
