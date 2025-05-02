@@ -37,9 +37,15 @@ class User extends UserBase
     /**
      * @var array Relations
      */
+    public $belongsTo = [
+        // Overwrite the "Winter\Storm\Auth\Models\Role" association
+        // because its public.roles table does not exist
+        'role'      => [Role::class,      'table' => 'acorn_user_role_user', 'conditions' => 'acorn_user_role_user.is_primary'],
+    ];
     public $belongsToMany = [
-        'groups' => [UserGroup::class, 'table' => 'acorn_user_user_group'],
-        'languages' => [Language::class, 'table' => 'acorn_user_language_user'],
+        'groups'    => [UserGroup::class, 'table' => 'acorn_user_user_group'],
+        'roles'     => [Role::class,      'table' => 'acorn_user_role_user'],
+        'languages' => [Language::class,  'table' => 'acorn_user_language_user'],
     ];
 
     public $attachOne = [

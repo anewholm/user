@@ -14,6 +14,7 @@ class UserGroup extends GroupBase
     use \Acorn\Traits\PathsHelper;
     use \Winter\Storm\Database\Traits\NestedTree;
     use \Acorn\Backendlocalization\Class\TranslateBackend;
+    use \Staudenmeir\EloquentHasManyDeep\HasTableAlias;
 
     const PARENT_ID = 'parent_user_group_id';
 
@@ -40,14 +41,14 @@ class UserGroup extends GroupBase
      * @var array Relations
      */
     public $hasMany = [
-        'children' => [self::class, 'key' => 'parent_user_group_id'],
+        'children' => [UserGroup::class, 'key' => 'parent_user_group_id', 'alias' => 'test', 'table' => 'test'],
     ];
     public $belongsToMany = [
         'users'       => [User::class, 'table' => 'acorn_user_user_group'],
         'users_count' => [User::class, 'table' => 'acorn_user_user_group', 'count' => true]
     ];
     public $belongsTo = [
-        'parent_user_group' => [UserGroup::class, 'key' => 'parent_user_group_id'],
+        'parent_user_group' => [UserGroup::class, 'key' => 'parent_user_group_id', 'alias' => 'test', 'table' => 'test'], 
         'type' => UserGroupType::class,
     ];
 
