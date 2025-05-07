@@ -37,5 +37,4 @@ fields:
 
     description:
         label: acorn.user::lang.group.description_field
-        type: textarea
-        size: tiny
+        type: richeditor
