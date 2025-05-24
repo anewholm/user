@@ -35,6 +35,43 @@ class CreateFunctions extends Migration
             return user_id;
 BODY
         );
+        $this->createFunction('fn_acorn_user_code', 
+            [
+                'name character varying', 
+                'word int = 0', 
+                'length int = 3'],
+            'character varying',
+            [],
+            <<<BODY
+                select substr(upper(
+                    case word
+                        when 0 then
+                            regexp_replace(name, '[^a-zA-Z0-9]', '')
+                        else
+                            regexp_replace(regexp_replace(name, '^[^ ]* ', ''), '[^a-zA-Z0-9]', '')
+                    end), 1, length);
+BODY,
+            'sql'
+        );
+
+        $this->createFunction('fn_acorn_user_code_acronym', 
+            [
+                'name character varying',
+                'word integer DEFAULT 0',
+                'length integer DEFAULT 3'
+            ],
+            'character varying',
+            [],
+            <<<BODY
+                select 
+                    substr(upper(
+                        regexp_replace(
+                            regexp_replace(name, '([^ ])[^ ]+', '\1', 'g'),
+                        ' +', '', 'g')
+                    ), word+1, length);
+BODY,
+            'sql'
+        );
     }
 
     /**

@@ -620,4 +620,9 @@ class User extends UserBase
 
         return $user;
     }
+
+    public static function menuitemCount(): mixed {
+        # Auto-injected by acorn-create-system
+        return self::count();
+    }
 }

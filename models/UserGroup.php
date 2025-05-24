@@ -119,4 +119,9 @@ class UserGroup extends GroupBase
     {
         return \Acorn\Model::dropdownOptions($form, $field, self::class);
     }
+
+    public static function menuitemCount(): mixed {
+        # Auto-injected by acorn-create-system
+        return self::count();
+    }
 }
