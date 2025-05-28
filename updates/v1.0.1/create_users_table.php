@@ -26,6 +26,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('birth_date')->nullable();
             $table->timestamp('last_login')->nullable();
+            $table->string('import_source', 1024)->nullable();
             $table->timestamps();
         });
     }

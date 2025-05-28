@@ -26,6 +26,7 @@ class CreateUserGroupsTable extends Migration
             // Colour and Images
             $table->string('image',  1024)->nullable();
             $table->string('colour', 1024)->nullable();
+            $table->string('import_source', 1024)->nullable();
         });
 
         Schema::table(self::$table, function (\Winter\Storm\Database\Schema\Blueprint $table) {
@@ -41,13 +42,20 @@ class CreateUserGroupsTable extends Migration
             $table->uuid('user_id');
             $table->uuid('user_group_id');
             $table->primary(['user_id', 'user_group_id'], 'user_group');
+
+            $table->foreign('user_id')
+                ->references('id')->on('acorn_user_users')
+                ->onDelete('cascade');
+            $table->foreign('user_group_id')
+                ->references('id')->on('acorn_user_user_groups')
+                ->onDelete('cascade');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('acorn_user_user_groups');
         Schema::dropIfExists('acorn_user_user_group');
+        Schema::dropIfExists('acorn_user_user_groups');
     }
 
 }

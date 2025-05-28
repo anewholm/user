@@ -59,6 +59,12 @@ return [
             'type_image'     => 'Type image',
             'auth_is_member' => 'Is member',
         ],
+        'usergroupversion' => [
+            'label'  => 'Group version',
+            'label_plural' => 'Group versions',
+            'version' => 'Version',
+            'current' => 'Current',
+        ],
         'usergrouptype' => [
             'label' => 'Organisation Type',
             'label_short' => 'Type',

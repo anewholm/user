@@ -41,14 +41,15 @@ class UserGroup extends GroupBase
      * @var array Relations
      */
     public $hasMany = [
-        'children' => [UserGroup::class, 'key' => 'parent_user_group_id', 'alias' => 'test', 'table' => 'test'],
+        'children' => [UserGroup::class, 'key' => 'parent_user_group_id'],
+        'versions' => UserGroupVersion::class,
     ];
     public $belongsToMany = [
         'users'       => [User::class, 'table' => 'acorn_user_user_group'],
         'users_count' => [User::class, 'table' => 'acorn_user_user_group', 'count' => true]
     ];
     public $belongsTo = [
-        'parent_user_group' => [UserGroup::class, 'key' => 'parent_user_group_id', 'alias' => 'test', 'table' => 'test'], 
+        'parent_user_group' => [UserGroup::class, 'key' => 'parent_user_group_id'], 
         'type' => UserGroupType::class,
     ];
 

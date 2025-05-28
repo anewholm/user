@@ -1,0 +1,28 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: acorn.user::lang.models.general.id
+        invisible: true
+
+    user_group:
+        label: acorn.user::lang.models.usergroup.label
+        relation: user_group
+        select: acorn_user_user_groups.name
+
+    version:
+        label: acorn.user::lang.models.usergroupversion.version
+        type: number
+
+    current:
+        label: acorn.user::lang.models.usergroupversion.current
+        type: partial
+        path: tick
+
+    users:
+        label: acorn.user::lang.models.user.label_plural
+        type: partial
+        path: multi
+        relation: users

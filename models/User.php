@@ -44,6 +44,7 @@ class User extends UserBase
     ];
     public $belongsToMany = [
         'groups'    => [UserGroup::class, 'table' => 'acorn_user_user_group'],
+        'user_group_versions' => [UserGroupVersion::class, 'table' => 'acorn_user_user_group_version'],
         'roles'     => [Role::class,      'table' => 'acorn_user_role_user'],
         'languages' => [Language::class,  'table' => 'acorn_user_language_user'],
     ];

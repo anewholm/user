@@ -1,0 +1,9 @@
+users:
+  label: acorn.user::lang.models.user.label_plural
+  view:
+    list: $/acorn/user/models/user/columns.yaml
+    toolbarButtons: create|delete|link|unlink
+    recordsPerPage: false
+  manage:
+    form: $/acorn/user/models/user/fields.yaml
+    recordsPerPage: false

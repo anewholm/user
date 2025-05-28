@@ -17,10 +17,16 @@ columns:
         label: acorn.user::lang.user.name
         searchable: true
 
-    groups:
+    user_group_versions:
         label: acorn.user::lang.user.groups
         type: partial
         path: multi
+        relation: user_group_versions
+
+    # groups:
+    #     label: acorn.user::lang.user.groups
+    #     type: partial
+    #     path: multi
 
     languages:
         label: acorn.user::lang.models.language.label_plural

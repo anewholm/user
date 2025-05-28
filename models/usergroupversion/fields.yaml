@@ -1,0 +1,38 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: acorn.user::lang.models.general.id
+        hidden: true
+        readOnly: true
+
+    user_group:
+        label: acorn.user::lang.models.usergroup.label
+        type: relation
+        readOnly: true
+        span: storm
+        cssClass: col-xs-4
+
+    version:
+        label: acorn.user::lang.models.usergroupversion.version
+        type: number
+        readOnly: true
+        span: storm
+        cssClass: col-xs-4
+
+    current:
+        label: acorn.user::lang.models.usergroupversion.current
+        type: partial
+        path: tick
+        readOnly: true
+        span: storm
+        cssClass: col-xs-4
+
+tabs:
+    fields:
+        users:
+            label: acorn.user::lang.models.user.label_plural
+            type: relationmanager
+            tab: acorn.user::lang.models.user.label_plural

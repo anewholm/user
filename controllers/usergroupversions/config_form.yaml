@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: acorn.user::lang.models.usergroupversion.label
+
+# Model Form Field configuration
+form: $/acorn/user/models/usergroupversion/fields.yaml
+
+# Model Class name
+modelClass: Acorn\User\Models\UserGroupVersion
+
+# Default redirect location
+defaultRedirect: acorn/user/usergroupversions
+
+# Create page
+create:
+    title: acorn.user::lang.models.usergroupversion.create_title
+    redirect: acorn/user/usergroupversions/update/:id
+    redirectClose: acorn/user/usergroupversions
+
+# Update page
+update:
+    title: acorn.user::lang.models.usergroupversion.update_title
+    redirect: acorn/user/usergroupversions
+    redirectClose: acorn/user/usergroupversions
+
+# Preview page
+preview:
+    title: acorn.user::lang.models.usergroupversion.update_title

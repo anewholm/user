@@ -38,3 +38,8 @@ fields:
     description:
         label: acorn.user::lang.group.description_field
         type: richeditor
+
+tabs:
+    fields:
+        versions:
+            type: relation

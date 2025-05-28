@@ -14,6 +14,12 @@ columns:
         sortable: true
         select: acorn_user_user_groups.name
 
+    versions:
+        label: acorn.user::lang.models.usergroupversion.label_plural
+        valueFrom: version
+        relation: versions
+        invisible: true
+
     type:
         label: acorn.user::lang.group.type
         relation: type
