@@ -26,7 +26,7 @@ class CreateUserGroupsTable extends Migration
             // Colour and Images
             $table->string('image',  1024)->nullable();
             $table->string('colour', 1024)->nullable();
-            $table->string('import_source', 1024)->nullable();
+            $table->string('import_source', 1024)->nullable()->unique();
         });
 
         Schema::table(self::$table, function (\Winter\Storm\Database\Schema\Blueprint $table) {

@@ -1,6 +1,6 @@
 <?php namespace Acorn\User\Models;
 
-use Model;
+use Acorn\Model;
 
 /**
  * User Group Version Model

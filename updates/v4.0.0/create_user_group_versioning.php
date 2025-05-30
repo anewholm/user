@@ -51,7 +51,7 @@ class CreateUserGroupVersioning extends Migration
                 where user_group_id = new.user_group_id;
             update acorn_user_user_group_versions 
                 set current = false
-                where user_group_id = new.user_group_id;
+                where user_group_id = new.user_group_id and current;
             
             return new;
 SQL
