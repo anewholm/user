@@ -15,7 +15,7 @@ class CreateUserGroupsTable extends Migration
         Schema::create(self::$table, function ($table) {
             $table->engine = 'InnoDB';
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
-            $table->string('name');
+            $table->string('name')->index();
             $table->string('code')->nullable()->index()->unique();
             $table->text('description')->nullable();
             $table->timestamps();
