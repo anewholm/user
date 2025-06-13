@@ -17,6 +17,17 @@ columns:
         label: acorn.user::lang.user.name
         searchable: true
 
+    mothers_name:
+        label: acorn.user::lang.models.user.mothers_name
+
+    fathers_name:
+        label: acorn.user::lang.models.user.fathers_name
+
+    birth_date:
+        label: acorn.user::lang.models.user.birth_date
+        type: partial
+        path: datetime
+
     user_group_versions:
         label: acorn.user::lang.user.groups
         type: partial

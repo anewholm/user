@@ -14,23 +14,46 @@ class CreateUserLanguages extends Migration
             $table->engine = 'InnoDB';
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
             $table->string('name', 1024)->unique();
+            $table->string('locale', 10)->unique();
         });
 
-        Schema::create('acorn_user_language_user', function($table)
+        Schema::create('acorn_user_user_languages', function($table)
         {
             $table->engine = 'InnoDB';
             // TODO: Do Winter pivot tables include ids? I think yes...
+            $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
             $table->uuid('user_id');
             $table->uuid('language_id');
-            $table->primary(['user_id','language_id']);
-            $table->foreign('user_id')->references('id')->on('acorn_user_users');
-            $table->foreign('language_id')->references('id')->on('acorn_user_languages');
+            $table->boolean('primary')->default(true);
+
+            $table->foreign('user_id')->references('id')->on('acorn_user_users')->onDelete('CASCADE');
+            $table->foreign('language_id')->references('id')->on('acorn_user_languages')->onDelete('CASCADE');
         });
+
+
+        $this->createFunctionAndTrigger('acorn_user_user_languages_primary', 
+            'AFTER', 
+            'INSERT OR UPDATE', 
+            'acorn_user_user_languages', 
+            TRUE, 
+            [],
+        <<<SQL
+            -- Trap updates to the primary language
+            -- maintain only 1 primary
+            if new.primary then
+                update acorn_user_user_languages
+                    set "primary" = false
+                    where user_id = new.user_id 
+                    and id != new .id; 
+            end if;
+            return new;
+SQL
+        );  
     }
 
     public function down()
     {
-        Schema::dropIfExists('acorn_user_language_user');
+        Schema::dropIfExists('acorn_user_user_languages');
         Schema::dropIfExists('acorn_user_languages');
     }
 

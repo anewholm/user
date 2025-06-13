@@ -12,9 +12,38 @@ fields:
         label: acorn.user::lang.user.surname
         span: auto
 
+    mothers_name:
+        label: acorn.user::lang.models.user.mothers_name
+        span: auto
+
+    fathers_name:
+        label: acorn.user::lang.models.user.fathers_name
+        span: auto
+
+    gender:
+        label: acorn.user::lang.models.user.gender
+        span: auto
+        type: dropdown
+        options:
+            M: Male
+            F: Female
+            O: Other
+            N: Not specified
+        tab: acorn.user::lang.models.user.statuses
+
+    marital_status:
+        label: acorn.user::lang.models.user.marital_status
+        span: auto
+        type: dropdown
+        options:
+            M: Married
+            S: Single
+            O: Other
+            N: Not specified
+        tab: acorn.user::lang.models.user.statuses
+
 tabs:
     fields:
-
         email:
             label: acorn.user::lang.user.email
             tab: acorn.user::lang.user.account
@@ -62,46 +91,43 @@ tabs:
             setting: has_front_end
             span: right
             context: [create, update]
-
         username:
             label: acorn.user::lang.user.username
             tab: acorn.user::lang.user.account
             hidden: true
             setting: has_front_end
             span: left
-
         groups:
             label: acorn.user::lang.user.groups
             tab: acorn.user::lang.user.account
             type: relation
             emptyOption: acorn.user::lang.user.empty_groups
-
         created_ip_address:
             label: acorn.user::lang.user.created_ip_address
             span: auto
             disabled: true
             tab: acorn.user::lang.user.account
             context: preview
-
         last_ip_address:
             label: acorn.user::lang.user.last_ip_address
             span: auto
             disabled: true
             tab: acorn.user::lang.user.account
             context: preview
-
-        languages:
+        user_languages:
             label: acorn.user::lang.models.language.label_plural
             type: relation
-            nameFrom: name
             tab: acorn.user::lang.models.language.label_plural
-
-secondaryTabs:
-    fields:
-
         avatar:
             label: acorn.user::lang.user.avatar
             type: fileupload
             mode: image
             imageHeight: 260
             imageWidth: 260
+            tab: acorn.user::lang.models.user.identity
+        birth_date:
+            label: acorn.user::lang.models.user.birth_date
+            type: datepicker
+            mode: date
+            span: auto
+            tab: acorn.user::lang.models.user.identity

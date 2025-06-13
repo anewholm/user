@@ -68,7 +68,7 @@ class Language extends Model
     public $hasManyThrough = [];
     public $belongsTo = [];
     public $belongsToMany = [
-        'users' => [User::class, 'table' => 'acorn_user_language_user']
+        'users' => [User::class, 'table' => 'acorn_user_user_languages']
     ];
     public $morphTo = [];
     public $morphOne = [];

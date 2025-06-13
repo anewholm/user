@@ -1,0 +1,28 @@
+# ===================================
+#  Column Definitions
+# ===================================
+
+columns:
+    id:
+        label: acorn.user::lang.models.general.id
+        invisible: true
+
+    user:
+        label: acorn.user::lang.models.user.label
+        relation: user
+        select: acorn_user_users.name
+
+    language:
+        label: acorn.user::lang.models.language.label
+        relation: language
+        select: acorn_user_languages.name
+
+    locale:
+        label: acorn.user::lang.models.language.locale
+        relation: language
+        select: locale
+
+    primary:
+        label: acorn.user::lang.models.userlanguage.primary
+        type: partial
+        path: tick

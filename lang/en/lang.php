@@ -45,6 +45,13 @@ return [
             'created_ip_address' => 'Created_ip_address',
             'last_ip_address' => 'Last_ip_address',
             'is_system_user' => 'Is system user',
+            'fathers_name' => 'Fathers name',
+            'mothers_name' => 'Mothers name',
+            'birth_date' => 'Birth date',
+            'gender' => 'Gender',
+            'marital_status' => 'Marital Status',
+            'identity' => 'Identity',
+            'statuses' => 'Statuses',
         ],
         'usergroup' => [
             'label'  => 'Organisation',
@@ -71,9 +78,13 @@ return [
             'label_plural' => 'Organisation Types',
             'groups_count' => 'Organisation count',
         ],
+        'userlanguage' => [
+            'primary' => 'Primary',
+        ],
         'language' => [
             'label' => 'Language',
             'label_plural' => 'Languages',
+            'locale' => 'Locale',
         ],
         'role' => [
             'label' => 'Role',

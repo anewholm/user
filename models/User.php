@@ -46,7 +46,13 @@ class User extends UserBase
         'groups'    => [UserGroup::class, 'table' => 'acorn_user_user_group'],
         'user_group_versions' => [UserGroupVersion::class, 'table' => 'acorn_user_user_group_version'],
         'roles'     => [Role::class,      'table' => 'acorn_user_role_user'],
-        'languages' => [Language::class,  'table' => 'acorn_user_language_user'],
+        'languages' => [Language::class,  'table' => 'acorn_user_user_languages'],
+    ];
+    public $hasMany = [
+        'user_languages' => [UserLanguage::class,  'table' => 'acorn_user_user_languages'],
+    ];
+    public $hasOne = [
+        'primary_user_language' => [UserLanguage::class,  'table' => 'acorn_user_user_languages', 'conditions' => 'acorn_user_user_languages.primary'],
     ];
 
     public $attachOne = [

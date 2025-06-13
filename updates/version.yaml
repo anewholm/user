@@ -136,9 +136,11 @@
     - v3.0.0/add_backend_user_column.php
     - 'Create user languages XtoX'
     - v3.0.0/create_user_languages.php
+    - 'Seed user languages'
     - v3.0.0/seed_user_languages.php
     - 'Create User Group Types'
     - v3.0.0/create_user_group_types_table.php
+    - 'Seed user group types'
     - v3.0.0/seed_user_group_types.php
 3.0.2:
     - 'Create Usage view'
@@ -146,4 +148,5 @@
     - 'Create Functions'
     - v3.0.2/create_functions.php
 4.0.0:
+    - 'Create optional User Group Versioning'
     - v4.0.0/create_user_group_versioning.php

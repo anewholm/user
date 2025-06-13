@@ -1,0 +1,27 @@
+# ===================================
+#  Field Definitions
+# ===================================
+
+fields:
+    id:
+        label: acorn.user::lang.models.general.id
+        hidden: true
+        readOnly: true
+
+    user:
+        label: acorn.user::lang.models.user.label
+        type: relation
+        span: storm
+        cssClass: col-xs-4 hidden
+
+    language:
+        label: acorn.user::lang.models.language.label
+        type: relation
+        span: storm
+        cssClass: col-xs-4
+
+    primary:
+        label: acorn.user::lang.models.userlanguage.primary
+        type: switch
+        span: storm
+        cssClass: col-xs-4

@@ -5,3 +5,10 @@
 fields:
     name:
         label: 'acorn.user::lang.models.general.name'
+        span: left
+    locale:
+        label: 'acorn.user::lang.models.language.locale'
+        length: 
+            min: 2
+            max: 2
+        span: right

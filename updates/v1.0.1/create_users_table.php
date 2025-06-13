@@ -27,6 +27,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('birth_date')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->string('import_source', 1024)->nullable()->unique();
+
+            // New fields
+            $table->string('fathers_name', 1024)->nullable();
+            $table->string('mothers_name', 1024)->nullable();
+            $table->string('gender', 1)->nullable();
+            $table->string('marital_status', 1)->nullable();
+
             $table->timestamps();
         });
     }

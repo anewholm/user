@@ -11,3 +11,7 @@ columns:
         label: 'acorn.user::lang.models.general.name'
         searchable: true
         sortable: true
+    locale:
+        label: 'acorn.user::lang.models.language.locale'
+        searchable: true
+        sortable: true
