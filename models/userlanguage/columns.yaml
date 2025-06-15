@@ -22,7 +22,7 @@ columns:
         relation: language
         select: locale
 
-    primary:
-        label: acorn.user::lang.models.userlanguage.primary
+    current:
+        label: acorn.user::lang.models.userlanguage.current
         type: partial
         path: tick

@@ -30,6 +30,7 @@ class CreateUserGroupVersioning extends Migration
         {
             $table->uuid('user_id');
             $table->uuid('user_group_version_id');
+            
             $table->primary(array('user_id', 'user_group_version_id'));
             $table->foreign('user_group_version_id')
                 ->references('id')->on('acorn_user_user_group_versions')
@@ -49,9 +50,18 @@ class CreateUserGroupVersioning extends Migration
             select coalesce(max(version), 0) + 1 into new.version 
                 from acorn_user_user_group_versions 
                 where user_group_id = new.user_group_id;
-            update acorn_user_user_group_versions 
-                set current = false
-                where user_group_id = new.user_group_id and current;
+                
+            -- Enforce only one current
+            -- False may be explicitly specified, for example, importing old codes
+            -- Column default should be true on inserts
+            if new.current then
+                -- Unset the old current(s)
+                update acorn_user_user_group_versions 
+                    set "current" = false
+                    where user_group_id = new.user_group_id 
+                    and not id = new.id
+                    and "current";
+            end if;
             
             return new;
 SQL

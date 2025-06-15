@@ -20,8 +20,8 @@ fields:
         span: storm
         cssClass: col-xs-4
 
-    primary:
-        label: acorn.user::lang.models.userlanguage.primary
+    current:
+        label: acorn.user::lang.models.userlanguage.current
         type: switch
         span: storm
         cssClass: col-xs-4

@@ -18,6 +18,7 @@ class UserGroups extends Controller
      */
     public $implement = [
         \Backend\Behaviors\FormController::class,
+        \Backend\Behaviors\RelationController::class,
         \Backend\Behaviors\ListController::class
     ];
 

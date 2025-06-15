@@ -1,0 +1,9 @@
+locations:
+  label: acorn.location::lang.models.location.label_plural
+  view:
+    list: $/acorn/location/models/location/columns.yaml
+    toolbarButtons: create|delete|link|unlink
+    recordsPerPage: 10
+  manage:
+    form: $/acorn/location/models/location/fields.yaml
+    recordsPerPage: 10

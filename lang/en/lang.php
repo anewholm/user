@@ -79,7 +79,7 @@ return [
             'groups_count' => 'Organisation count',
         ],
         'userlanguage' => [
-            'primary' => 'Primary',
+            'current' => 'Primary',
         ],
         'language' => [
             'label' => 'Language',

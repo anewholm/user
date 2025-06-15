@@ -24,7 +24,7 @@ class CreateUserLanguages extends Migration
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
             $table->uuid('user_id');
             $table->uuid('language_id');
-            $table->boolean('primary')->default(true);
+            $table->boolean('current')->default(true);
 
             $table->foreign('user_id')->references('id')->on('acorn_user_users')->onDelete('CASCADE');
             $table->foreign('language_id')->references('id')->on('acorn_user_languages')->onDelete('CASCADE');
@@ -38,12 +38,15 @@ class CreateUserLanguages extends Migration
             TRUE, 
             [],
         <<<SQL
-            -- Trap updates to the primary language
-            -- maintain only 1 primary
-            if new.primary then
+            -- Enforce only one current
+            -- False may be explicitly specified, for example, importing old codes
+            -- Column default should be true on inserts
+            if new.current then
+                -- Unset the old current(s)
                 update acorn_user_user_languages
-                    set "primary" = false
-                    where user_id = new.user_id 
+                    set "current" = false
+                    where user_id = new.user_id
+                    and "current"
                     and id != new .id; 
             end if;
             return new;
