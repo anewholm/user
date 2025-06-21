@@ -31,9 +31,6 @@
     - 'Minor fix to the Account sign in logic.'
 1.0.14:
     - 'Minor improvements to the code.'
-1.0.15:
-    - 'Adds last name column to users table (surname).'
-    - v1.0.15/users_add_surname.php
 1.0.16:
     - 'Require permissions for settings page too.'
 1.1.0:

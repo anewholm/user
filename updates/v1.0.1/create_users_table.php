@@ -13,7 +13,8 @@ class CreateUsersTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
-            $table->string('name')->nullable();
+            $table->string('name');    // first name
+            $table->string('surname')->nullable(); // last name
             // email & password are now nullable because of non-front-end settings
             $table->string('email')->nullable()->unique();
             $table->string('password')->nullable();
@@ -24,11 +25,11 @@ class CreateUsersTable extends Migration
             $table->boolean('is_activated')->default(0);
             $table->boolean('is_system_user')->default(0); // system_user is a Postgres reserved word
             $table->timestamp('activated_at')->nullable();
-            $table->timestamp('birth_date')->nullable();
             $table->timestamp('last_login')->nullable();
             $table->string('import_source', 1024)->nullable()->unique();
-
+            
             // New fields
+            $table->timestamp('birth_date')->nullable();
             $table->string('fathers_name', 1024)->nullable();
             $table->string('mothers_name', 1024)->nullable();
             $table->string('gender', 1)->nullable();
@@ -36,6 +37,11 @@ class CreateUsersTable extends Migration
 
             $table->timestamps();
         });
+
+        // Mostly to spot import errors, and allow on conflict(unique_user) do nothing
+        $this->addUniqueConstraint('acorn_user_users', array(
+            'name', 'surname', 'birth_date', 'fathers_name', 'mothers_name', 'gender'
+        ), 'unique_user');
     }
 
     public function down()
