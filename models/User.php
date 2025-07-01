@@ -27,7 +27,7 @@ class User extends UserBase
      */
     public $rules = [
         // TODO: These should be required if Setting::has_front_end is on
-        //'email'    => 'required|between:6,255|email|unique:acorn_user_users',
+        'email'    => 'nullable|between:6,255|email|unique:acorn_user_users',
         //'username' => 'required|between:2,255|unique:acorn_user_users',
         //'password' => 'required:create|between:8,255|confirmed',
         //'password_confirmation' => 'required_with:password|between:8,255',
@@ -41,6 +41,8 @@ class User extends UserBase
         // Overwrite the "Winter\Storm\Auth\Models\Role" association
         // because its public.roles table does not exist
         'role'      => [Role::class,      'table' => 'acorn_user_role_user', 'conditions' => 'acorn_user_role_user.is_primary'],
+        'religion'  => [Religion::class,  'table' => 'acorn_user_religions'],
+        'ethnicity' => [Ethnicity::class, 'table' => 'acorn_user_ethnicities'],
     ];
     public $belongsToMany = [
         'groups'    => [UserGroup::class, 'table' => 'acorn_user_user_group'],
@@ -287,6 +289,12 @@ class User extends UserBase
         if ($this->is_guest && !$this->password) {
             $this->generatePassword();
         }
+
+        // Use NULLs for optional email 
+        // to avoid Unique check constraints
+        if ($this->email  == '') $this->email = NULL;
+        if ($this->gender == '') $this->gender = NULL;
+        if ($this->marital_status == '') $this->marital_status = NULL;
 
         /*
          * When the username is not used, the email is substituted.
@@ -606,15 +614,29 @@ class User extends UserBase
         return \Acorn\Model::dropdownOptions($form, $field, self::class);
     }
 
+    public function getPrimaryLanguageAttribute(): Language|NULL
+    {
+        $userLanguage = $this->user_languages()->where('current', TRUE)->first();
+        return ($userLanguage ? $userLanguage->language : NULL);
+    }
+
+    public function getLocaleAttribute(): string|NULL
+    {
+        $primaryLanguage = $this->primaryLanguage;
+        return ($primaryLanguage ? $primaryLanguage->locale : NULL);
+    }
+
     public function getFirstNameAttribute()
     {
-        return explode(' ', $this->name)[0];
+        // Only relevant if surname is not being used
+        return ($this->surname ? $this->name : explode(' ', $this->name)[0]);
     }
 
     public function getLastNameAttribute()
     {
+        // Only relevant if surname is not being used
         $nameParts = explode(' ', $this->name);
-        return (isset($nameParts[1]) ? $nameParts[1] : NULL);
+        return ($this->surname ? $this->surname : (isset($nameParts[1]) ? $nameParts[1] : NULL));
     }
 
     public static function authUser(): User|NULL

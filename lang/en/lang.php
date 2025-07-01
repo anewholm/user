@@ -12,7 +12,10 @@ return [
         'impersonate_user' => 'Impersonate People',
         'menu_label' => 'People & Organisations',
     ],
-    'models' => [ # For create-system references
+    'models' => [
+
+        # For create-system references
+
         'general' => [
             'id' => 'ID',
             'name' => 'Name',
@@ -54,20 +57,20 @@ return [
             'statuses' => 'Statuses',
         ],
         'usergroup' => [
-            'label'  => 'Organisation',
+            'label' => 'Organisation',
             'label_plural' => 'Organisations',
-            'code'   => 'Code',
-            'type'   => 'Type',
+            'code' => 'Code',
+            'type' => 'Type',
             'colour' => 'Colour',
-            'image'  => 'Image',
-            'parent_user_group'  => 'Parent Organisation',
-            'children'           => 'Sub-Organisations',
+            'image' => 'Image',
+            'parent_user_group' => 'Parent Organisation',
+            'children' => 'Sub-Organisations',
             'type_primary_color' => 'Type colour',
-            'type_image'     => 'Type image',
+            'type_image' => 'Type image',
             'auth_is_member' => 'Is member',
         ],
         'usergroupversion' => [
-            'label'  => 'Group version',
+            'label' => 'Group version',
             'label_plural' => 'Group versions',
             'version' => 'Version',
             'current' => 'Current',
@@ -89,6 +92,14 @@ return [
         'role' => [
             'label' => 'Role',
             'label_plural' => 'Roles',
+        ],
+        'religion' => [
+            'label' => 'Religion',
+            'label_plural' => 'Religions',
+        ],
+        'ethnicity' => [
+            'label' => 'Ethnicity',
+            'label_plural' => 'Ethnicities',
         ],
     ],
     'backend' => [

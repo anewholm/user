@@ -13,11 +13,12 @@ class CreateUsersTable extends Migration
         {
             $table->engine = 'InnoDB';
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
-            $table->string('name');    // first name
+            $table->string('name');                // first name
             $table->string('surname')->nullable(); // last name
             // email & password are now nullable because of non-front-end settings
             $table->string('email')->nullable()->unique();
             $table->string('password')->nullable();
+            
             $table->string('activation_code')->nullable()->index();
             $table->string('persist_code')->nullable();
             $table->string('reset_password_code')->nullable()->index();
@@ -26,14 +27,18 @@ class CreateUsersTable extends Migration
             $table->boolean('is_system_user')->default(0); // system_user is a Postgres reserved word
             $table->timestamp('activated_at')->nullable();
             $table->timestamp('last_login')->nullable();
-            $table->string('import_source', 1024)->nullable()->unique();
             
-            // New fields
+            // New fields. All nullable in case user is not for this purpose
+            // TODO: ALTER TABLE IF EXISTS public.acorn_user_users
+            //     ADD CONSTRAINT gender_enum CHECK (gender is null or gender = ANY (ARRAY['M'::"char", 'F'::"char", 'O'::"char"]));
+            // TODO: ALTER TABLE IF EXISTS public.acorn_user_users
+            //     ADD CONSTRAINT marital_status_enum CHECK (marital_status is null or marital_status = ANY (ARRAY['M'::"char", 'S'::"char", 'O'::"char"]));
             $table->timestamp('birth_date')->nullable();
             $table->string('fathers_name', 1024)->nullable();
             $table->string('mothers_name', 1024)->nullable();
-            $table->string('gender', 1)->nullable();
-            $table->string('marital_status', 1)->nullable();
+            $table->enum('gender', ['M', 'F', 'O'])->nullable();
+            $table->enum('marital_status', ['M', 'S', 'O'])->nullable();
+            $table->string('import_source', 1024)->nullable()->unique();
 
             $table->timestamps();
         });

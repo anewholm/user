@@ -31,7 +31,7 @@ class CreateUserLanguages extends Migration
         });
 
 
-        $this->createFunctionAndTrigger('acorn_user_user_languages_primary', 
+        $this->createFunctionAndTrigger('acorn_user_user_languages_current', 
             'AFTER', 
             'INSERT OR UPDATE', 
             'acorn_user_user_languages', 
@@ -47,7 +47,7 @@ class CreateUserLanguages extends Migration
                     set "current" = false
                     where user_id = new.user_id
                     and "current"
-                    and id != new .id; 
+                    and id != new.id; 
             end if;
             return new;
 SQL

@@ -29,6 +29,7 @@ fields:
             F: Female
             O: Other
             N: Not specified
+        placeholder: backend::lang.form.select
         tab: acorn.user::lang.models.user.statuses
 
     marital_status:
@@ -40,6 +41,7 @@ fields:
             S: Single
             O: Other
             N: Not specified
+        placeholder: backend::lang.form.select
         tab: acorn.user::lang.models.user.statuses
 
 tabs:
@@ -130,4 +132,16 @@ tabs:
             type: datepicker
             mode: date
             span: auto
+            tab: acorn.user::lang.models.user.identity
+        religion:
+            label: acorn.user::lang.models.religion.label
+            type: dropdown
+            options: Acorn\User\Models\Religion::dropdownOptions
+            placeholder: backend::lang.form.select
+            tab: acorn.user::lang.models.user.identity
+        ethnicity:
+            label: acorn.user::lang.models.ethnicity.label
+            type: dropdown
+            options: Acorn\User\Models\Ethnicity::dropdownOptions
+            placeholder: backend::lang.form.select
             tab: acorn.user::lang.models.user.identity

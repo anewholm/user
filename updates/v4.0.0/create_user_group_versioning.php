@@ -21,6 +21,8 @@ class CreateUserGroupVersioning extends Migration
             $table->integer('version')->default(1);
             $table->boolean('current')->default(true);
             $table->string('import_source', 1024)->nullable();
+            $table->timestamps();
+
             $table->foreign('user_group_id')
                 ->references('id')->on('acorn_user_user_groups')
                 ->onDelete('cascade');
@@ -30,6 +32,7 @@ class CreateUserGroupVersioning extends Migration
         {
             $table->uuid('user_id');
             $table->uuid('user_group_version_id');
+            $table->timestamps();
             
             $table->primary(array('user_id', 'user_group_version_id'));
             $table->foreign('user_group_version_id')
@@ -40,7 +43,7 @@ class CreateUserGroupVersioning extends Migration
                 ->onDelete('cascade');
         });
 
-        $this->createFunctionAndTrigger('acorn_user_user_group_version', 
+        $this->createFunctionAndTrigger('acorn_user_user_group_version_current', 
             'BEFORE', 
             'INSERT', 
             'public.acorn_user_user_group_versions', 
@@ -59,8 +62,8 @@ class CreateUserGroupVersioning extends Migration
                 update acorn_user_user_group_versions 
                     set "current" = false
                     where user_group_id = new.user_group_id 
-                    and not id = new.id
-                    and "current";
+                    and "current"
+                    and not id = new.id;
             end if;
             
             return new;

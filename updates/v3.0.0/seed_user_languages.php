@@ -24,5 +24,20 @@ class SeedUserLanguages extends Seeder
             'name' => 'Arabic',
             'locale' => 'ar'
         ]);
+        Language::create([
+            'id'   => '488cb15e-50f6-11f0-8a5f-3b0d113e458b',
+            'name' => 'French',
+            'locale' => 'fr'
+        ]);
+        Language::create([
+            'id'   => '306e04b6-50f5-11f0-a082-e3e55c5baecd',
+            'name' => 'Syriac',
+            'locale' => 'su'
+        ]);
+        Language::create([
+            'id'   => '306e0826-50f5-11f0-a083-6b25e90008a2',
+            'name' => 'Assyrian',
+            'locale' => 'as'
+        ]);
     }
 }

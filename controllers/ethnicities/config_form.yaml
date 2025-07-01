@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acorn.user::lang.models.ethnicity.label'
+
+# Model Form Field configuration
+form: $/acorn/user/models/ethnicity/fields.yaml
+
+# Model Class name
+modelClass: Acorn\User\Models\Ethnicity
+
+# Default redirect location
+defaultRedirect: acorn/user/ethnicities
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acorn/user/ethnicities/update/:id
+    redirectClose: acorn/user/ethnicities
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acorn/user/ethnicities
+    redirectClose: acorn/user/ethnicities
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

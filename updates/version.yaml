@@ -135,6 +135,17 @@
     - v3.0.0/create_user_languages.php
     - 'Seed user languages'
     - v3.0.0/seed_user_languages.php
+
+    - Create user ethnicities'
+    - v3.0.0/create_user_ethnicities.php
+    - Seed user ethnicities'
+    - v3.0.0/seed_user_ethnicities.php
+
+    - Create user religions'
+    - v3.0.0/create_user_religions.php
+    - Seed user religions'
+    - v3.0.0/seed_user_religions.php
+    
     - 'Create User Group Types'
     - v3.0.0/create_user_group_types_table.php
     - 'Seed user group types'

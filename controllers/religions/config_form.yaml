@@ -1,0 +1,31 @@
+# ===================================
+#  Form Behavior Config
+# ===================================
+
+# Record name
+name: 'acorn.user::lang.models.religion.label'
+
+# Model Form Field configuration
+form: $/acorn/user/models/religion/fields.yaml
+
+# Model Class name
+modelClass: Acorn\User\Models\Religion
+
+# Default redirect location
+defaultRedirect: acorn/user/religions
+
+# Create page
+create:
+    title: backend::lang.form.create_title
+    redirect: acorn/user/religions/update/:id
+    redirectClose: acorn/user/religions
+
+# Update page
+update:
+    title: backend::lang.form.update_title
+    redirect: acorn/user/religions
+    redirectClose: acorn/user/religions
+
+# Preview page
+preview:
+    title: backend::lang.form.preview_title

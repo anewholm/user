@@ -15,11 +15,13 @@ columns:
     version:
         label: acorn.user::lang.models.usergroupversion.version
         type: number
+        invisible: true
 
     current:
         label: acorn.user::lang.models.usergroupversion.current
         type: partial
         path: tick
+        invisible: true
 
     users:
         label: acorn.user::lang.models.user.label_plural

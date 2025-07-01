@@ -76,3 +76,13 @@ columns:
         label: acorn.user::lang.user.last_ip_address
         searchable: true
         invisible: true
+    
+    religion:
+        label: acorn.user::lang.models.religion.label
+        relation: religion
+        searchable: true
+    
+    ethnicity:
+        label: acorn.user::lang.models.ethnicity.label
+        relation: ethnicity
+        searchable: true

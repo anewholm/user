@@ -18,6 +18,7 @@ fields:
     version:
         label: acorn.user::lang.models.usergroupversion.version
         type: number
+        hidden: true
         readOnly: true
         span: storm
         cssClass: col-xs-4
@@ -26,6 +27,7 @@ fields:
         label: acorn.user::lang.models.usergroupversion.current
         type: partial
         path: tick
+        hidden: true
         readOnly: true
         span: storm
         cssClass: col-xs-4
