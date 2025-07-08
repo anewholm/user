@@ -6,6 +6,7 @@ fields:
     name:
         label: acorn.user::lang.group.name
         span: auto
+        translatable: true
 
     code:
         label: acorn.user::lang.group.code
@@ -38,6 +39,7 @@ fields:
     description:
         label: acorn.user::lang.group.description_field
         type: richeditor
+        translatable: true
 
 tabs:
     fields:
