@@ -81,8 +81,10 @@ columns:
         label: acorn.user::lang.models.religion.label
         relation: religion
         searchable: true
+        select: acorn_user_religions.name
     
     ethnicity:
         label: acorn.user::lang.models.ethnicity.label
         relation: ethnicity
         searchable: true
+        select: acorn_user_ethnicities.name

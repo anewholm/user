@@ -7,6 +7,7 @@ fields:
     name:
         label: acorn.user::lang.user.name
         span: auto
+        translatable: false
 
     surname:
         label: acorn.user::lang.user.surname
