@@ -51,6 +51,12 @@ tabs:
             label: acorn.user::lang.user.email
             tab: acorn.user::lang.user.account
             span: full
+            # Prevent autocomplete of login, also affects password field
+            cssClass: fake-readonly
+            attributes:
+                readonly: 1
+                onfocus: "this.removeAttribute('readonly');" 
+                onblur: "this.setAttribute('readonly','');"
 
         send_invite:
             type: checkbox
