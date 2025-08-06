@@ -15,3 +15,10 @@ columns:
         label: 'acorn.user::lang.models.language.locale'
         searchable: true
         sortable: true
+    translations:
+        label: winter.translate::lang.plugin.tab
+        relation: translations
+        type: partial
+        path: modules/acorn/partials/translations
+        sortable: false
+        searchable: false

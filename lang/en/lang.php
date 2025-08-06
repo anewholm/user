@@ -72,6 +72,9 @@ return [
         'usergroupversion' => [
             'label' => 'Group version',
             'label_plural' => 'Group versions',
+            'list_title'   => 'User Group Versions',
+            'create_title' => 'Create new User Group Version',
+            'update_title' => 'Update existing User Group Version',
             'version' => 'Version',
             'current' => 'Current',
         ],

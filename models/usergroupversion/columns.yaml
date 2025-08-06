@@ -11,6 +11,7 @@ columns:
         label: acorn.user::lang.models.usergroup.label
         relation: user_group
         select: acorn_user_user_groups.name
+        searchable: true
 
     version:
         label: acorn.user::lang.models.usergroupversion.version

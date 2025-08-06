@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Winter\Storm\Auth\Models\User as UserBase;
 use Acorn\User\Models\Settings as UserSettings;
 use Winter\Storm\Auth\AuthException;
+use Winter\Storm\Database\Model;
 
 class User extends UserBase
 {
@@ -295,6 +296,12 @@ class User extends UserBase
         if ($this->email  == '') $this->email = NULL;
         if ($this->gender == '') $this->gender = NULL;
         if ($this->marital_status == '') $this->marital_status = NULL;
+        foreach ($this->attributesToArray() as $name => $value) {
+            // NULLify all global_scope empties
+            if (substr($name, 0, 13) == 'global_scope_') {
+                if ($value == '') $this->{$name} = NULL;
+            }
+        }
 
         /*
          * When the username is not used, the email is substituted.

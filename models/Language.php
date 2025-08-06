@@ -2,7 +2,7 @@
 
 namespace Acorn\User\Models;
 
-use Model;
+use Acorn\Model;
 
 /**
  * Language Model
@@ -17,6 +17,10 @@ class Language extends Model
      * @var string The database table used by the model.
      */
     public $table = 'acorn_user_languages';
+
+    public $translatable = [
+        'name'
+    ];
 
     /**
      * @var array Guarded fields

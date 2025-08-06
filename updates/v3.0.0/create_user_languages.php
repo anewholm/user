@@ -15,6 +15,7 @@ class CreateUserLanguages extends Migration
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
             $table->string('name', 1024)->unique();
             $table->string('locale', 10)->unique();
+            $table->boolean('rtl')->default(false);
         });
 
         Schema::create('acorn_user_user_languages', function($table)

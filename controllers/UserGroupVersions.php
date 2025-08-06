@@ -1,10 +1,9 @@
 <?php namespace Acorn\User\Controllers;
 
-use Flash;
 use BackendMenu;
-use Acorn\Collection;
 use Acorn\Controller;
 use Acorn\User\Models\UserGroup;
+use Acorn\User\Models\User;
 
 /**
  * User Group Versions Back-end Controller
@@ -41,6 +40,14 @@ class UserGroupVersions extends Controller
      * @var array Permissions required to view this page.
      */
     public $requiredPermissions = ['acorn.users.access_group_versions'];
+
+    public $belongsTo = [
+        'user_group' => [UserGroup::class, 'table' => 'acorn_user_user_groups'],
+    ];
+
+    public $hasMany = [
+        'users' => [User::class, 'table' => 'acorn_user_user_group_version'],
+    ];
 
     /**
      * Constructor.

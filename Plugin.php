@@ -234,6 +234,12 @@ class Plugin extends PluginBase
                         'url'         => Backend::url('acorn/user/usergroups'),
                         'permissions' => ['acorn.users.access_groups']
                     ],
+                    'usergroupversions' => [
+                        'label'       => 'acorn.user::lang.models.usergroupversions.label_plural',
+                        'icon'        => 'icon-users-viewfinder',
+                        'url'         => Backend::url('acorn/user/usergroupversions'),
+                        'permissions' => ['acorn.users.access_groups']
+                    ],
                     'usergrouptypes' => [
                         'label'       => 'acorn.user::lang.models.usergrouptype.label_plural',
                         'icon'        => 'icon-stripe',

@@ -14,6 +14,14 @@ columns:
         sortable: true
         select: acorn_user_user_groups.name
 
+    translations:
+        label: winter.translate::lang.plugin.tab
+        relation: translations
+        type: partial
+        path: modules/acorn/partials/translations
+        sortable: false
+        searchable: false
+
     versions:
         label: acorn.user::lang.models.usergroupversion.label_plural
         valueFrom: version

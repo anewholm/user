@@ -22,7 +22,8 @@ class SeedUserLanguages extends Seeder
         Language::create([
             'id'   => '40aafb9e-41e2-11f0-8065-f75fd6b290d7',
             'name' => 'Arabic',
-            'locale' => 'ar'
+            'locale' => 'ar',
+            'rtl' => TRUE,
         ]);
         Language::create([
             'id'   => '488cb15e-50f6-11f0-8a5f-3b0d113e458b',
