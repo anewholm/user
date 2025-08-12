@@ -3,7 +3,25 @@ addresses:
   view:
     list: $/acorn/location/models/address/columns.yaml
     toolbarButtons: create|delete|link|unlink
-    recordsPerPage: 10
+    # recordsPerPage: 10
   manage:
     form: $/acorn/location/models/address/fields.yaml
+    recordsPerPage: 10
+languages:
+  label: acorn.user::lang.models.language.label_plural
+  view:
+    list: $/acorn/user/models/language/columns.yaml
+    toolbarButtons: create|delete|link|unlink
+    # recordsPerPage: 10
+  manage:
+    form: $/acorn/user/models/language/fields.yaml
+    recordsPerPage: 10
+groups:
+  label: acorn.user::lang.models.usergroup.label_plural
+  view:
+    list: $/acorn/user/models/usergroup/columns.yaml
+    toolbarButtons: create|delete|link|unlink
+    # recordsPerPage: 10
+  manage:
+    form: $/acorn/user/models/usergroup/fields.yaml
     recordsPerPage: 10

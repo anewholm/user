@@ -24,8 +24,8 @@ columns:
         path: tick
         invisible: true
 
-    users:
-        label: acorn.user::lang.models.user.label_plural
-        type: partial
-        path: multi
-        relation: users
+    # users:
+    #     label: acorn.user::lang.models.user.label_plural
+    #     type: partial
+    #     path: multi
+    #     relation: users

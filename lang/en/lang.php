@@ -109,7 +109,7 @@ return [
         'acorn_user_section' => 'Data-entry person identification',
         'acorn_user_section_comment' => 'All server administrators that wish to change data must have an associated Person, and optional Organisation',
         'acorn_user' => 'Person',
-        'acorn_user_comment' => 'All data changes will be registered against this Person',
+        'acorn_user_comment' => "All data changes will be registered against this Person  <a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>",
         'acorn_user_groups' => 'Current Persons Organisations',
         'acorn_user_groups_comment' => 'The current registered Person is a member of the above organisations',
     ],

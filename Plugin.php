@@ -100,7 +100,7 @@ class Plugin extends PluginBase
                         'span'    => 'auto',
                         'placeholder' => 'backend::lang.form.select',
                         'options' => '\Acorn\User\Models\User::dropdownOptions',
-                        'comment' => 'acorn.user::lang.backend.acorn_user_comment',
+                        'comment' => "acorn.user::lang.backend.acorn_user_comment",
                         'commentHtml' => TRUE,
                         'tab'     => 'acorn.user::lang.plugin.name',
                     ],

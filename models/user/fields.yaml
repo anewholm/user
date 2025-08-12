@@ -21,32 +21,32 @@ fields:
         label: acorn.user::lang.models.user.fathers_name
         span: auto
 
-    gender:
-        label: acorn.user::lang.models.user.gender
-        span: auto
-        type: dropdown
-        options:
-            M: Male
-            F: Female
-            O: Other
-            N: Not specified
-        placeholder: backend::lang.form.select
-        tab: acorn.user::lang.models.user.statuses
-
-    marital_status:
-        label: acorn.user::lang.models.user.marital_status
-        span: auto
-        type: dropdown
-        options:
-            M: Married
-            S: Single
-            O: Other
-            N: Not specified
-        placeholder: backend::lang.form.select
-        tab: acorn.user::lang.models.user.statuses
-
 tabs:
     fields:
+        gender:
+            label: acorn.user::lang.models.user.gender
+            span: auto
+            type: dropdown
+            options:
+                M: Male
+                F: Female
+                O: Other
+                N: Not specified
+            placeholder: backend::lang.form.select
+            tab: acorn.user::lang.models.user.identity
+
+        marital_status:
+            label: acorn.user::lang.models.user.marital_status
+            span: auto
+            type: dropdown
+            options:
+                M: Married
+                S: Single
+                O: Other
+                N: Not specified
+            placeholder: backend::lang.form.select
+            tab: acorn.user::lang.models.user.identity
+
         email:
             label: acorn.user::lang.user.email
             tab: acorn.user::lang.user.account
@@ -109,8 +109,7 @@ tabs:
         groups:
             label: acorn.user::lang.user.groups
             tab: acorn.user::lang.user.account
-            type: relation
-            emptyOption: acorn.user::lang.user.empty_groups
+            type: relationmanager
         created_ip_address:
             label: acorn.user::lang.user.created_ip_address
             span: auto
@@ -123,13 +122,15 @@ tabs:
             disabled: true
             tab: acorn.user::lang.user.account
             context: preview
-        user_languages:
+        languages:
             label: acorn.user::lang.models.language.label_plural
-            type: relation
+            type: relationmanager
+            cssClass: nolabel
             tab: acorn.user::lang.models.language.label_plural
         avatar:
             label: acorn.user::lang.user.avatar
             type: fileupload
+            span: left
             mode: image
             imageHeight: 260
             imageWidth: 260
@@ -137,18 +138,20 @@ tabs:
         birth_date:
             label: acorn.user::lang.models.user.birth_date
             type: datepicker
+            span: right
             mode: date
-            span: auto
             tab: acorn.user::lang.models.user.identity
         religion:
             label: acorn.user::lang.models.religion.label
             type: dropdown
+            span: left
             options: Acorn\User\Models\Religion::dropdownOptions
             placeholder: backend::lang.form.select
             tab: acorn.user::lang.models.user.identity
         ethnicity:
             label: acorn.user::lang.models.ethnicity.label
             type: dropdown
+            span: right
             options: Acorn\User\Models\Ethnicity::dropdownOptions
             placeholder: backend::lang.form.select
             tab: acorn.user::lang.models.user.identity
