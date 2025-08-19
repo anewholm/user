@@ -78,6 +78,26 @@ class Plugin extends PluginBase
             $model->belongsTo['user'] = [User::class, 'key' => 'acorn_user_user_id'];
         });
 
+        BackendUsers::extendListColumns(function ($list, $user) {
+            if ($user instanceof BackendUser) {
+                $list->addColumns([
+                    'user' => [
+                        'label'    => 'acorn.user::lang.backend.acorn_user_section',
+                        'type'     => 'text',
+                        'relation' => 'user',
+                        'select'   => 'name',
+                        'attributes' => array('autocomplete' => 'off'),
+                    ],
+                    'acorn_create_and_sync_aa_user' => [
+                        'label'      => 'acorn.user::lang.backend.acorn_create_and_sync_aa_user',
+                        'type'       => 'switch',
+                        'invisible'  => true,
+                        'attributes' => array('autocomplete' => 'off'),
+                    ],
+                ]);
+            }
+        });
+
         BackendUsers::extendFormFields(function ($form, $model, $context) {
             if ($model instanceof BackendUser) {
                 $userGroups = array();
@@ -85,7 +105,31 @@ class Plugin extends PluginBase
                 if ($model->user && $model->user->groups)
                     $userGroups = $model->user->groups->pluck('name')->toArray();
 
-                // TODO: Permissions: can_change_own_user, can_change_others_user
+                $model->bindEvent('model.beforeSave', function () use(&$model) {
+                    if ($model->acorn_create_and_sync_aa_user) {
+                        if (!$model->user) {
+                            $model->user = User::create([
+                                'name'     => ($model->first_name ?: $model->login),
+                                'surname'  => $model->last_name,
+                                'email'    => $model->email,
+                                // Initially cannot login on the front end
+                                'username' => $model->login,
+                                'password' => 'password',
+                                'password_confirmation' => 'password',
+                                'is_activated' => FALSE,
+                            ]);
+                        } else {
+                            // Sync
+                            // TODO: Sync password?
+                            $model->user->name     = $model->first_name;
+                            $model->user->surname  = $model->last_name;
+                            $model->user->email    = $model->email;
+                            $model->user->username = $model->login;
+                            $model->user->save();
+                        }
+                    }
+                });
+                
                 $form->addTabFields([
                     'acorn_user_section' => [
                         'label'   => 'acorn.user::lang.backend.acorn_user_section',
@@ -93,6 +137,18 @@ class Plugin extends PluginBase
                         'comment' => 'acorn.user::lang.backend.acorn_user_section_comment',
                         'commentHtml' => TRUE,
                         'tab'     => 'acorn.user::lang.plugin.name',
+                        'permissions' => array('acorn.user.change_backend_user'),
+                    ],
+                    'acorn_create_and_sync_aa_user' => [
+                        'label'    => 'acorn.user::lang.backend.acorn_create_and_sync_aa_user',
+                        'type'     => 'switch',
+                        'default'  => true,
+                        'span'     => 'full',
+                        'comment'  => 'acorn.user::lang.backend.acorn_create_and_sync_aa_user_comment',
+                        'commentHtml' => TRUE,
+                        'attributes'  => array('autocomplete' => 'off'),
+                        'tab'      => 'acorn.user::lang.plugin.name',
+                        'permissions' => array('acorn.user.change_create_and_sync_aa_user'),
                     ],
                     'user' => [
                         'label'   => 'acorn.user::lang.backend.acorn_user',
@@ -103,6 +159,7 @@ class Plugin extends PluginBase
                         'comment' => "acorn.user::lang.backend.acorn_user_comment",
                         'commentHtml' => TRUE,
                         'tab'     => 'acorn.user::lang.plugin.name',
+                        'permissions' => array('acorn.user.change_backend_user'),
                     ],
                     '_acorn_user_groups' => [
                         'label'   => 'acorn.user::lang.backend.acorn_user_groups',
@@ -116,6 +173,7 @@ class Plugin extends PluginBase
                         'comment' => 'acorn.user::lang.backend.acorn_user_groups_comment',
                         'commentHtml' => TRUE,
                         'tab'     => 'acorn.user::lang.plugin.name',
+                        'permissions' => array('acorn.user.change_backend_user'),
                     ],
                 ]);
             }
@@ -207,6 +265,14 @@ class Plugin extends PluginBase
             'acorn.users.impersonate_user' => [
                 'tab'   => 'acorn.user::lang.plugin.tab',
                 'label' => 'acorn.user::lang.plugin.impersonate_user'
+            ],
+            'acorn.user.change_backend_user' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.backend.acorn_user_section'
+            ],
+            'acorn.user.change_create_and_sync_aa_user' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.backend.acorn_create_and_sync_aa_user'
             ],
         ];
     }

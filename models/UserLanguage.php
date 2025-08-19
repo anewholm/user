@@ -49,6 +49,14 @@ class UserLanguage extends Model
      */
     protected $dates = [];
 
+    public function getNameAttribute()
+    {
+        $primaryString = trans('acorn.user::lang.models.userlanguage.current');
+        $currentString = ($this->current ? " ($primaryString)" : '');
+        $languageName  = $this->language->name;
+        return "$languageName$currentString";
+    }
+
     public static function menuitemCount(): mixed {
         # Auto-injected by acorn-create-system
         return self::count();

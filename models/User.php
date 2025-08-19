@@ -54,7 +54,10 @@ class User extends UserBase
             'table' => 'acorn_user_user_languages',
         ],
     ];
-    public $hasMany = [];
+    public $hasMany = [
+        // Still with language and associated language[name], but with current also
+        'user_user_languages' => [UserLanguage::class],
+    ];
     public $hasOne = [
         'primary_user_language' => [UserLanguage::class,  'table' => 'acorn_user_user_languages', 'conditions' => 'acorn_user_user_languages.current'],
     ];
@@ -634,16 +637,28 @@ class User extends UserBase
         return ($primaryLanguage ? $primaryLanguage->locale : NULL);
     }
 
+    /* TODO: Not when updating!
+    public function getNameAttribute()
+    {
+        // Only relevant if surname is not being used
+        $firstName = $this->getFirstNameAttribute();
+        $lastName  = $this->getLastNameAttribute();
+        return ($lastName ? "$firstName $lastName" : $firstName);
+    }
+        */
+
     public function getFirstNameAttribute()
     {
         // Only relevant if surname is not being used
-        return ($this->surname ? $this->name : explode(' ', $this->name)[0]);
+        $name = $this->attributes['name'];
+        return ($this->surname ? $name : explode(' ', $name)[0]);
     }
 
     public function getLastNameAttribute()
     {
         // Only relevant if surname is not being used
-        $nameParts = explode(' ', $this->name);
+        $name      = $this->attributes['name'];
+        $nameParts = explode(' ', $name);
         return ($this->surname ? $this->surname : (isset($nameParts[1]) ? $nameParts[1] : NULL));
     }
 

@@ -12,15 +12,25 @@ class AddBackendUserColumn extends Migration
     {
         // Add extra namespaced fields in to the users table
         Schema::table('backend_users', function(\Winter\Storm\Database\Schema\Blueprint $table) {
-            if (!Schema::hasColumn($table->getTable(), 'acorn_user_user_id')) $table->uuid('acorn_user_user_id')->nullable();
-            $table->foreign('acorn_user_user_id')->references('id')->on('acorn_user_users')->onDelete('set null');
+            if (!Schema::hasColumn($table->getTable(), 'acorn_user_user_id')) {
+                $table->uuid('acorn_user_user_id')->nullable();
+                $table->foreign('acorn_user_user_id')->references('id')
+                    ->on('acorn_user_users')
+                    ->onDelete('set null');
+            }
+            if (!Schema::hasColumn($table->getTable(), 'acorn_create_and_sync_aa_user')) {
+                $table->boolean('acorn_create_and_sync_aa_user')->default(TRUE);
+            }
         });
     }
 
     public function down()
     {
         Schema::table('backend_users', function(\Winter\Storm\Database\Schema\Blueprint $table) {
-            if (Schema::hasColumn($table->getTable(), 'acorn_user_user_id')) $table->dropColumn('acorn_user_user_id');
+            if (Schema::hasColumn($table->getTable(), 'acorn_user_user_id')) 
+                $table->dropColumn('acorn_user_user_id');
+            if (Schema::hasColumn($table->getTable(), 'acorn_create_and_sync_aa_user')) 
+                $table->dropColumn('acorn_create_and_sync_aa_user');
         });
     }
 }
