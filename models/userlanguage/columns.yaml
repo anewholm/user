@@ -14,8 +14,7 @@ columns:
 
     language:
         label: acorn.user::lang.models.language.label
-        relation: language
-        select: acorn_user_languages.name
+        valueFrom: name
 
     locale:
         label: acorn.user::lang.models.language.locale

@@ -36,8 +36,8 @@ class CreateUsersTable extends Migration
             $table->timestamp('birth_date')->nullable();
             $table->string('fathers_name', 1024)->nullable();
             $table->string('mothers_name', 1024)->nullable();
-            $table->enum('gender', ['M', 'F', 'O'])->nullable();
-            $table->enum('marital_status', ['M', 'S', 'O'])->nullable();
+            $table->enum('gender', ['M', 'F', 'O', 'N'])->nullable();
+            $table->enum('marital_status', ['M', 'S', 'O', 'N'])->nullable();
             $table->string('import_source', 1024)->nullable()->unique();
 
             $table->timestamps();

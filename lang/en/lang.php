@@ -13,9 +13,7 @@ return [
         'menu_label' => 'People & Organisations',
     ],
     'models' => [
-
-        # For create-system references
-
+        // For create-system references
         'general' => [
             'id' => 'ID',
             'name' => 'Name',
@@ -55,6 +53,18 @@ return [
             'marital_status' => 'Marital Status',
             'identity' => 'Identity',
             'statuses' => 'Statuses',
+            'marital_status_options' => [
+                'married' => 'Married',
+                'single'  => 'Single',
+                'other'   => 'Other',
+                'not_specified' => 'Not specified',
+            ],
+            'gender_options' => [
+                'male'   => 'Male',
+                'female' => 'Female',
+                'other'  => 'Other',
+                'not_specified' => 'Not specified',
+            ],
         ],
         'usergroup' => [
             'label' => 'Organisation',
@@ -115,6 +125,42 @@ return [
         'acorn_create_and_sync_aa_user' => 'Create and synchronise',
         'acorn_create_and_sync_aa_user_comment' => 'Create and synchronise the Backend user with an Data-entry person'
     ],
+    'permissions' => [
+        'user_fathers_name_view' => 'View field Fathers name',
+        'user_fathers_name_change' => 'Change field Fathers name',
+        'user_surname_view' => 'View field surname',
+        'user_surname_change' => 'Change field surname',
+        'user_mothers_name_view' => 'View field mothers_name',
+        'user_mothers_name_change' => 'Change field mothers_name',
+        'user_gender_view' => 'View field gender',
+        'user_gender_change' => 'Change field gender',
+        'user_marital_status_view' => 'View field marital_status',
+        'user_marital_status_change' => 'Change field marital_status',
+        'user_email_view' => 'View field email',
+        'user_email_change' => 'Change field email',
+        'user_send_invite_view' => 'View field send_invite',
+        'user_send_invite_change' => 'Change field send_invite',
+        'user_password_view' => 'View field password',
+        'user_password_change' => 'Change field password',
+        'user_password_confirmation_view' => 'View field password_confirmation',
+        'user_password_confirmation_change' => 'Change field password_confirmation',
+        'user_username_view' => 'View field username',
+        'user_username_change' => 'Change field username',
+        'user_created_ip_address_view' => 'View field created_ip_address',
+        'user_created_ip_address_change' => 'Change field created_ip_address',
+        'user_last_ip_address_view' => 'View field last_ip_address',
+        'user_last_ip_address_change' => 'Change field last_ip_address',
+        'user_avatar_view' => 'View field avatar',
+        'user_avatar_change' => 'Change field avatar',
+        'user_birth_date_view' => 'View field birth_date',
+        'user_birth_date_change' => 'Change field birth_date',
+        'user_religion_view' => 'View field religion',
+        'user_religion_change' => 'Change field religion',
+        'user_ethnicity_view' => 'View field ethnicity',
+        'user_ethnicity_change' => 'Change field ethnicity',
+    ],
+
+    // Inherited
     'users' => [
         'menu_label' => 'People',
         'all_users' => 'Everyone',

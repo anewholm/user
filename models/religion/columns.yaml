@@ -11,6 +11,7 @@ columns:
         label: 'acorn.user::lang.models.general.name'
         searchable: true
         sortable: true
+        select: acorn_user_religions.name
     translations:
         label: winter.translate::lang.plugin.tab
         relation: translations

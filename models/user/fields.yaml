@@ -28,10 +28,10 @@ tabs:
             span: auto
             type: dropdown
             options:
-                M: Male
-                F: Female
-                O: Other
-                N: Not specified
+                M: acorn.user::lang.models.user.gender_options.male
+                F: acorn.user::lang.models.user.gender_options.female
+                O: acorn.user::lang.models.user.gender_options.other
+                N: acorn.user::lang.models.user.gender_options.not_specified
             placeholder: backend::lang.form.select
             tab: acorn.user::lang.models.user.identity
 
@@ -40,10 +40,10 @@ tabs:
             span: auto
             type: dropdown
             options:
-                M: Married
-                S: Single
-                O: Other
-                N: Not specified
+                M: acorn.user::lang.models.user.marital_status_options.married
+                S: acorn.user::lang.models.user.marital_status_options.single
+                O: acorn.user::lang.models.user.marital_status_options.other
+                N: acorn.user::lang.models.user.marital_status_options.not_specified
             placeholder: backend::lang.form.select
             tab: acorn.user::lang.models.user.identity
 

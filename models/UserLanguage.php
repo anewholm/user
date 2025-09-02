@@ -12,6 +12,10 @@ class UserLanguage extends Model
      */
     protected $table = 'acorn_user_user_languages';
 
+    public $translatable = [
+        'language[name]'
+    ];
+
     /**
      * Validation rules
      */

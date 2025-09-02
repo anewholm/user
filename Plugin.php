@@ -270,9 +270,143 @@ class Plugin extends PluginBase
                 'tab'   => 'acorn.user::lang.plugin.tab',
                 'label' => 'acorn.user::lang.backend.acorn_user_section'
             ],
+            // TODO: Move these to permissions below
             'acorn.user.change_create_and_sync_aa_user' => [
                 'tab'   => 'acorn.user::lang.plugin.tab',
                 'label' => 'acorn.user::lang.backend.acorn_create_and_sync_aa_user'
+            ],
+
+            // New field permissions
+            // Referenced by create-system
+            'acorn.user.user_fathers_name_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_fathers_name_view'
+
+            ],
+            'acorn.user.user_fathers_name_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_fathers_name_change'
+
+            ],
+            'acorn.user.user_surname_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_surname_view'
+            ],
+            'acorn.user.user_surname_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_surname_change'
+            ],
+            'acorn.user.user_mothers_name_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_mothers_name_view'
+            ],
+            'acorn.user.user_mothers_name_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_mothers_name_change'
+            ],
+            'acorn.user.user_gender_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_gender_view'
+            ],
+            'acorn.user.user_gender_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_gender_change'
+            ],
+            'acorn.user.user_marital_status_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_marital_status_view'
+            ],
+            'acorn.user.user_marital_status_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_marital_status_change'
+            ],
+            'acorn.user.user_email_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_email_view'
+            ],
+            'acorn.user.user_email_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_email_change'
+            ],
+            'acorn.user.user_send_invite_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_send_invite_view'
+            ],
+            'acorn.user.user_send_invite_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_send_invite_change'
+            ],
+            'acorn.user.user_password_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_password_view'
+            ],
+            'acorn.user.user_password_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_password_change'
+            ],
+            'acorn.user.user_password_confirmation_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_password_confirmation_view'
+            ],
+            'acorn.user.user_password_confirmation_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_password_confirmation_change'
+            ],
+            'acorn.user.user_username_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_username_view'
+            ],
+            'acorn.user.user_username_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_username_change'
+            ],
+            'acorn.user.user_created_ip_address_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_created_ip_address_view'
+            ],
+            'acorn.user.user_created_ip_address_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_created_ip_address_change'
+            ],
+            'acorn.user.user_last_ip_address_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_last_ip_address_view'
+            ],
+            'acorn.user.user_last_ip_address_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_last_ip_address_change'
+            ],
+            'acorn.user.user_avatar_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_avatar_view'
+            ],
+            'acorn.user.user_avatar_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_avatar_change'
+            ],
+            'acorn.user.user_birth_date_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_birth_date_view'
+            ],
+            'acorn.user.user_birth_date_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_birth_date_change'
+            ],
+            'acorn.user.user_religion_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_religion_view'
+            ],
+            'acorn.user.user_religion_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_religion_change'
+            ],
+            'acorn.user.user_ethnicity_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_ethnicity_view'
+            ],
+            'acorn.user.user_ethnicity_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.user_ethnicity_change'
             ],
         ];
     }
