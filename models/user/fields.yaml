@@ -21,6 +21,19 @@ fields:
         label: acorn.user::lang.models.user.fathers_name
         span: auto
 
+    created_at:
+        label: acorn.user::lang.user.created_at
+        type: datepicker
+        readOnly: true
+        disabled: true
+        advanced: true
+
+    updated_at:
+        label: acorn.user::lang.user.updated_at
+        type: datepicker
+        readOnly: true
+        advanced: true
+
 tabs:
     fields:
         gender:
@@ -63,7 +76,7 @@ tabs:
             label: acorn.user::lang.user.send_invite
             comment: acorn.user::lang.user.send_invite_comment
             tab: acorn.user::lang.user.account
-            setting: has_front_end
+            setting: Acorn\User\Models\Settings::has_front_end
             default: false
             context: create
 
@@ -73,7 +86,7 @@ tabs:
             type: checkbox
             span: full
             cssClass: field-align-above
-            setting: has_front_end
+            setting: Acorn\User\Models\Settings::has_front_end
             context: update
 
         password@create:
@@ -81,7 +94,7 @@ tabs:
             comment: acorn.user::lang.user.create_password_comment
             tab: acorn.user::lang.user.account
             type: password
-            setting: has_front_end
+            setting: Acorn\User\Models\Settings::has_front_end
             span: left
 
         password@update:
@@ -89,7 +102,7 @@ tabs:
             comment: acorn.user::lang.user.reset_password_comment
             tab: acorn.user::lang.user.account
             type: password
-            setting: has_front_end
+            setting: Acorn\User\Models\Settings::has_front_end
             span: left
 
         password_confirmation:
@@ -97,14 +110,14 @@ tabs:
             comment: acorn.user::lang.user.confirm_password_comment
             tab: acorn.user::lang.user.account
             type: password
-            setting: has_front_end
+            setting: Acorn\User\Models\Settings::has_front_end
             span: right
             context: [create, update]
         username:
             label: acorn.user::lang.user.username
             tab: acorn.user::lang.user.account
             hidden: true
-            setting: has_front_end
+            setting: Acorn\User\Models\Settings::has_front_end
             span: left
         groups:
             label: acorn.user::lang.user.groups
@@ -138,8 +151,9 @@ tabs:
         birth_date:
             label: acorn.user::lang.models.user.birth_date
             type: datepicker
+            cssClass: hide-time
             span: right
-            mode: date
+            mode: datetime
             tab: acorn.user::lang.models.user.identity
         religion:
             label: acorn.user::lang.models.religion.label

@@ -40,7 +40,9 @@ class CreateUsersTable extends Migration
             $table->enum('marital_status', ['M', 'S', 'O', 'N'])->nullable();
             $table->string('import_source', 1024)->nullable()->unique();
 
-            $table->timestamps();
+            // Custom timestamps. created_at with a default
+            $table->timestamp('created_at')->default('now()');
+            $table->timestamp('updated_at')->nullable();
         });
 
         // Mostly to spot import errors, and allow on conflict(unique_user) do nothing

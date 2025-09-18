@@ -5,12 +5,22 @@
 tabs:
     fields:
         has_front_end:
-            span: full
+            span: left
             label: acorn.user::lang.settings.has_front_end
             type: switch
             permissions:
                 - manage_front_end
             tab: acorn.user::lang.settings.signin_tab
+            comment: acorn.user::lang.settings.has_front_end_comment
+
+        use_group_versioning:
+            span: right
+            label: acorn.user::lang.settings.use_group_versioning
+            type: switch
+            permissions:
+                - manage_group_versioning
+            tab: acorn.user::lang.settings.signin_tab
+            comment: acorn.user::lang.settings.use_group_versioning_comment
 
         _has_front_end_section:
             span: full

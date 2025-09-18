@@ -1,11 +1,11 @@
-addresses:
+user_addresses:
   label: acorn.location::lang.models.address.label_plural
   view:
-    list: $/acorn/location/models/address/columns.yaml
-    toolbarButtons: create|delete|link|unlink
+    list: $/acorn/location/models/useraddress/columns.yaml
+    toolbarButtons: create|delete
     # recordsPerPage: 10
   manage:
-    form: $/acorn/location/models/address/fields.yaml
+    form: $/acorn/location/models/useraddress/fields.yaml
     recordsPerPage: 10
 languages:
   label: acorn.user::lang.models.language.label_plural

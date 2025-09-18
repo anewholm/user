@@ -16,7 +16,6 @@ use Acorn\User\Models\MailBlocker;
 use Acorn\User\Console\SetDefaults;
 use Acorn\User\Console\CreateUser;
 use \Acorn\Events\ModelBeforeSave;
-use \Acorn\User\Listeners\CompleteCreatedByUser;
 use Winter\Notify\Classes\Notifier;
 
 class Plugin extends PluginBase
@@ -178,12 +177,6 @@ class Plugin extends PluginBase
                 ]);
             }
         });
-
-        // Fill out created_by_user_id fields
-        Event::listen(
-            ModelBeforeSave::class,
-            [CompleteCreatedByUser::class, 'handle']
-        );
 
         Event::listen('backend.list.injectRowClass', function ($listWidget, $record, &$value) {
             if ($record instanceof UserGroup) {

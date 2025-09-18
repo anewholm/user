@@ -24,7 +24,7 @@ class Users extends Controller
     public $implement = [
         \Acorn\Behaviors\FormController::class,
         \Backend\Behaviors\RelationController::class,
-        \Backend\Behaviors\ListController::class
+        \Acorn\Behaviors\ListController::class
     ];
 
     /**
