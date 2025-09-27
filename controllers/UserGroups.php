@@ -42,6 +42,8 @@ class UserGroups extends Controller
      */
     public $requiredPermissions = ['acorn.users.access_groups'];
 
+    public $bodyClass = 'compact-container';
+
     /**
      * Constructor.
      */

@@ -12,6 +12,8 @@ fields:
         label: acorn.user::lang.models.usergroup.label
         type: relation
         readOnly: true
+        hidden: true
+        options: Acorn\User\Models\UserGroup::dropdownOptions
         span: storm
         cssClass: col-xs-4
 
