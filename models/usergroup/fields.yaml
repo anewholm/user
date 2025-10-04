@@ -6,6 +6,7 @@ fields:
     name:
         label: acorn.user::lang.group.name
         span: auto
+        required: true
         translatable: true
 
     parent_user_group:
@@ -19,6 +20,7 @@ fields:
         label: acorn.user::lang.group.code
         comment: acorn.user::lang.group.code_comment
         span: storm
+        required: true
         cssClass: col-md-3 col-xs-6
         preset: name
 
