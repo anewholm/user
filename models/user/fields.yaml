@@ -21,6 +21,14 @@ fields:
         label: acorn.user::lang.models.user.fathers_name
         span: auto
 
+    is_activated:
+        # Only here to trigger create-system column creation
+        hidden: true
+
+    activated_at:
+        # Only here to trigger create-system column creation
+        hidden: true
+
     created_at:
         label: acorn.user::lang.user.created_at
         type: datepicker
