@@ -401,6 +401,16 @@ class Plugin extends PluginBase
                 'tab'   => 'acorn.user::lang.plugin.tab',
                 'label' => 'acorn.user::lang.permissions.user_ethnicity_change'
             ],
+
+            # User Group
+            'acorn.user.usergroup_code_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.usergroup_code_view'
+            ],
+            'acorn.user.usergroup_code_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.usergroup_code_change'
+            ],
         ];
     }
 

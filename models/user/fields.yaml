@@ -7,10 +7,12 @@ fields:
     name:
         label: acorn.user::lang.user.name
         span: auto
+        required: true
         translatable: false
 
     surname:
         label: acorn.user::lang.user.surname
+        required: true
         span: auto
 
     mothers_name:

@@ -53,6 +53,8 @@ tabs:
         description:
             label: acorn.user::lang.group.description_field
             type: richeditor
+            span: storm
+            cssClass: col-md-6 col-xs-12 nolabel
             translatable: true
             tab: acorn.user::lang.group.description_field
 

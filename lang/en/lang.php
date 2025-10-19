@@ -158,6 +158,20 @@ return [
         'user_religion_change' => 'Change field religion',
         'user_ethnicity_view' => 'View field ethnicity',
         'user_ethnicity_change' => 'Change field ethnicity',
+
+        // Groups
+        'usergroup_name_view' => 'View field User Group name',
+        'usergroup_name_change' => 'Change field User Group name',
+        'usergroup_description_view' => 'View field User Group description',
+        'usergroup_description_change' => 'Change field User Group description',
+        'usergroup_code_view' => 'View field User Group code',
+        'usergroup_code_change' => 'Change field User Group code',
+        'usergroup_type_view' => 'View field User Group type',
+        'usergroup_type_change' => 'Change field User Group type',
+        'usergroup_colour_view' => 'View field User Group colour',
+        'usergroup_colour_change' => 'Change field User Group colour',
+        'usergroup_image_view' => 'View field User Group image',
+        'usergroup_image_change' => 'Change field User Group image',
     ],
 
     // Inherited
