@@ -34,7 +34,6 @@ class UserGroup extends GroupBase
      */
     public $rules = [
         'name' => 'required|between:3,64',
-        'code' => 'required|regex:/^[a-zA-Z0-9_\-]+$/|unique:acorn_user_user_groups',
     ];
 
     /**
@@ -114,6 +113,18 @@ class UserGroup extends GroupBase
     protected function getAuthIsMemberAttribute(): bool
     {
         return $this->isAuthUserGroup();
+    }
+
+    public function beforeCreate()
+    {
+        // Auto provision a code
+        // based on settings
+        // if NULL
+        if (!$this->code) {
+            if (Settings::get('auto_provision_codes')) {
+                
+            }
+        }
     }
 
     public static function dropdownOptions($form, $field)

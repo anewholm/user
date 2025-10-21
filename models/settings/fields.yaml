@@ -13,15 +13,6 @@ tabs:
             tab: acorn.user::lang.settings.signin_tab
             comment: acorn.user::lang.settings.has_front_end_comment
 
-        use_group_versioning:
-            span: right
-            label: acorn.user::lang.settings.use_group_versioning
-            type: switch
-            permissions:
-                - manage_group_versioning
-            tab: acorn.user::lang.settings.signin_tab
-            comment: acorn.user::lang.settings.use_group_versioning_comment
-
         _has_front_end_section:
             span: full
             label: acorn.user::lang.settings.has_front_end_section
@@ -124,3 +115,24 @@ tabs:
                 action: enable
                 condition: checked
             tab: acorn.user::lang.settings.activation_tab
+
+        # ------------------------ Groups
+        auto_provision_codes:
+            span: left
+            label: acorn.user::lang.settings.auto_provision_codes
+            type: switch
+            default: 1
+            permissions:
+                - manage_codes
+            comment: acorn.user::lang.settings.auto_provision_codes_comment
+            tab: acorn.user::lang.settings.usergroups
+
+        use_group_versioning:
+            span: right
+            label: acorn.user::lang.settings.use_group_versioning
+            type: switch
+            permissions:
+                - manage_group_versioning
+            tab: acorn.user::lang.settings.usergroups
+            comment: acorn.user::lang.settings.use_group_versioning_comment
+

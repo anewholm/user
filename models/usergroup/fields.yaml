@@ -17,10 +17,12 @@ fields:
         placeholder: backend::lang.form.select
 
     code:
+        # NOT NULL
+        # But not required because auto-provisioned
+        # based on settings for the owner
         label: acorn.user::lang.group.code
         comment: acorn.user::lang.group.code_comment
         span: storm
-        required: true
         cssClass: col-md-3 col-xs-6
         preset: name
 
