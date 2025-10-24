@@ -120,8 +120,13 @@ tabs:
         auto_provision_codes:
             span: left
             label: acorn.user::lang.settings.auto_provision_codes
-            type: switch
-            default: 1
+            type: dropdown
+            options:
+                AU: Automatic
+                AC3: Acronym 3 letters
+                F3: First 3 letters
+                MN: Manual
+            default: AU
             permissions:
                 - manage_codes
             comment: acorn.user::lang.settings.auto_provision_codes_comment
@@ -136,3 +141,12 @@ tabs:
             tab: acorn.user::lang.settings.usergroups
             comment: acorn.user::lang.settings.use_group_versioning_comment
 
+        codes_read_only:
+            span: left
+            label: acorn.user::lang.settings.codes_read_only
+            type: switch
+            default: 1
+            permissions:
+                - manage_codes
+            comment: acorn.user::lang.settings.codes_read_only_comment
+            tab: acorn.user::lang.settings.usergroups

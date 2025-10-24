@@ -3,6 +3,7 @@
 use Winter\Storm\Auth\Models\Group as GroupBase;
 use ApplicationException;
 use Acorn\Collection;
+use Acorn\Model;
 use Winter\Storm\Database\TreeCollection;
 
 /**
@@ -121,8 +122,10 @@ class UserGroup extends GroupBase
         // based on settings
         // if NULL
         if (!$this->code) {
-            if (Settings::get('auto_provision_codes')) {
-                
+            if ($autoProvisionCodes = Settings::get('auto_provision_codes')) {
+                $this->code = Model::uniqueValue($this->name, 'code', self::class, $autoProvisionCodes);
+            } else {
+                // Allow unique exception to trigger
             }
         }
     }

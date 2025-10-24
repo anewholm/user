@@ -24,6 +24,19 @@ fields:
         comment: acorn.user::lang.group.code_comment
         span: storm
         cssClass: col-md-3 col-xs-6
+        settingNot: Acorn\User\Models\Settings::codes_read_only
+        preset: name
+
+    _code:
+        # NOT NULL
+        # But not required because auto-provisioned
+        # based on settings for the owner
+        label: acorn.user::lang.models.usergroup.code_read_only
+        comment: acorn.user::lang.models.usergroup.code_read_only_comment
+        span: storm
+        readOnly: true
+        cssClass: col-md-3 col-xs-6
+        setting: Acorn\User\Models\Settings::codes_read_only
         preset: name
 
     type:
