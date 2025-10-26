@@ -28,6 +28,7 @@ fields:
         preset: name
 
     _code:
+        # TODO: Move _code / code to a permission based system
         # NOT NULL
         # But not required because auto-provisioned
         # based on settings for the owner
@@ -73,4 +74,12 @@ tabs:
             translatable: true
             tab: acorn.user::lang.group.description_field
 
+
+tertiaryTabs:
+    fields:
+        translations:
+            label: winter.translate::lang.plugin.tab
+            type: partial
+            path: modules/acorn/partials/translations
+            context: update
 

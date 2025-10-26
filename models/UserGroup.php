@@ -13,6 +13,7 @@ class UserGroup extends GroupBase
 {
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
     use \Acorn\Traits\PathsHelper;
+    use \Acorn\Traits\ImplementReplaces;
     use \Winter\Storm\Database\Traits\NestedTree;
     use \Acorn\Backendlocalization\Class\TranslateBackend;
     use \Staudenmeir\EloquentHasManyDeep\HasTableAlias;
@@ -22,7 +23,13 @@ class UserGroup extends GroupBase
     const GROUP_GUEST = 'guest';
     const GROUP_REGISTERED = 'registered';
 
-    public $implement = ['Winter.Translate.Behaviors.TranslatableModel'];
+    // Supporting 1-1 translations saving and loading
+    public $implement = ['Acorn.Behaviors.TranslatableModel'];
+    // We still throw a fake Winter.Translate.Behaviors in there 
+    // as AA model does
+    // so that this class still shows the translateable fields
+    public $implementReplaces = ['Winter.Translate.Behaviors.TranslatableModel'];
+
     public $translatable = ['name', 'description'];
 
     /**
@@ -52,6 +59,16 @@ class UserGroup extends GroupBase
         'parent_user_group' => [UserGroup::class, 'key' => 'parent_user_group_id'], 
         'type' => UserGroupType::class,
     ];
+
+    /* This is programatically added by TranslateableModel, 
+     * but we have it also here to hint to create-system 
+    public $morphMany = [
+        'translations' => [
+            'Winter\Translate\Models\Attribute',
+            'name' => 'model'
+        ],
+    ];
+    */
 
     /**
      * @var array The attributes that are mass assignable.

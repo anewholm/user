@@ -16,7 +16,7 @@ class CreateUserGroupsTable extends Migration
             $table->engine = 'InnoDB';
             $table->uuid('id')->primary()->default(DB::raw('(gen_random_uuid())'));
             $table->string('name')->index();
-            $table->string('code')->index()->unique()->default('(((random() * (1000)::double precision))::integer)::character varying');
+            $table->string('code', 2048)->index()->unique();
             $table->text('description')->nullable();
             $table->timestamps();
             $table->uuid('parent_user_group_id')->nullable();

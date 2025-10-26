@@ -16,9 +16,13 @@ columns:
 
     translations:
         label: winter.translate::lang.plugin.tab
+        # Not necessary because the name is correct relation
+        # MorphMany relation is programmatically added by the TranslateableBehavior
+        # and added directly in this case to hint to create-system
         relation: translations
         type: partial
         path: modules/acorn/partials/translations
+        invisible: true
         sortable: false
         searchable: false
 

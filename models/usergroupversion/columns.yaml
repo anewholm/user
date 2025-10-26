@@ -7,10 +7,9 @@ columns:
         label: acorn.user::lang.models.general.id
         invisible: true
 
-    user_group:
+    name:
         label: acorn.user::lang.models.usergroup.label
         relation: user_group
-        select: acorn_user_user_groups.name
         searchable: true
 
     version:
