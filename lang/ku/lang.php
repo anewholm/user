@@ -221,6 +221,7 @@ return [
         'remember_always' => 'Her gav',
         'remember_never' => 'Hişyar nebe',
         'remember_ask' => 'Di têketinê de ji bikarhêner bipirse',
+        'show_on_front_end' => 'Li Ser Rûyê Pêşiyê Nîşan Bide',
     ],
     'user' => [
         'label' => 'Kes',

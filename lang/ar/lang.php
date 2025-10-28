@@ -221,6 +221,7 @@ return [
         'remember_always' => 'دائمًا',
         'remember_never' => 'أبدًا',
         'remember_ask' => 'اسأل المستخدم عند تسجيل الدخول',
+        'show_on_front_end' => 'عرض على الواجهة الأمامية',
     ],
     'user' => [
         'label' => 'الشخص',

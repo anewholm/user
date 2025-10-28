@@ -279,6 +279,7 @@ return [
         'remember_always' => 'Always',
         'remember_never' => 'Never',
         'remember_ask' => 'Ask the user on login',
+        'show_on_front_end' => 'Show On Front End',
     ],
     'user' => [
         'label' => 'Person',
