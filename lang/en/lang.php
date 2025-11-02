@@ -246,6 +246,8 @@ return [
         'has_front_end_comment' => 'Passwords will be required',
         'has_front_end_section' => 'Front-end settings only',
         'has_front_end_section_comment' => 'Please activate the front-end above to manage user login settings',
+        'auto_passwords' => 'Auto-provision passwords if they are blank',
+        'auto_passwords_comment' => 'This will only happen if a password was not set. Passwords are randomly generated strong.',
         'activation_tab' => 'Activation',
         'usergroups' => 'User Groups',
         'auto_provision_codes' => 'Auto-provision codes',

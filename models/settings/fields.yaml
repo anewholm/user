@@ -92,6 +92,17 @@ tabs:
                 condition: checked
             tab: acorn.user::lang.settings.registration_tab
 
+        auto_passwords:
+            span: left
+            label: acorn.user::lang.settings.auto_passwords
+            comment: acorn.user::lang.settings.auto_passwords_comment
+            type: switch
+            trigger:
+                field: has_front_end
+                action: enable
+                condition: checked
+            tab: acorn.user::lang.settings.registration_tab
+
         # Require Activation
         require_activation:
             span: left

@@ -295,13 +295,17 @@ class User extends UserBase
             $this->generatePassword();
         }
 
+        if (!$this->password && UserSettings::get('auto_passwords')) {
+            $this->generatePassword();
+        }
+
         // Use NULLs for optional email 
         // to avoid Unique check constraints
-        if ($this->email  == '') $this->email = NULL;
-        if ($this->gender == '') $this->gender = NULL;
+        if ($this->email          == '') $this->email  = NULL;
+        if ($this->gender         == '') $this->gender = NULL;
         if ($this->marital_status == '') $this->marital_status = NULL;
+        // NULLify all global_scope empties
         foreach ($this->attributesToArray() as $name => $value) {
-            // NULLify all global_scope empties
             if (substr($name, 0, 13) == 'global_scope_') {
                 if ($value == '') $this->{$name} = NULL;
             }
