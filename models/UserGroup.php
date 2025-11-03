@@ -133,6 +133,20 @@ class UserGroup extends GroupBase
         return $this->isAuthUserGroup();
     }
 
+    public function beforeValidate()
+    {
+        if (!$this->name) {
+            if (Settings::get('adopt_translated_names')) {
+                if ($rlTranslate = post('RLTranslate')) {
+                    // Return the first non-empty name in the translation array
+                    array_walk_recursive($rlTranslate, function($value, $key) {
+                        if (!$this->name && $key == 'name' && $value) $this->name = $value;
+                    });
+                }
+            }
+        }
+    }
+
     public function beforeCreate()
     {
         // Auto provision a code

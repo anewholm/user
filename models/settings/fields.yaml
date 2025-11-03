@@ -161,3 +161,13 @@ tabs:
                 - manage_codes
             comment: acorn.user::lang.settings.codes_read_only_comment
             tab: acorn.user::lang.settings.usergroups
+
+        adopt_translated_names:
+            span: right
+            label: acorn.user::lang.settings.adopt_translated_names
+            type: switch
+            default: 1
+            permissions:
+                - manage_codes
+            comment: acorn.user::lang.settings.adopt_translated_names_comment
+            tab: acorn.user::lang.settings.usergroups

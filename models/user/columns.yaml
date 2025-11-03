@@ -22,7 +22,9 @@ columns:
 
     activated_at:
         label: acorn.user::lang.models.user.activated_at
-        type: datetime
+        type: partial
+        path: datetime
+        sortable: true
         select: acorn_user_users.activated_at
 
     name:
@@ -68,11 +70,17 @@ columns:
 
     created_at:
         label: acorn.user::lang.user.created_at
-        type: timetense
+        type: partial
+        path: datetime
+        sortable: true
+        select: acorn_user_users.created_at
 
     last_seen:
         label: acorn.user::lang.user.last_seen
-        type: timetense
+        type: partial
+        path: datetime
+        sortable: true
+        select: acorn_user_users.last_seen
 
     is_guest:
         label: acorn.user::lang.user.is_guest

@@ -119,7 +119,7 @@ return [
         'acorn_user_section' => 'تحديد الشخص المُدخل للبيانات',
         'acorn_user_section_comment' => 'يجب أن يرتبط كل مسؤولي الخادم بشخص، وربما منظّمة عند الحاجة.',
         'acorn_user' => 'الشخص',
-        'acorn_user_comment' => 'سيُسجّل جميع تغييرات البيانات باسم هذا الشخص  <a tabindex=\'-1\' target=\'_blank\' href=\'/backend/acorn/user/users\' class=\'goto-form-group-selection\'></a>',
+        'acorn_user_comment' => '<ul class="field-actions"><li class="goto-form-group-selection"><a tabindex="-1" target="_blank" href="/backend/acorn/user/users">انتقل إلى المستخدم</a></li></ul> سيُسجّل جميع تغييرات البيانات باسم هذا الشخص . ',
         'acorn_user_groups' => 'منظمات الشخص الحالي',
         'acorn_user_groups_comment' => 'الشخص المُسجّل هو عضو في المنظمات المذكورة أعلاه',
         'acorn_create_and_sync_aa_user' => 'إنشاء ومزامنة',

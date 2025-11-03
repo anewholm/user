@@ -119,7 +119,7 @@ return [
         'acorn_user_section' => 'Nasnameya kesê têketinê',
         'acorn_user_section_comment' => 'Hemî rêveberên serverê divê kesek bi wan ve girêdayî hebin, û heke hewce be, rêxistinek jî.',
         'acorn_user' => 'Kes',
-        'acorn_user_comment' => "Hemî guhertinên daneyê di bin vê Kesê de tê tomar kirin  <a tabindex='-1' target='_blank' href='/backend/acorn/user/users' class='goto-form-group-selection'></a>",
+        'acorn_user_comment' => '<ul class="field-actions"><li class="goto-form-group-selection"><a tabindex="-1" target="_blank" href="/backend/acorn/user/users">Biçe kes</a></li></ul>Hemî guhertinên daneyê di bin vê Kesê de tê tomar kirin.',
         'acorn_user_groups' => 'Rêxistinên niha yên Kes',
         'acorn_user_groups_comment' => 'Kesê qeydkirî yê niha endame rêxistinan jorîn e',
         'acorn_create_and_sync_aa_user' => 'Çêbike û hevkûrt bike',
