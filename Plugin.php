@@ -411,6 +411,22 @@ class Plugin extends PluginBase
                 'tab'   => 'acorn.user::lang.plugin.tab',
                 'label' => 'acorn.user::lang.permissions.usergroup_code_change'
             ],
+            'acorn.user.usergroup_colour_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.usergroup_colour_view'
+            ],
+            'acorn.user.usergroup_colour_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.usergroup_colour_change'
+            ],
+            'acorn.user.usergroup_image_view' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.usergroup_image_view'
+            ],
+            'acorn.user.usergroup_image_change' => [
+                'tab'   => 'acorn.user::lang.plugin.tab',
+                'label' => 'acorn.user::lang.permissions.usergroup_image_change'
+            ],
         ];
     }
 

@@ -53,12 +53,18 @@ fields:
         type: colorpicker
         span: storm
         cssClass: col-md-3 col-xs-6
+        permissions:
+          - acorn.user.usergroup_colour_view
+          - acorn.user.usergroup_colour_change
 
     image:
         label: backend::lang.editor.image
         type: mediafinder
         span: storm
         cssClass: col-md-3 col-xs-6
+        permissions:
+          - acorn.user.usergroup_image_view
+          - acorn.user.usergroup_image_change
 
 tabs:
     fields:
