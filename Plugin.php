@@ -104,6 +104,7 @@ class Plugin extends PluginBase
                 if ($model->user && $model->user->groups)
                     $userGroups = $model->user->groups->pluck('name')->toArray();
 
+                // ------------------------ Sync backend_user => User
                 $model->bindEvent('model.beforeSave', function () use(&$model) {
                     if ($model->acorn_create_and_sync_aa_user) {
                         if (!$model->user) {
@@ -128,7 +129,8 @@ class Plugin extends PluginBase
                         }
                     }
                 });
-                
+
+                // ---------------------------- User fields
                 $form->addTabFields([
                     'acorn_user_section' => [
                         'label'   => 'acorn.user::lang.backend.acorn_user_section',
@@ -173,6 +175,13 @@ class Plugin extends PluginBase
                         'commentHtml' => TRUE,
                         'tab'     => 'acorn.user::lang.plugin.name',
                         'permissions' => array('acorn.user.change_backend_user'),
+                    ],
+                    'global_scopes' => [
+                        'label' => 'acorn.user::lang.backend.acorn_global_scopes',
+                        'type'  => 'section',
+                        'comment' => 'acorn.user::lang.backend.acorn_global_scopes_comment',
+                        'commentHtml' => TRUE,
+                        'tab'     => 'acorn.user::lang.plugin.name',
                     ],
                 ]);
             }
