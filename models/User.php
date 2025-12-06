@@ -8,6 +8,7 @@ use Config;
 use BackendAuth;
 use Carbon\Carbon;
 use Winter\Storm\Auth\Models\User as UserBase;
+use \Backend\Models\User as BackendUser;
 use Acorn\User\Models\Settings as UserSettings;
 use Winter\Storm\Auth\AuthException;
 use Winter\Storm\Database\Model;
@@ -664,6 +665,18 @@ class User extends UserBase
         $name      = $this->attributes['name'];
         $nameParts = explode(' ', $name);
         return ($this->surname ? $this->surname : (isset($nameParts[1]) ? $nameParts[1] : NULL));
+    }
+
+    public function backendUser(): BackendUser|NULL
+    {
+        // TODO: Check acorn_user_user_id exists first!
+        return BackendUser::where('acorn_user_user_id', $this->id)->first();
+    }
+
+    public function getIsSuperuserAttribute(): bool|NULL
+    {
+        $user = $this->backendUser();
+        return $user?->is_superuser;
     }
 
     public static function authUser(): User|NULL
