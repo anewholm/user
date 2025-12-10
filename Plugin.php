@@ -176,13 +176,6 @@ class Plugin extends PluginBase
                         'tab'     => 'acorn.user::lang.plugin.name',
                         'permissions' => array('acorn.user.change_backend_user'),
                     ],
-                    'global_scopes' => [
-                        'label' => 'acorn.user::lang.backend.acorn_global_scopes',
-                        'type'  => 'section',
-                        'comment' => 'acorn.user::lang.backend.acorn_global_scopes_comment',
-                        'commentHtml' => TRUE,
-                        'tab'     => 'acorn.user::lang.plugin.name',
-                    ],
                 ]);
             }
         });

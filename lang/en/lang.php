@@ -124,8 +124,6 @@ return [
         'acorn_user_comment' => '<ul class="field-actions"><li class="goto-form-group-selection"><a tabindex="-1" target="_blank" href="/backend/acorn/user/users">Goto selection</a></li></ul> All data changes will be registered against this Person.',
         'acorn_user_groups' => 'Current Persons Organisations',
         'acorn_user_groups_comment' => 'The current registered Person is a member of the above organisations',
-        'acorn_global_scopes' => 'Global Scopes',
-        'acorn_global_scopes_comment' => 'Here for conveinience. These fields are actually held on the User above',
         'acorn_create_and_sync_aa_user' => 'Create and synchronise',
         'acorn_create_and_sync_aa_user_comment' => 'Create and synchronise the Backend user with an Data-entry person'
     ],

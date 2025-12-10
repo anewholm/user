@@ -12,6 +12,8 @@ class UserLanguage extends Model
      */
     protected $table = 'acorn_user_user_languages';
 
+    public $implement = ['Acorn.Behaviors.TranslatableModel'];
+    public $implementReplaces = ['Winter.Translate.Behaviors.TranslatableModel'];
     public $translatable = [
         'language[name]'
     ];

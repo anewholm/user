@@ -19,6 +19,9 @@ class User extends UserBase
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
     use \Acorn\Traits\PathsHelper;
 
+    public $implement = ['Acorn.Behaviors.TranslatableModel'];
+    public $implementReplaces = ['Winter.Translate.Behaviors.TranslatableModel'];
+
     /**
      * @var string The database table used by the model.
      */

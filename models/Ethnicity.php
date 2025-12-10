@@ -14,7 +14,8 @@ class Ethnicity extends Model
     use \Acorn\Traits\PathsHelper;
     use \Acorn\Backendlocalization\Class\TranslateBackend;
 
-    public $implement = ['Winter.Translate.Behaviors.TranslatableModel'];
+    public $implement = ['Acorn.Behaviors.TranslatableModel'];
+    public $implementReplaces = ['Winter.Translate.Behaviors.TranslatableModel'];
     public $translatable = ['name', 'description'];
 
     /**

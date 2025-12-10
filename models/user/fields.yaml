@@ -106,6 +106,9 @@ tabs:
             type: password
             setting: Acorn\User\Models\Settings::has_front_end
             span: left
+            permissions:
+                - acorn.user.user_password_view
+                - acorn.user.user_password_change
 
         password@update:
             label: acorn.user::lang.user.reset_password
@@ -114,6 +117,9 @@ tabs:
             type: password
             setting: Acorn\User\Models\Settings::has_front_end
             span: left
+            permissions:
+                - acorn.user.user_password_view
+                - acorn.user.user_password_change
 
         password_confirmation:
             label: acorn.user::lang.user.confirm_password
@@ -123,6 +129,10 @@ tabs:
             setting: Acorn\User\Models\Settings::has_front_end
             span: right
             context: [create, update]
+            permissions:
+                - acorn.user.user_password_confirmation_view
+                - acorn.user.user_password_confirmation_change
+
         username:
             label: acorn.user::lang.user.username
             tab: acorn.user::lang.user.account
