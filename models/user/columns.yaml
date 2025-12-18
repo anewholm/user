@@ -31,6 +31,10 @@ columns:
         label: acorn.user::lang.user.name
         searchable: true
 
+    avatar:
+        label: acorn.user::lang.user.avatar
+        type: image
+
     mothers_name:
         label: acorn.user::lang.models.user.mothers_name
 

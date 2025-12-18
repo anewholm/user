@@ -99,10 +99,9 @@ class Plugin extends PluginBase
 
         BackendUsers::extendFormFields(function ($form, $model, $context) {
             if ($model instanceof BackendUser) {
-                $userGroups = array();
-                $model->load('user');
-                if ($model->user && $model->user->groups)
-                    $userGroups = $model->user->groups->pluck('name')->toArray();
+                $model->bindEvent('model.beforeValidate', function () use(&$model) {
+                    if ($model->email == '') $model->email = NULL;
+                });
 
                 // ------------------------ Sync backend_user => User
                 $model->bindEvent('model.beforeSave', function () use(&$model) {
@@ -113,6 +112,7 @@ class Plugin extends PluginBase
                                 'surname'  => $model->last_name,
                                 'email'    => $model->email,
                                 // Initially cannot login on the front end
+                                // TODO: Inherit backend_user passwords
                                 'username' => $model->login,
                                 'password' => 'password',
                                 'password_confirmation' => 'password',
@@ -144,7 +144,7 @@ class Plugin extends PluginBase
                         'label'    => 'acorn.user::lang.backend.acorn_create_and_sync_aa_user',
                         'type'     => 'switch',
                         'default'  => true,
-                        'span'     => 'full',
+                        'span'     => 'left',
                         'comment'  => 'acorn.user::lang.backend.acorn_create_and_sync_aa_user_comment',
                         'commentHtml' => TRUE,
                         'attributes'  => array('autocomplete' => 'off'),
@@ -152,29 +152,18 @@ class Plugin extends PluginBase
                         'permissions' => array('acorn.user.change_create_and_sync_aa_user'),
                     ],
                     'user' => [
-                        'label'   => 'acorn.user::lang.backend.acorn_user',
-                        'type'    => 'dropdown',
-                        'span'    => 'auto',
+                        // TODO: This backend user relation field just won't work
+                        'label'    => 'acorn.user::lang.backend.acorn_user',
+                        'type'     => 'text',
+                        'span'     => 'right',
                         'placeholder' => 'backend::lang.form.select',
-                        'options' => '\Acorn\User\Models\User::dropdownOptions',
-                        'comment' => "acorn.user::lang.backend.acorn_user_comment",
+                        'options'  => '\Acorn\User\Models\User::dropdownOptions',
+                        'comment'  => "acorn.user::lang.backend.acorn_user_comment",
                         'commentHtml' => TRUE,
-                        'tab'     => 'acorn.user::lang.plugin.name',
+                        'disabled' => TRUE,
+                        'context'  => 'update',
                         'permissions' => array('acorn.user.change_backend_user'),
-                    ],
-                    '_acorn_user_groups' => [
-                        'label'   => 'acorn.user::lang.backend.acorn_user_groups',
-                        'type'    => 'checkboxlist',
-                        'options' => $userGroups,
-                        'span'    => 'auto',
-                        'cssClass' => 'nolabel',
-                        // TODO: Remove checkboxes and disable control
-                        // TODO: Change the groups list when user changes
-                        // 'dependsOn' => 'user', 
-                        'comment' => 'acorn.user::lang.backend.acorn_user_groups_comment',
-                        'commentHtml' => TRUE,
-                        'tab'     => 'acorn.user::lang.plugin.name',
-                        'permissions' => array('acorn.user.change_backend_user'),
+                        'tab'      => 'acorn.user::lang.plugin.name',
                     ],
                 ]);
             }

@@ -18,9 +18,12 @@ class User extends UserBase
     use \Winter\Storm\Database\Traits\SoftDelete;
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
     use \Acorn\Traits\PathsHelper;
+    use \Acorn\Traits\Leaf; // => Students
 
     public $implement = ['Acorn.Behaviors.TranslatableModel'];
     public $implementReplaces = ['Winter.Translate.Behaviors.TranslatableModel'];
+
+    public $translatable = [];
 
     /**
      * @var string The database table used by the model.
@@ -31,8 +34,8 @@ class User extends UserBase
      * Validation rules
      */
     public $rules = [
-        // TODO: These should be required if Setting::has_front_end is on
         'email'    => 'nullable|between:6,255|email|unique:acorn_user_users',
+        // These will be required by boot() if Setting::has_front_end is on
         //'username' => 'required|between:2,255|unique:acorn_user_users',
         //'password' => 'required:create|between:8,255|confirmed',
         //'password_confirmation' => 'required_with:password|between:8,255',
@@ -325,9 +328,7 @@ class User extends UserBase
             $this->username = $this->email;
         }
 
-        /*
-         * Apply Password Length Settings
-         */
+        // Apply Password Length Settings
         if (UserSettings::get('has_front_end')) {
             $minPasswordLength = static::getMinPasswordLength();
             $this->rules['password'] = "required:create|between:$minPasswordLength,255|confirmed";

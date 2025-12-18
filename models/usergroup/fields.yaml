@@ -84,8 +84,8 @@ tabs:
 tertiaryTabs:
     fields:
         translations:
-            label: winter.translate::lang.plugin.tab
+            label: acorn::lang.models.general.translations
             type: partial
-            path: modules/acorn/partials/translations
+            path: translations
             context: update
 
