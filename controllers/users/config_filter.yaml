@@ -13,19 +13,19 @@ scopes:
     created_date:
         label: acorn.user::lang.user.created_at
         type: daterange
-        conditions: created_at >= ':after' AND created_at <= ':before'
+        conditions: acorn_user_users.created_at >= ':after' AND acorn_user_users.created_at <= ':before'
 
     activated:
         label: acorn.user::lang.user.status_activated
         type: switch
         conditions:
-            - is_activated = '0'
-            - is_activated = '1'
+            - acorn_user_users.is_activated = '0'
+            - acorn_user_users.is_activated = '1'
 
     deleted:
         label: acorn.user::lang.user.status_deleted
         type: switch
         default: 0
         conditions:
-            - deleted_at is null
-            - not deleted_at is null
+            - acorn_user_users.deleted_at is null
+            - not acorn_user_users.deleted_at is null

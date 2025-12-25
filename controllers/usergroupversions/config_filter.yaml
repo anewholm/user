@@ -2,9 +2,9 @@ scopes:
   user_group:
     label: acorn.user::lang.models.usergroup.label
     modelClass: Acorn\User\Models\UserGroup
-    conditions: user_group_id in(:filtered)
+    conditions: acorn_user_user_group_versions.user_group_id in(:filtered)
     noRelationManager: true
   users:
     label: acorn.user::lang.models.user.label_plural
     modelClass: Acorn\User\Models\User
-    conditions: id in(select user_group_version_id from acorn_user_user_group_version ugv where ugv.user_id in(:filtered))
+    conditions: acorn_user_user_group_versions.id in(select user_group_version_id from acorn_user_user_group_version ugv where ugv.user_id in(:filtered))

@@ -74,24 +74,20 @@ class Plugin extends PluginBase
         });
 
         BackendUser::extend(function ($model){
-            $model->belongsTo['user'] = [User::class, 'key' => 'acorn_user_user_id'];
+            $model->belongsTo['user'] = [User::class, 'key' => 'acorn_user_user_id', 'eagerload' => TRUE];
         });
 
         BackendUsers::extendListColumns(function ($list, $user) {
             if ($user instanceof BackendUser) {
                 $list->addColumns([
-                    'user' => [
+                    'user[first_name]' => [
                         'label'    => 'acorn.user::lang.backend.acorn_user_section',
                         'type'     => 'text',
-                        'relation' => 'user',
-                        'select'   => 'name',
-                        'attributes' => array('autocomplete' => 'off'),
                     ],
                     'acorn_create_and_sync_aa_user' => [
                         'label'      => 'acorn.user::lang.backend.acorn_create_and_sync_aa_user',
                         'type'       => 'switch',
                         'invisible'  => true,
-                        'attributes' => array('autocomplete' => 'off'),
                     ],
                 ]);
             }
@@ -154,7 +150,7 @@ class Plugin extends PluginBase
                     'user' => [
                         // TODO: This backend user relation field just won't work
                         'label'    => 'acorn.user::lang.backend.acorn_user',
-                        'type'     => 'text',
+                        'type'     => 'dropdown',
                         'span'     => 'right',
                         'placeholder' => 'backend::lang.form.select',
                         'options'  => '\Acorn\User\Models\User::dropdownOptions',
@@ -166,6 +162,10 @@ class Plugin extends PluginBase
                         'tab'      => 'acorn.user::lang.plugin.name',
                     ],
                 ]);
+
+                // User groups override the backend user groups
+                if ($field = $form->getField('groups'))
+                    $field->hidden = true;
             }
         });
 

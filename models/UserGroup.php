@@ -1,7 +1,7 @@
 <?php namespace Acorn\User\Models;
 
 use Winter\Storm\Auth\Models\Group as GroupBase;
-use ApplicationException;
+use Str;
 use Acorn\Collection;
 use Acorn\Model;
 use Winter\Storm\Database\TreeCollection;
@@ -106,6 +106,24 @@ class UserGroup extends GroupBase
     public function getChildCount(): int
     {
         return $this->children->count();
+    }
+
+    public function getNameAttribute()
+    {
+        $name = $this->attributes['name'];
+        $code = $this->attributes['code'];
+        if ($code) {
+            $code = Str::limit($code, 8);
+            $name = "$name ($code)";
+        }
+        return $name;
+    }
+
+    public function setNameAttribute($name)
+    {
+        $code = $this->attributes['code'];
+        $codeString = " ($code)";
+        $this->attributes['name'] = str_replace($codeString, '', $name);
     }
 
     public static function authUserGroups(): TreeCollection|NULL

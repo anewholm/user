@@ -12,6 +12,7 @@ columns:
         label: acorn.user::lang.user.username
         searchable: true
         invisible: true
+        select: acorn_user_users.username
 
     is_activated:
         label: acorn.user::lang.models.user.is_activated
@@ -30,6 +31,8 @@ columns:
     name:
         label: acorn.user::lang.user.name
         searchable: true
+        sortable: true
+        select: acorn_user_users.name
 
     avatar:
         label: acorn.user::lang.user.avatar
@@ -37,9 +40,15 @@ columns:
 
     mothers_name:
         label: acorn.user::lang.models.user.mothers_name
+        searchable: true
+        sortable: true
+        select: acorn_user_users.mothers_name
 
     fathers_name:
         label: acorn.user::lang.models.user.fathers_name
+        searchable: true
+        sortable: true
+        select: acorn_user_users.fathers_name
 
     birth_date:
         label: acorn.user::lang.models.user.birth_date
@@ -65,12 +74,16 @@ columns:
 
     surname:
         label: acorn.user::lang.user.surname
-        searchable: true
         invisible: true
+        searchable: true
+        sortable: true
+        select: acorn_user_users.surname
 
     email:
         label: acorn.user::lang.user.email
         searchable: true
+        sortable: true
+        select: acorn_user_users.email
 
     created_at:
         label: acorn.user::lang.user.created_at
