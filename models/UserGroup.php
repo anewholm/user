@@ -16,6 +16,7 @@ class UserGroup extends GroupBase
     use \Acorn\Traits\ImplementReplaces;
     use \Winter\Storm\Database\Traits\NestedTree;
     use \Acorn\Backendlocalization\Class\TranslateBackend;
+    use \Acorn\Traits\Dropdowns;
     use \Staudenmeir\EloquentHasManyDeep\HasTableAlias;
 
     const PARENT_ID = 'parent_user_group_id';
@@ -177,11 +178,6 @@ class UserGroup extends GroupBase
                 // Allow unique exception to trigger
             }
         }
-    }
-
-    public static function dropdownOptions($form, $field)
-    {
-        return \Acorn\Model::dropdownOptions($form, $field, self::class);
     }
 
     public static function menuitemCount(): mixed {

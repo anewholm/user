@@ -7,6 +7,7 @@ class UserGroupType extends GroupBase
 {
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
     use \Acorn\Traits\PathsHelper;
+    use \Acorn\Traits\Dropdowns;
     use \Acorn\Backendlocalization\Class\TranslateBackend;
 
     public $implement = ['Acorn.Behaviors.TranslatableModel'];
@@ -47,11 +48,6 @@ class UserGroupType extends GroupBase
     {
         // $this->groups implements tree things so a hasMany does not work
         return $this->groups->count();
-    }
-
-    public static function dropdownOptions($form, $field)
-    {
-        return \Acorn\Model::dropdownOptions($form, $field, self::class);
     }
 
     public function getFullyQualifiedNameAttribute()

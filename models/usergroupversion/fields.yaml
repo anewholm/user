@@ -8,15 +8,6 @@ fields:
         hidden: true
         readOnly: true
 
-    user_group:
-        label: acorn.user::lang.models.usergroup.label
-        type: relation
-        readOnly: true
-        hidden: true
-        options: Acorn\User\Models\UserGroup::dropdownOptions
-        span: storm
-        cssClass: col-xs-4
-
     version:
         label: acorn.user::lang.models.usergroupversion.version
         type: number

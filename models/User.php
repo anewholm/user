@@ -19,6 +19,7 @@ class User extends UserBase
     use \Illuminate\Database\Eloquent\Concerns\HasUuids;
     use \Acorn\Traits\PathsHelper;
     use \Acorn\Traits\Leaf; // => Students
+    use \Acorn\Traits\Dropdowns;
 
     public $implement = ['Acorn.Behaviors.TranslatableModel'];
     public $implementReplaces = ['Winter.Translate.Behaviors.TranslatableModel'];
@@ -629,11 +630,6 @@ class User extends UserBase
     }
 
     // --------------------------------------------- New functions
-    public static function dropdownOptions($form, $field)
-    {
-        return \Acorn\Model::dropdownOptions($form, $field, self::class);
-    }
-
     public function getPrimaryLanguageAttribute(): Language|NULL
     {
         $userLanguage = $this->user_languages()->where('current', TRUE)->first();
