@@ -50,20 +50,22 @@ class CreateUserGroupVersioning extends Migration
             TRUE, 
             [],
         <<<SQL
-            select coalesce(max(version), 0) + 1 into new.version 
-                from acorn_user_user_group_versions 
-                where user_group_id = new.user_group_id;
-                
-            -- Enforce only one current
-            -- False may be explicitly specified, for example, importing old codes
-            -- Column default should be true on inserts
-            if new.current then
-                -- Unset the old current(s)
-                update acorn_user_user_group_versions 
-                    set "current" = false
-                    where user_group_id = new.user_group_id 
-                    and "current"
-                    and not id = new.id;
+            if strpos(new.import_source, 'no_trigger') = 0 then
+                select coalesce(max(version), 0) + 1 into new.version 
+                    from public.acorn_user_user_group_versions 
+                    where user_group_id = new.user_group_id;
+                    
+                -- Enforce only one current
+                -- False may be explicitly specified, for example, importing old codes
+                -- Column default should be true on inserts
+                if new.current then
+                    -- Unset the old current(s)
+                    update public.acorn_user_user_group_versions 
+                        set "current" = false
+                        where user_group_id = new.user_group_id 
+                        and "current"
+                        and not id = new.id;
+                end if;
             end if;
             
             return new;
@@ -77,8 +79,10 @@ SQL
             TRUE, 
             [],
         <<<SQL
-            insert into acorn_user_user_group_versions(user_group_id)
-                values(new.id);
+            if strpos(new.import_source, 'no_trigger') = 0 then
+                insert into public.acorn_user_user_group_versions(user_group_id)
+                    values(new.id);
+            end if;
             return new;
 SQL
         );
