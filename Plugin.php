@@ -8,6 +8,7 @@ use Backend\Models\User as BackendUser;
 use Backend\Controllers\Users as BackendUsers;
 use Acorn\User\Models\User;
 use Acorn\User\Models\UserGroup;
+use Acorn\User\Models\Settings as UserSettings;
 use System\Classes\PluginBase;
 use System\Classes\SettingsManager;
 use Illuminate\Foundation\AliasLoader;
@@ -165,7 +166,16 @@ class Plugin extends PluginBase
 
                 // User groups override the backend user groups
                 if ($field = $form->getField('groups'))
-                    $field->hidden = true;
+                    $field->hidden = TRUE;
+                if (!UserSettings::get('server_email_verified')) {
+                    if ($field = $form->getField('send_invite')) {
+                        $field->disabled = TRUE;
+                        $field->default  = FALSE;
+                        $field->value    = FALSE;
+                        $field->comment  = trans('acorn.user::lang.settings.server_email_verified_not');
+                        $field->commentHtml = TRUE;
+                    }
+                }
             }
         });
 

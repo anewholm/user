@@ -103,6 +103,13 @@ tabs:
                 condition: checked
             tab: acorn.user::lang.settings.registration_tab
 
+        server_email_verified:
+            span: right
+            label: acorn.user::lang.settings.server_email_verified
+            comment: acorn.user::lang.settings.server_email_verified_comment
+            type: switch
+            tab: acorn.user::lang.settings.registration_tab
+
         # Require Activation
         require_activation:
             span: left
